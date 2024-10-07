@@ -16,6 +16,7 @@ Changed
 Added
 =====
 - [backport] Added new "k-modal" component.
+- [backport] Added confirmation modal when enabling/disabling interfaces
 
 
 [2023.2.1] - 2024-06-04
