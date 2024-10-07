@@ -4,6 +4,7 @@
       :search="search"
       :placeholder="placeholder"
       :aria-label="label"
+      :submitOnEnter="true"
       class="autocomplete-wrap"
       @submit="handleSubmit"
     >
