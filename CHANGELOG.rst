@@ -13,6 +13,11 @@ Changed
 =======
 - Fixed Enter key handler on InputAutocomplete (k-input-auto)
 
+Added
+=====
+- [backport] Added new "k-modal" component.
+
+
 [2023.2.1] - 2024-06-04
 ***********************
 

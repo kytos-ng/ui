@@ -23,6 +23,7 @@ import KytosButtonGroup from './components/kytos/inputs/buttons/ButtonGroup.vue'
 import KytosDropdown from './components/kytos/inputs/Dropdown.vue';
 import KytosContextPanel from './components/kytos/misc/ContextPanel.vue';
 import KytosMenubar from './components/kytos/misc/Menubar.vue';
+import KytosModal from './components/kytos/misc/Modal.vue';
 import KytosActionMenu from './components/kytos/misc/ActionMenu.vue';
 import KytosInfoPanel from './components/kytos/misc/InfoPanel.vue';
 import KytosStatusBar from './components/kytos/misc/StatusBar.vue';
@@ -55,6 +56,7 @@ import KytosTable from './components/kytos/table/Table.vue';
 import KytosNotification from "./components/kytos/misc/Notification.vue";
 
 Vue.component('k-menubar', KytosMenubar);
+Vue.component('k-modal', KytosModal);
 Vue.component('k-map', KytosMap);
 Vue.component('mapbox-settings', MapBoxSettings);
 Vue.component('k-topology', KytosTopology);
