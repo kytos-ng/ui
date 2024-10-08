@@ -4,6 +4,31 @@
         <k-button tooltip="Go back to switch info" title="< Back to switch" :on_click="back_switch"></k-button>
         <k-button :on_click="bt_state_toggle" :title="next_state"></k-button>
       </div>
+      <template v-if="show_modal_state_toggle">
+        <div class="modal-mask">
+          <div class="modal-wrapper">
+            <div class="modal-container">
+              <div class="modal-header">
+                <slot name="header">
+                </slot>
+              </div>
+              <div class="modal-body">
+                <slot name="body">
+                  {{next_state}} Interface {{metadata_items.port_name !== undefined && metadata_items.port_name.length !== 0? metadata_items.port_name : metadata.interface_id}}?
+                </slot>
+              </div>
+              <div class="modal-footer">
+                <slot name="footer">
+                  <k-button tooltip="Cancel" title="Cancel" :on_click="modal_cancel_state_toggle">
+                  </k-button>
+                  <k-button id="modal-delete" :title="next_state" :on_click="modal_proceed_state_toggle">
+                  </k-button>
+                </slot>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
       <k-accordion-item title="Interface Plot" v-if="chartJsonData">
         <k-button-group>
             <!-- input type="text" class="k-input" placeholder="Zoom" disabled -->
@@ -130,6 +155,7 @@ export default {
       new_tag_type: "",
       tag_ranges: {},
       available_tags: {},
+      show_modal_state_toggle: false,
       content_switch: []
     }
   },
@@ -198,6 +224,16 @@ export default {
       this.next_state = this.metadata.enabled == 'true'? 'Disable' : 'Enable'
     },
     bt_state_toggle(){
+      this.show_modal_state_toggle = true;
+    },
+    modal_cancel_state_toggle(){
+      this.show_modal_state_toggle = false;
+    },
+    modal_proceed_state_toggle(){
+      this.show_modal_state_toggle = false;
+      this.state_toggle_interface();
+    },
+    state_toggle_interface(){
       var _this = this
       let request = $.ajax({
                        type:"POST",
@@ -211,8 +247,7 @@ export default {
           icon: 'cog',
         }
         _this.next_state = _this.next_state == 'Enable'? 'Disable' : 'Enable'
-        _this.content['enabled'] = _this.next_state == 'Enable'? 'false' : 'true'
-        _this.metadata['enabled'] = _this.content['enabled']
+        _this.metadata['enabled'] = _this.next_state == 'Enable'? 'false' : 'true'
         _this.$kytos.$emit("setNotification", notification)
       });
       request.fail(function(data) {
