@@ -6,6 +6,13 @@ All notable changes to the Kytos-NG UI project will be documented in this file.
 UNRELEASED - Under development
 ******************************
 
+[2023.2.2] - 2024-10-07
+***********************
+
+Changed
+=======
+- Fixed Enter key handler on InputAutocomplete (k-input-auto)
+
 [2023.2.1] - 2024-06-04
 ***********************
 
