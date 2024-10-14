@@ -1,7 +1,7 @@
 <template>
   <div class="k-input-wrap">
     <icon v-if="icon && iconName" :icon="iconName"></icon>
-    <input :value="modelValue" :id="id" class="k-input" :title="tooltip" :placeholder="placeholder"
+    <input :value="value" :id="id" class="k-input" :title="tooltip" :placeholder="placeholder"
       @input="updateText"
       ref="inputValue"
       v-bind:disabled="isDisabled" onshow="this.focus()" autofocus>
@@ -28,9 +28,9 @@ export default {
    /**
     * The value to input button.
     */
-   modelValue: {
+   value: {
       type: String,
-      default: ""
+      default: "l"
    },
    /*
    * Tooltip string for the input.
@@ -50,12 +50,12 @@ export default {
    action: {
       type: Function,
       default: function(val) {return}
-   },
-   emits: ['update:modelValue']
+   }
   },
+  emits: ['update:value'],
   methods: {
     updateText(){
-      this.$emit('update:modelValue', this.$refs.inputValue.value)
+      this.$emit('update:value', this.$refs.inputValue.value)
       this.action(this.$refs.inputValue.value)
     }
   }
