@@ -96,6 +96,9 @@ import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
  * @example /_static/imgs/components/input/k-input-auto.png
  */
 var CustomInput = {
+  compatConfig: {
+    MODE: 3,
+  },
   props: {
     value: {
       type: String,
@@ -130,8 +133,8 @@ var CustomInput = {
       type: String,
       default: ""
    }
-  }, 
-  template: '<input :id="id" class="k-input" :tooltip="tooltip" ref="inputValue" :placeholder="placeholder" :value="value" v-on="$listeners" />'
+  },
+  template: '<input :id="id" class="k-input" :tooltip="tooltip" ref="inputValue" :placeholder="placeholder" :value="value" v-bind="$attrs" />'
 }
 
 export default {
