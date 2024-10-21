@@ -25,11 +25,11 @@ export default {
         cache: false,
         success: function(data) {
           if(data) {
-            self.components = self.components.concat(data)
+            //self.components = self.components.concat(data)
           }
         }
       }).always(function(){
-          self.load_components()
+          //self.load_components()
       })
   },
   methods: {
@@ -39,7 +39,7 @@ export default {
         if('url' in component){
           // random is needed to avoid cache of components.
           var url = self.$kytos_server+component.url+"?random="+Math.random()
-          Vue.component(component.name, httpVueLoader(url))
+          //Vue.component(component.name, httpVueLoader(url))
         }
       })
     },
