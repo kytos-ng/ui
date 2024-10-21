@@ -14,7 +14,7 @@
           <k-button title="Debug" @click="select('debug')"  tooltip="Only debug messages"></k-button>
         </k-button-group>
         <k-button-group>
-          <k-input v-model="highlight_string" v-on:change='highlight' icon="lightbulb" tooltip="Highlight string" placeholder="Highlight string"></k-input>
+          <k-input v-model:value="highlight_string" v-on:change='highlight' icon="lightbulb" tooltip="Highlight string" placeholder="Highlight string"></k-input>
         </k-button-group>
       </div>
 

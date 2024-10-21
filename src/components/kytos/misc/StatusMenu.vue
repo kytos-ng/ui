@@ -2,7 +2,7 @@
   <k-toolbar-item icon="signal" tooltip="Status Menu">
     <div class="k-status-menu">
       <div class="k-status-title">
-        <icon :icon="signal"></icon>
+        <icon icon="signal"></icon>
         <div class="panel-title">
           <h1> Status Menu </h1>
         </div>

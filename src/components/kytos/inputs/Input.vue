@@ -21,6 +21,9 @@ import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
 export default {
   name: 'k-input',
   mixins: [KytosBaseWithIcon],
+  compatConfig: {
+    MODE: 3,
+  },
   props: {
    /**
     * The value to input button.
@@ -49,6 +52,7 @@ export default {
       default: function(val) {return}
    }
   },
+  emits: ['update:value'],
   methods: {
     updateText(){
       this.$emit('update:value', this.$refs.inputValue.value)

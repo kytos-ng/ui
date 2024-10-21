@@ -19,7 +19,7 @@ const kytos = createApp({
   },
 })
 
-Vue.use(VueHotkey)
+kytos.use(VueHotkey)
 
 window.$ = window.jQuery = require('jquery');
 window.d3 = window.D3 = require('d3');
@@ -125,7 +125,7 @@ kytos.component('k-notification', KytosNotification)
 // Preserve extra whitespaces
 kytos.config.compilerOptions.whitespace = 'preserve';
 
-kytos.config.globalProperties.$kytos = new Vue()
+kytos.config.globalProperties.$kytos = kytos
 kytos.config.globalProperties.$kytos_server = window.kytos_server
 kytos.config.globalProperties.$kytos_server_api =  window.kytos_server_api
 kytos.config.globalProperties.$kytos_version = version
