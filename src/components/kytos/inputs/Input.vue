@@ -29,7 +29,6 @@ export default {
     * The value to input button.
     */
    value: {
-      type: String,
       default: ""
    },
    /*
