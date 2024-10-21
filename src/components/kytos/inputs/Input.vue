@@ -30,7 +30,7 @@ export default {
     */
    value: {
       type: String,
-      default: "l"
+      default: ""
    },
    /*
    * Tooltip string for the input.
