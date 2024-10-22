@@ -629,44 +629,28 @@ export default {
       this.selectedInterfaces = JSON.parse(localStorage.getItem('kytos/ui/selectedInterfaces'));
     }
   },
+  //Closes Info Panels so that the Status Menu can be viewed.
+  beforeUpdate() {
+    this.$kytos.eventBus.$emit("hideInfoPanel")
+  },
   //Watches to see if data is changed to then store it within localStorage.
   watch: {
     switchTextFilter(newVal) {
       localStorage.setItem('kytos/ui/switchTextFilter',  JSON.stringify(newVal))
     },
-    linkTextFilter(newVal) {
-      localStorage.setItem('kytos/ui/linkTextFilter',  JSON.stringify(newVal))
+    deep: true
+  },
+  selectedLinks: {
+    handler: function() {
+      localStorage.setItem('kytos/ui/selectedLinks', JSON.stringify(this.selectedLinks))
     },
-    interfaceTextFilter(newVal) {
-      localStorage.setItem('kytos/ui/interfaceTextFilter',  JSON.stringify(newVal))
+    deep: true
+  },
+  selectedInterfaces: {
+    handler: function() {
+      localStorage.setItem('kytos/ui/selectedInterfaces', JSON.stringify(this.selectedInterfaces))
     },
-    currentSwitchData(newVal) {
-      localStorage.setItem('kytos/ui/currentSwitchData', JSON.stringify(newVal))
-    },
-    currentLinkData(newVal) {
-      localStorage.setItem('kytos/ui/currentLinkData', JSON.stringify(newVal))
-    },
-    currentInterfaceData(newVal) {
-      localStorage.setItem('kytos/ui/currentInterfaceData', JSON.stringify(newVal))
-    },
-    selectedSwitches: {
-      handler: function() {
-        localStorage.setItem('kytos/ui/selectedSwitches', JSON.stringify(this.selectedSwitches))
-      },
-      deep: true
-    },
-    selectedLinks: {
-      handler: function() {
-        localStorage.setItem('kytos/ui/selectedLinks', JSON.stringify(this.selectedLinks))
-      },
-      deep: true
-    },
-    selectedInterfaces: {
-      handler: function() {
-        localStorage.setItem('kytos/ui/selectedInterfaces', JSON.stringify(this.selectedInterfaces))
-      },
-      deep: true
-    },
+    deep: true
   },
   filters: {
     splitStatusReasons: function(statusReasons) {
@@ -674,7 +658,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style lang="sass">
