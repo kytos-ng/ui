@@ -6,32 +6,14 @@ All notable changes to the Kytos-NG UI project will be documented in this file.
 UNRELEASED - Under development
 ******************************
 
-[2024.1.1] - 2024-10-08
+[2023.2.2] - 2024-10-07
 ***********************
 
 Changed
 =======
- - Fixed Enter key handler on InputAutocomplete (k-input-auto)
- - [backport] Added confirmation modal when enabling/disabling interfaces
-
-[2024.1.0] - 2024-08-16
-***********************
-
-No major changes since the last 2024.1.0-b2 beta release.
-
-[2024.1.0-b2] - 2024-09-10
-***********************
-
-Fixed
-=======
-- Fixed buttons within ``interfaceInfo.vue`` that were using old ``on_click``.
-
-[2024.1.0-b1] - 2024-08-05
-***********************
-
-Changed
-=======
-- Upgraded Vue framework to Vue3 in compatibility mode.
+- Fixed Enter key handler on InputAutocomplete (k-input-auto)
+- [backport] Added confirmation modal when enabling/disabling interfaces.
+- [backport] MenuBar now clears Infopanels before switching to a new item for better visibility.
 
 [2023.2.1] - 2024-06-04
 ***********************
@@ -47,7 +29,6 @@ Changed
 
 Fixed
 =====
-- Fixed tooltip for inputs not displaying
 - Error handler properly showing the error message as text (Issue #60)
 
 [2023.2.0] - 2024-02-16
