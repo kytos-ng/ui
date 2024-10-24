@@ -40,6 +40,7 @@ export default {
       this.$kytos.$emit('topology-toggle-label', type, label)
     },
     setItem (item) {
+      this.$kytos.$emit("hideInfoPanel");
       this.activeItem = item
       $(".k-toolbar").show();
 

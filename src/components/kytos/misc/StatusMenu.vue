@@ -629,10 +629,6 @@ export default {
       this.selectedInterfaces = JSON.parse(localStorage.getItem('kytos/ui/selectedInterfaces'));
     }
   },
-  //Closes Info Panels so that the Status Menu can be viewed.
-  beforeUpdate() {
-    this.$kytos.eventBus.$emit("hideInfoPanel")
-  },
   //Watches to see if data is changed to then store it within localStorage.
   watch: {
     switchTextFilter(newVal) {
