@@ -13,6 +13,7 @@ Changed
 =======
 - Fixed Enter key handler on InputAutocomplete (k-input-auto)
 - [backport] Added confirmation modal when enabling/disabling interfaces
+- [backport] StatusMenu now clears Infopanels before use so that it displays properly
 
 [2023.2.1] - 2024-06-04
 ***********************
