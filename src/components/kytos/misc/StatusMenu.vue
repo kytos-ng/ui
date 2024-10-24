@@ -653,6 +653,12 @@ export default {
     currentInterfaceData(newVal) {
       localStorage.setItem('kytos/ui/currentInterfaceData', JSON.stringify(newVal))
     },
+    selectedSwitches: {
+      handler: function() {
+        localStorage.setItem('kytos/ui/selectedSwitches', JSON.stringify(this.selectedSwitches))
+      },
+      deep: true
+    },
     selectedLinks: {
       handler: function() {
         localStorage.setItem('kytos/ui/selectedLinks', JSON.stringify(this.selectedLinks))
