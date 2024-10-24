@@ -638,19 +638,33 @@ export default {
     switchTextFilter(newVal) {
       localStorage.setItem('kytos/ui/switchTextFilter',  JSON.stringify(newVal))
     },
-    deep: true
-  },
-  selectedLinks: {
-    handler: function() {
-      localStorage.setItem('kytos/ui/selectedLinks', JSON.stringify(this.selectedLinks))
+    linkTextFilter(newVal) {
+      localStorage.setItem('kytos/ui/linkTextFilter',  JSON.stringify(newVal))
     },
-    deep: true
-  },
-  selectedInterfaces: {
-    handler: function() {
-      localStorage.setItem('kytos/ui/selectedInterfaces', JSON.stringify(this.selectedInterfaces))
+    interfaceTextFilter(newVal) {
+      localStorage.setItem('kytos/ui/interfaceTextFilter',  JSON.stringify(newVal))
     },
-    deep: true
+    currentSwitchData(newVal) {
+      localStorage.setItem('kytos/ui/currentSwitchData', JSON.stringify(newVal))
+    },
+    currentLinkData(newVal) {
+      localStorage.setItem('kytos/ui/currentLinkData', JSON.stringify(newVal))
+    },
+    currentInterfaceData(newVal) {
+      localStorage.setItem('kytos/ui/currentInterfaceData', JSON.stringify(newVal))
+    },
+    selectedLinks: {
+      handler: function() {
+        localStorage.setItem('kytos/ui/selectedLinks', JSON.stringify(this.selectedLinks))
+      },
+      deep: true
+    },
+    selectedInterfaces: {
+      handler: function() {
+        localStorage.setItem('kytos/ui/selectedInterfaces', JSON.stringify(this.selectedInterfaces))
+      },
+      deep: true
+    },
   },
   filters: {
     splitStatusReasons: function(statusReasons) {
