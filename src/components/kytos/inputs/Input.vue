@@ -21,12 +21,14 @@ import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
 export default {
   name: 'k-input',
   mixins: [KytosBaseWithIcon],
+  compatConfig: {
+    MODE: 3,
+  },
   props: {
    /**
     * The value to input button.
     */
    value: {
-      type: String,
       default: ""
    },
    /*
@@ -42,6 +44,13 @@ export default {
       type: String
    },
    /**
+    * If true disables the input functionality of the input component (used for display purposes).
+    */
+   isDisabled: {
+      type: Boolean,
+      default: false
+   },
+   /**
    * Function called after input changes.
    */
    action: {
@@ -49,6 +58,7 @@ export default {
       default: function(val) {return}
    }
   },
+  emits: ['update:value'],
   methods: {
     updateText(){
       this.$emit('update:value', this.$refs.inputValue.value)
