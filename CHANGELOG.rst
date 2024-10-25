@@ -6,13 +6,20 @@ All notable changes to the Kytos-NG UI project will be documented in this file.
 UNRELEASED - Under development
 ******************************
 
+[2023.2.3] - 2024-10-25
+***********************
+
+Changed
+=======
+- [backport] MenuBar now clears Infopanels before switching to a new item for better visibility.
+
 [2023.2.2] - 2024-10-07
 ***********************
 
 Changed
 =======
 - Fixed Enter key handler on InputAutocomplete (k-input-auto)
-- [backport] Added confirmation modal when enabling/disabling interfaces
+- [backport] Added confirmation modal when enabling/disabling interfaces.
 
 [2023.2.1] - 2024-06-04
 ***********************
