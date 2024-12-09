@@ -35,13 +35,9 @@ import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
 export default {
   name: 'k-accordion-item',
   mixins: [KytosBaseWithIcon],
-  props:{
-    /**
-    * Boolean value to represent whether the accordion item is checked.
-    */
-    checked: {
-      type: Boolean,
-      default: true
+  data () {
+    return {
+      checked: true
     }
   }
 }
