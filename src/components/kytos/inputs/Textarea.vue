@@ -1,5 +1,5 @@
 <template>
-  <div class="k-textarea-wrap no-compact">
+  <div :class="{[customClass]: true, 'k-textarea-wrap': true, 'no-compact': true}">
     <icon v-if="icon && iconName" :icon="iconName"></icon>
     <textarea ref="textarea" @input="updateText" type="text" :id="id" class="k-textarea" :value="value" :tooltip="tooltip" :placeholder="placeholder"
       v-bind:disabled="isDisabled" onshow="this.focus()" autofocus>
@@ -45,6 +45,13 @@ export default {
    action: {
       type: Function,
       default: function(value) {return}
+   },
+   /**
+    * Custom CSS Classes
+    */
+   customClass: {
+      type: String,
+      default: ""
    }
   },
   methods: {

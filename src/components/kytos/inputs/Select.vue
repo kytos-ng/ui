@@ -1,5 +1,5 @@
 <template>
-   <label class="k-select no-compact">
+   <label :class="{[customClass]: true, 'k-select': true, 'no-compact': true}">
     <div class="k-select__title">
       <icon v-if="icon && iconName"  :icon="iconName"></icon>
       {{title}}
@@ -40,9 +40,16 @@ export default {
       type: Object,
       default: undefined
     },
-      action: {
+    action: {
       type: Function,
       default: function (value) { return }
+    },
+    /**
+    * Custom CSS Classes
+    */
+    customClass: {
+      type: String,
+      default: ""
     }
   },
   data () {

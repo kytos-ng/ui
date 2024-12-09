@@ -1,5 +1,5 @@
 <template>
-  <div class="k-input-auto-wrap" id="app">
+  <div :class="{[customClass]: true, 'k-input-auto-wrap': true}" id="app">
     <autocomplete
       :search="search"
       :placeholder="placeholder"
@@ -189,6 +189,13 @@ export default {
    },
    candidates: {
      type: Array
+   },
+   /**
+   * Custom CSS Classes
+   */
+   customClass: {
+     type: String,
+     default: ""
    }
   },
   methods: {

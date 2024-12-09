@@ -1,5 +1,5 @@
 <template>
-  <div class="k-slider">
+  <div :class="{[customClass]: true, 'k-slider': true}">
     <icon v-if="icon && iconName" :icon="iconName"></icon>
     <span class="range-slider__value">{{value}}</span>
     <input @input="doRange" :id="id" class="k-slider__range" type="range" :value="value" v-bind:min="min" v-bind:max="max" v-bind:step="step">
@@ -55,6 +55,13 @@ export default {
     step: {
       type: Number,
       default: 1
+    },
+    /**
+     * Custom CSS Classes
+     */
+    customClass: {
+      type: String,
+      default: ""
     }
   },
   data () {

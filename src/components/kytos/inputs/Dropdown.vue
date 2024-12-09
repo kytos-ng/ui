@@ -1,5 +1,5 @@
 <template>
-   <label class="k-dropdown" v-bind:class="{ 'no-title' : !title }">
+   <label class="k-dropdown" v-bind:class="{ [customClass]: true, 'no-title' : !title  }">
     <div class="k-dropdown__title">
       <icon v-if="icon && iconName" :icon="iconName"></icon>
       {{title}}
@@ -54,6 +54,13 @@ export default {
     action: {
       type: Function,
       default: function (value) { return }
+    },
+    /**
+     * Custom CSS Classes
+     */
+    customClass: {
+      type: String,
+      default: ""
     }
   },
   data () {
