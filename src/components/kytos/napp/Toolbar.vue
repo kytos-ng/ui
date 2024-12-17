@@ -36,7 +36,7 @@
         options.addStyle(await getContentData(false));
         return null;
       case '.kytos':
-        console.log("Kytos detected");
+        console.log("Kytos extension detected. Switch extension to .vue");
         return null;
       default: return undefined; // let vue3-sfc-loader handle this
     }
@@ -86,9 +86,7 @@
          async: true,
          cache: false,
          success: function(data) {
-           console.log(data)
            self.inner_components = self.inner_components.concat(data);
-           console.log(self.inner_components)
          }
        }).always(function(){
            self.load_components()
