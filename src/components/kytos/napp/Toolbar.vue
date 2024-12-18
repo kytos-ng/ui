@@ -47,7 +47,7 @@
      const res = await fetch(url);
      if ( !res.ok )
         throw Object.assign(new Error(url+' '+res.statusText), { res });
-     return await res.text();
+     return await {type: '.vue', getContentData: ()=>res.text()};
    },
  
    addStyle(textContent) {
