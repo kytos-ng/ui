@@ -29,7 +29,6 @@ export default {
     * The value to input button.
     */
    value: {
-      type: String,
       default: ""
    },
    /*
@@ -43,6 +42,13 @@ export default {
    */
    placeholder: {
       type: String
+   },
+   /**
+    * If true disables the input functionality of the input component (used for display purposes).
+    */
+   isDisabled: {
+      type: Boolean,
+      default: false
    },
    /**
    * Function called after input changes.
