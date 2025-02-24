@@ -11,6 +11,11 @@ Added
 - Added new "k-modal" component.
 - Added confirmation modal when enabling/disabling interfaces
 
+Removed
+=======
+
+- Removed httpVueLoader
+
 Changed
 =======
 - Fixed Enter key handler on InputAutocomplete (k-input-auto)
