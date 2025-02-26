@@ -1,7 +1,7 @@
 <template>
   <div class="k-input-wrap">
     <icon v-if="icon && iconName" :icon="iconName"></icon>
-    <input :value="value" :id="id" class="k-input" :title="tooltip" :placeholder="placeholder"
+    <input :value="value" class="k-input" :title="tooltip" :placeholder="placeholder"
       @input="updateText"
       ref="inputValue"
       v-bind:disabled="isDisabled" onshow="this.focus()" autofocus>
@@ -21,9 +21,6 @@ import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
 export default {
   name: 'k-input',
   mixins: [KytosBaseWithIcon],
-  compatConfig: {
-    MODE: 3,
-  },
   props: {
    /**
     * The value to input button.

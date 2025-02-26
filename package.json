@@ -4,55 +4,44 @@
   "version": "2024.1.0",
   "author": "Beraldo Leal <beraldo.leal@cern.ch>",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "cp index.html dist/index.html && webpack-dev-server --open --hot --config webpack/webpack.dev.js",
-    "prod": "webpack --progress --config webpack/webpack.prod.js",
-    "preprod": "webpack --progress --config webpack/webpack.preprod.js",
-    "build": "npm run prod > /dev/null && zip -r latest.zip index.html dist"
+    "dev": "vite serve",
+    "build": "vite build --emptyOutDir",
+    "preprod": "vite build --emptyOutDir --mode preprod",
+    "zip": "vite build --emptyOutDir > /dev/null && zip -r latest.zip web-ui/index.html web-ui/dist",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/fontawesome-free": "^6.5.2",
-    "@fortawesome/vue-fontawesome": "^3.0.6",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
-
-    "@trevoreyre/autocomplete-vue": "^2.2.0",
-
-    "@vue/compat": "^3.1.0",
+    "@fortawesome/vue-fontawesome": "^3.0.6",
+    "@trevoreyre/autocomplete-vue": "^3.0.3",
     "d3": "^7.9.0",
     "d3-request": "^1.0.6",
     "glob": "^7.2.0",
     "jsdocgen": "^0.2.4",
+    "string-width-cjs": "^5.1.1",
     "tiny-emitter": "^2.1.0",
     "typeit": "^8.2.0",
     "v-hotkey3": "^0.1.4",
     "vue": "^3.1.0",
     "vue-docgen-api": "^4.43.2",
-    "string-width-cjs": "^5.1.1",
-    "webpack-merge": "^5.10.0",
     "write-file": "^1.0.0"
   },
   "devDependencies": {
-    "vue3-sfc-loader": "^0.9.5",
+    "@vitejs/plugin-vue": "^5.2.1",
     "@vue/compiler-sfc": "^3.1.0",
-    "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.3",
-    "css-loader": "^6.5.1",
-    "file-loader": "^6.2.0",
     "jquery": "^3.6.0",
     "jquery-slider": "^0.0.1",
     "sass": "^1.47.0",
-    "sass-loader": "^12.4.0",
-    "style-loader": "^3.3.1",
-    "vue-loader": "^16.0.0",
-    "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4",
-    "webpack-dev-middleware": "^7.2.1",
+    "vite": "^6.0.7",
+    "vue3-sfc-loader": "^0.9.5",
     "yargs": "^17.3.1"
   },
-  "overrides": {
-  }
+  "overrides": {}
 }

@@ -19,11 +19,13 @@ Changed
 - Replaced value with modelValue
 - Replaced the use of Vue and new Vue with the app instace
 - Removed the use of this.$set() since it was deprecated
+- Replaced Webpack with Vite
 
 Fixed
 =======
 - Fixed icon v-bind within StatusMenu
 - Fixed CSS issue with ``KytosBaseWithIcon`` class prop
+- Fixed an issue with the ``InputAutocomplete`` ``custom-input`` local component
 
 [2024.1.0] - 2024-08-16
 ***********************

@@ -21,7 +21,7 @@
       >
         <icon v-if="icon && iconName" :icon="iconName"></icon>
         <div v-bind="rootProps">
-          <custom-input
+          <k-input
             v-bind="inputProps"
             v-on="inputListeners"
             :class="[
@@ -30,14 +30,13 @@
               { 'autocomplete-input-no-results': noResults },
               { 'autocomplete-input-focused': focused }
             ]"
-            :id="id" 
             :value="value"
             :tooltip="tooltip"
             :placeholder="placeholder"
             @input="updateText"
             @focus="handleFocus"
             @blur="handleBlur"
-          ></custom-input>
+          ></k-input>
           <template v-if="noResults">
             <ul
               :class="[
@@ -95,47 +94,6 @@ import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
  *
  * @example /_static/imgs/components/input/k-input-auto.png
  */
-var CustomInput = {
-  compatConfig: {
-    MODE: 3,
-  },
-  props: {
-    value: {
-      type: String,
-      default: ''
-    },
-    
-  /**
-    * The label to input button.
-    */
-   label: {
-      type: String,
-      default: ""
-   },
-   /**
-    * Tooltip string for the input.
-    */
-   tooltip: {
-      type: String,
-      default: ""
-   },
-    /**
-     * The id to input button.
-     */
-   id: {
-      type: String,
-      default: ""
-   },
-   /**
-    * Placeholder string displayed in input field.
-    */
-   placeholder: {
-      type: String,
-      default: ""
-   }
-  },
-  template: '<input :id="id" class="k-input" :tooltip="tooltip" ref="inputValue" :placeholder="placeholder" :value="value" v-bind="$attrs" />'
-}
 
 export default {
   name: 'k-input-auto',
@@ -230,8 +188,7 @@ export default {
     }
   },
   components: {
-    Autocomplete,
-    CustomInput
+    Autocomplete
   }
 }
 
@@ -264,7 +221,6 @@ export default {
   padding: 0.3em 0.5em
 
 .k-input-auto
- padding: 0.5em 0 0 0
  border: none
  border-radius: 0.2em
  outline: none

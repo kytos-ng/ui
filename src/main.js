@@ -1,6 +1,4 @@
-import Vue from 'vue'
 import { createApp } from 'vue'
-import { configureCompat } from 'vue'
 import VueHotkey from 'v-hotkey3'
 import App from './App.vue'
 import * as packageInfo from '../package.json';
@@ -9,20 +7,17 @@ import { toRaw } from 'vue';
 
 const {version} = packageInfo;
 
-const kytos = createApp({
-  el: '#app',
-  render: () => Vue.h(App),
-  data () {
-    return {
-        infoPanelView: undefined
-    }
-  },
-})
+const kytos = createApp(App)
 
 kytos.use(VueHotkey)
 
-window.$ = window.jQuery = require('jquery');
-window.d3 = window.D3 = require('d3');
+import $ from 'jquery';
+window.$ = window.jQuery = $;
+
+import * as d3 from 'd3';
+window.d3 = window.D3 = d3;
+window.kytos_server = location.protocol + "//" + location.host + "/";
+window.kytos_server_api = location.protocol + "//" + location.host + "/api/";
 
 import KytosToolbarItem from './components/kytos/misc/ToolbarItem.vue';
 import KytosToolbar from './components/kytos/napp/Toolbar.vue';
@@ -121,7 +116,6 @@ kytos.component('k-chart-radar', KytosChartRadar)
 kytos.component('k-table', KytosTable)
 kytos.component('k-notification', KytosNotification)
 
-
 // Preserve extra whitespaces
 kytos.config.compilerOptions.whitespace = 'preserve';
 
@@ -157,9 +151,5 @@ kytos.config.globalProperties.$filters = {
     return (neg ? '-' : '') + num + ' ' + unit;
   }
 }
-
-configureCompat({
-  RENDER_FUNCTION: false
-})
 
 kytos.mount('#app')

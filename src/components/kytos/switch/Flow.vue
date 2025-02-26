@@ -32,8 +32,8 @@
 
 <script>
 import KytosBase from '../base/KytosBase';
-import KytosBaseWithIcon from '../base/KytosBaseWithIcon'
-const d3 = require('d3')
+import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
+import * as d3 from 'd3';
 
 /**
  * Representation of flows between interfaces.

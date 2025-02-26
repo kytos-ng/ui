@@ -6,14 +6,23 @@ on how to use it, please refer to the [UI documentation](https://github.com/kyto
 ## Build Setup
 
 ```bash
-# install dependencies
+# install dependencies (should always be done first)
 npm install
 
-# serve with hot reload at localhost:8080
+# starts the dev server, serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification
+# build UI for preproduction without minification and with sourcemaps for better error logs (used for debugging/testing)
+npm run preprod
+
+# build UI for production with minification (more efficient and takes up less storage)
 npm run build
+
+# builds the UI for production (like the previous command) and then zips it
+npm run zip
+
+# view the most recent build locally
+npm run preview
 ```
 
 ## How to create a new release
@@ -24,7 +33,7 @@ latest.zip.
 
 ```bash
 # build for production and compress the file as latest.zip
-npm run build
+npm run zip
 ```
 
 After build and upload the file in the github, the Kytos has an endpoint to see

@@ -1,5 +1,5 @@
 <template>
-  <div class='k-toolbar' >
+  <div class='k-toolbar'>
    <component v-show="active == (index+1)"
               v-for="(component, index) in inner_components"
               :is='component.name'
@@ -8,9 +8,10 @@
   </div>
  </template>
  
- <script>
- import Vue from 'vue'
- import { loadModule } from "vue3-sfc-loader"
+ <script type="module">
+ import { defineAsyncComponent } from 'vue'
+ import { loadModule } from 'https://cdn.jsdelivr.net/npm/vue3-sfc-loader@0.9.5/dist/vue3-sfc-loader.esm.js' //'vue3-sfc-loader'
+ import * as Vue from 'vue'
  
  const options = {
  
@@ -73,6 +74,8 @@
       url: this.$kytos_server+ 'ui/k-toolbar',
       template: null,
       inner_components: this.components || [] ,
+      data: [],
+      parsed: ""
      }
    },
    render: function(createElement){
@@ -107,9 +110,8 @@
        var self = this
        $.each(self.inner_components, function(index, component){
          if('url' in component){
-           // random is needed to avoid cache of components.
            var url = self.$kytos_server+component.url
-           self.$kytos.component(component.name, Vue.defineAsyncComponent( () => loadModule(url, options) ))
+           self.$kytos.component(component.name, defineAsyncComponent( () => loadModule(url, options) ))
          }
        })
      }

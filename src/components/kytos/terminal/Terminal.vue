@@ -16,7 +16,7 @@
 <script>
 import KytosBase from '../base/KytosBase';
 import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
-import JsTerminal from './jquery.terminal.min.js';
+import * as JsTerminal from './jquery.terminal.min.js';
 
 export default {
   name: 'k-terminal',

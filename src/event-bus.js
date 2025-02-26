@@ -1,4 +1,4 @@
-import { default  as emitter } from 'tiny-emitter/instance'
+import { default as emitter } from 'tiny-emitter/instance'
 
 export default {
   $on: (...args) => emitter.on(...args),

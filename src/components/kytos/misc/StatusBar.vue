@@ -25,7 +25,7 @@ export default {
     }
   },
   mounted (){
-    require('typeit')
+    //require('typeit')
     this.register_listeners()
     setInterval(this.display_messages, 3000)
   },
@@ -33,11 +33,11 @@ export default {
     display_messages(){
       var message= this.messages.shift()
       if (message !== undefined){
-        this.get_terminal().type(message).pause(1500).delete().go();
+        //this.get_terminal().type(message).pause(1500).delete().go();
       }
     },
     get_terminal (){
-      return new TypeIt('.k-status-bar span', this.options);
+      //return new TypeIt('.k-status-bar span', this.options);
     },
     /**
      * Display a message inside the k-status-bar.

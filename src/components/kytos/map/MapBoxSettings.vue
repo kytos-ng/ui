@@ -21,7 +21,7 @@
 </template>
 
 <script>
-module.exports = {
+export default {
 
   methods: {
     emitMapOpacity (value) {

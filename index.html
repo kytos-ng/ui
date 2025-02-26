@@ -2,23 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="shortcut icon" type="image/png" href="/src/assets/imgs/favicon.png"/>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <title>Kytos SDN Platform - Administrative Interface</title>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css' rel='stylesheet' />
   </head>
   <body>
+    <script src="src/main.js" type="module"></script>
     <div id="app"></div>
-    <script>
-      window.kytos_server = location.protocol + "//" + location.host + "/";
-      window.kytos_server_api = location.protocol + "//" + location.host + "/api/";
-
-      // Load build.js with cachebuster parameter for 12 hours
-      const cachebuster = Math.round(new Date().getTime() / 43200000);
-      var el = document.createElement('script');
-      el.src = "/dist/build.js?v=" + cachebuster;
-      document.getElementsByTagName('head')[0].appendChild(el);
-    </script>
   </body>
 </html>
