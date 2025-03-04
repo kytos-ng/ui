@@ -10,6 +10,7 @@ Added
 =====
 - Added new "k-modal" component.
 - Added confirmation modal when enabling/disabling interfaces
+- Added unit tests utilizing ``Vitest``
 
 Removed
 =======
