@@ -1,10 +1,11 @@
 <template>
   <div class="k-input-wrap">
-    <icon v-if="icon && iconName" :icon="iconName"></icon>
+    <icon v-if="icon && iconName" :icon="iconName" data-test="main-icon"></icon>
     <input :value="value" class="k-input" :title="tooltip" :placeholder="placeholder"
       @input="updateText"
       ref="inputValue"
-      v-bind:disabled="isDisabled" onshow="this.focus()" autofocus>
+      v-bind:disabled="isDisabled" onshow="this.focus()" autofocus 
+      data-test="main-input" />
   </div>
 </template>
 
