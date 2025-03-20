@@ -12,6 +12,11 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
         sourcemap: true,
         minify: false
       },
+      resolve: {
+        alias: {
+          '@': resolve(__dirname, './src')
+        },
+      },
       test: {
         environment: "happy-dom",
         coverage: {
@@ -29,6 +34,11 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
         outDir: './web-ui/',
         assetsDir: './dist/',
         minify: true
+      },
+      resolve: {
+        alias: {
+          '@': resolve(__dirname, './src')
+        }
       },
       test: {
         environment: "happy-dom",
