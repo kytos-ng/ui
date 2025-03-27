@@ -28,6 +28,7 @@ export default {
        */
       model: {
         type: Array,
+        default: []
       },
       /**
        * The value to checkbox button.
@@ -50,24 +51,33 @@ export default {
         default: function(value) { return }
       }
   },
+  emits: {
+    'update:model': (checked_items) => {
+      if (Array.isArray(checked_items)) {
+        return true;
+      } else {
+        console.warn('Invalid update:model event payload!');
+        return false;
+      }
+    }
+  },
   methods: {
     update_check(){
+      this.list_of_checked = this.model;
       if(this.enabled){
         this.list_of_checked.push(this.value)
       }else{
-        this.list_of_checked.splice(this.list_of_checked.indexOf(this.value),1);
+        this.list_of_checked.splice(this.list_of_checked.indexOf(this.value), 1);
       }
+      this.$emit('update:model', this.list_of_checked)
       this.action(this.value)
     }
   },
   data () {
     return {
       enabled: this.checked,
-      list_of_checked: this.model || []
+      list_of_checked: this.model
     }
-  },
-  mounted () {
-    $(document).ready(this.update_check)
   }
 }
 </script>

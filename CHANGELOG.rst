@@ -8,6 +8,7 @@ UNRELEASED - Under development
 
 Added
 =====
+- Explicitly added emits and validated them.
 - Added new "k-modal" component.
 - Added confirmation modal when enabling/disabling interfaces
 - Added unit testing functionality utilizing ``Vitest``
