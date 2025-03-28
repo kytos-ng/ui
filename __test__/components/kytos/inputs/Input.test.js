@@ -81,7 +81,6 @@ describe("Props", () => {
         expect(fn).toHaveBeenCalledTimes(1);
         expect(fn).toHaveBeenCalledWith(text);
     });
-
 });
 
 describe("User Interactions", () => {
@@ -164,9 +163,9 @@ describe("V-Models", () => {
               value: 'initialText',
               'onUpdate:value': (e) => wrapper.setProps({ value: e })
             }
-          })
+        });
         
-          await wrapper.get('[data-test="main-input"]').setValue(text)
-          expect(wrapper.props('value')).toBe(text)
+          await wrapper.get('[data-test="main-input"]').setValue(text);
+          expect(wrapper.props('value')).toBe(text);
         });
 });

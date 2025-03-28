@@ -27,7 +27,8 @@ export default {
     * The value to input button.
     */
    value: {
-      default: ""
+      default: "",
+      type: String
    },
    /*
    * Tooltip string for the input.
@@ -56,7 +57,16 @@ export default {
       default: function(val) {return}
    }
   },
-  emits: ['update:value'],
+  emits: {
+    'update:value': (value) => {
+      if (typeof value === 'string' || value instanceof String) {
+        return true
+      } else {
+        console.warn('Invalid update:value event payload!')
+        return false
+      }
+    }
+  },
   methods: {
     updateText(){
       this.$emit('update:value', this.$refs.inputValue.value)
