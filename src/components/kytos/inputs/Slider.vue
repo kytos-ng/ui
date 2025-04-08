@@ -1,8 +1,8 @@
 <template>
   <div class="k-slider">
-    <icon v-if="icon && iconName" :icon="iconName"></icon>
+    <icon v-if="icon && iconName" :icon="iconName" data-test="main-icon"></icon>
     <span class="range-slider__value">{{value}}</span>
-    <input @input="doRange" :id="id" class="k-slider__range" type="range" :value="value" v-bind:min="min" v-bind:max="max" v-bind:step="step">
+    <input @input="doRange" :id="id" class="k-slider__range" type="range" v-model.number="value" :min="min" :max="max" :step="step" data-test="main-slider">
   </div>
 </template>
 
@@ -58,18 +58,12 @@ export default {
     }
   },
   data () {
-    return {value: 0}
+    return {value: this.initialValue}
   },
   methods: {
     doRange () {
       this.action(this.value)
     }
-  },
-  beforeMount () {
-    this.value = this.initialValue
-  },
-  mounted () {
-    var self = this;
   }
 }
 </script>
