@@ -1,8 +1,8 @@
 <template>
   <div class="k-textarea-wrap no-compact">
-    <icon v-if="icon && iconName" :icon="iconName"></icon>
-    <textarea ref="textarea" @input="updateText" type="text" :id="id" class="k-textarea" :value="value" :tooltip="tooltip" :placeholder="placeholder"
-      v-bind:disabled="isDisabled" onshow="this.focus()" autofocus>
+    <icon v-if="icon && iconName" :icon="iconName" data-test="main-icon"></icon>
+    <textarea ref="textarea" @input="updateText" type="text" :id="id" class="k-textarea" :value="value" :title="tooltip" :placeholder="placeholder"
+      v-bind:disabled="isDisabled" autofocus data-test="main-textarea">
     </textarea>
   </div>
 </template>
@@ -17,15 +17,23 @@ import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
 export default {
   name: 'k-textarea',
   mixins: [KytosBaseWithIcon],
+  emits: {
+    'update:value': (value) => {
+      if (typeof value === 'string' || value instanceof String) {
+        return true
+      } else {
+        console.warn('Invalid update:value event payload!')
+        return false
+      }
+    },
+    textarea: null
+  },
   props: {
    /**
     * The value text used in TextArea.
     */
    value: {
       type: String
-    },
-   modelValue: {
-      default: ""
     },
    /**
     * A tooltip displayed in the text-area
@@ -45,7 +53,14 @@ export default {
    action: {
       type: Function,
       default: function(value) {return}
-   }
+   },
+   /**
+    * If true disables the input functionality of the input component (used for display purposes).
+    */
+    isDisabled: {
+      type: Boolean,
+      default: false
+   },
   },
   methods: {
     updateText(value){
