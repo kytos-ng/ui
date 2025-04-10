@@ -1,8 +1,9 @@
 <template>
 <div class="k-button-wrapper compact">
-    <a v-if="tooltip" v-bind:title="tooltip" class="k-button-wrapper-tooltip"></a>
+    <a v-if="tooltip" v-bind:title="tooltip" class="k-button-wrapper-tooltip" data-test="main-buttongroup"></a>
      <!-- @slot Slot to be filled with a buttons set -->
-    <slot />
+    <slot>
+    </slot>
 </div>
 </template>
 
@@ -22,11 +23,14 @@ import KytosBase from '../../base/KytosBase';
 export default {
   name: 'k-button-group',
   mixins: [KytosBase],
-  data: function() {
-    return {
-      buttons: []
-    }
-  },
+  props: {
+  /**
+   * Tooltip string for the input.
+   */
+   tooltip: {
+      type: String
+   },
+  }
 }
 </script>
 
