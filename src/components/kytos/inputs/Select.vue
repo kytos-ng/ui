@@ -1,11 +1,11 @@
 <template>
    <label class="k-select no-compact">
     <div class="k-select__title">
-      <icon v-if="icon && iconName"  :icon="iconName"></icon>
+      <icon v-if="icon && iconName"  :icon="iconName" data-test="main-icon"></icon>
       {{title}}
     </div>
-    <select class="k-select__select" v-model="selected" @change.prevent="emitEvent"  multiple>
-      <option v-for="item in options" :value="item.value">
+    <select class="k-select__select" v-model="selected" @change="emitEvent" multiple data-test="main-select">
+      <option v-for="item in options" :value="item.value" :key="item.value">
         {{item.description}} 
       </option>
     </select>
@@ -28,17 +28,23 @@ import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
 export default {
   name: 'k-select',
   mixins: [KytosBaseWithIcon],
+  emits: {
+    'update:value': (value) => {
+      if (Array.isArray(value)) {
+        return true;
+      } else {
+        console.warn('Invalid update:value event payload!');
+        return false;
+      }
+    }
+  },
   props: {
     value: {
-        type: Array
+      type: Array
     },
     options: {
       type: Array,
       required: true
-    },
-    event: {
-      type: Object,
-      default: undefined
     },
     action: {
       type: Function,
@@ -52,11 +58,6 @@ export default {
   },
   methods: {
     emitEvent () {
-      if (this.event !== undefined){
-        let content = this.event.content
-        content.value = this.selected
-        this.$kytos.eventBus.$emit(this.event.name, content)
-      }
       this.$emit('update:value', this.selected)
       this.action(this.selected)
     },
@@ -65,7 +66,7 @@ export default {
     }
   },
   beforeMount () {
-    // Initialize the selected values with the :value.sync property
+    // Initialize the selected values with the v-model:value property
     if(this.value) {
       let _selected = [];
       this.value.forEach((item) => {
