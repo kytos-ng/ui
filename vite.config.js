@@ -19,7 +19,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
         },
       },
       test: {
-        environment: "happy-dom",
+        environment: "jsdom",
+        css: true,
         coverage: {
           reporter: ['text', 'html'],
           exclude:[
@@ -45,7 +46,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
         }
       },
       test: {
-        environment: "happy-dom",
+        environment: "jsdom",
+        css: true,
         coverage: {
           reporter: ['text', 'html'],
           exclude:[

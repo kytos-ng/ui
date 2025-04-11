@@ -7,6 +7,7 @@
       :submitOnEnter="true"
       class="autocomplete-wrap"
       @submit="handleSubmit"
+      data-test="main-autocomplete"
     >
       <template
         #default="{
@@ -19,7 +20,7 @@
           resultProps
         }"
       >
-        <icon v-if="icon && iconName" :icon="iconName"></icon>
+        <icon v-if="icon && iconName" :icon="iconName" data-test="main-icon"></icon>
         <div v-bind="rootProps">
           <k-input
             v-bind="inputProps"
@@ -31,11 +32,12 @@
               { 'autocomplete-input-focused': focused }
             ]"
             :value="value"
-            :tooltip="tooltip"
+            :title="tooltip"
             :placeholder="placeholder"
             @input="updateText"
             @focus="handleFocus"
             @blur="handleBlur"
+            data-test="main-inputauto"
           ></k-input>
           <template v-if="noResults">
             <ul
@@ -98,7 +100,6 @@ import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
 export default {
   name: 'k-input-auto',
   mixins: [KytosBaseWithIcon],
-
   data: function ()  {
     return {
       sendButtonDisable : false,
@@ -110,6 +111,26 @@ export default {
   computed: {
     noResults() {
       return this.value && this.results.length === 0
+    }
+  },
+  emits: {
+    'update:value': (value) => {
+      if (typeof value === 'string' || value instanceof String) {
+        return true
+      } else {
+        console.warn('Invalid update:value event payload!')
+        return false
+      }
+    },
+    focus: null,
+    blur: null,
+    'send-message': (value) => {
+      if (typeof value === 'string' || value instanceof String) {
+        return true
+      } else {
+        console.warn('Invalid send-message event payload!')
+        return false
+      }
     }
   },
   props: {
@@ -159,7 +180,7 @@ export default {
     */
     search(input) {
       //this.value = input
-
+      
       if (input.length < 1) {
         this.results = []
       } else {
