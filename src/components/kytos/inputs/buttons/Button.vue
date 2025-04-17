@@ -2,14 +2,12 @@
   <button :id="id" class="k-button compact"
     @click="handleClick"
     v-bind:title="tooltip"
-    v-bind:disabled="isDisabled">
-      <icon v-if="icon && iconName" :icon="iconName"></icon>
+    v-bind:disabled="isDisabled"
+    data-test="main-button">
+      <icon v-if="icon && iconName" :icon="iconName" data-test="main-icon"></icon>
       {{title}}
   </button>
 </template>
-<script setup>
-  defineEmits(['click']);
-</script>
 <script>
 import KytosBase from '../../base/KytosBase';
 import KytosBaseWithIcon from '../../base/KytosBaseWithIcon';
@@ -24,6 +22,21 @@ export default {
   name: 'k-button',
   mixins: [KytosBaseWithIcon],
   emits: ['click'],
+  props: {
+  /**
+   * Tooltip string for the input.
+   */
+   tooltip: {
+      type: String
+   },
+   /**
+    * If true disables the input functionality of the input component (used for display purposes).
+    */
+   isDisabled: {
+      type: Boolean,
+      default: false
+   }
+  },
   methods: {
      /**
      * Call click event.
