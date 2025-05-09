@@ -2,9 +2,10 @@
   <div class="tab">
     <input class="k-accordion-input" :id="id" type="checkbox" name="tabs" 
       :checked="checked"
-      @input="checked = $event.target.checked" />
+      @input="checked = $event.target.checked"
+      data-test="main-accordionitem"/>
     <label class="k-accordion-label" :for="id">{{title}}</label>
-    <div class="tab-content">
+    <div v-show="checked" class="tab-content">
      <!-- @slot Empty Pannel, please define some items inside. -->
     <slot>
        <p>Empty Pannel created, please define some items inside.</p>
@@ -85,7 +86,6 @@ export default {
     overflow: hidden
 
   .tab-content
-    max-height: 0
     overflow: hidden
     width: 100%
     -webkit-transition: max-height .35s
@@ -97,10 +97,6 @@ export default {
       margin: 1em
 
 .k-accordion-input
-  &:checked
-    & ~ .tab-content
-      max-height: 100%
-      overflow: hidden
 
   &[type=checkbox]
     & + .k-accordion-label:after

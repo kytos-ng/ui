@@ -1,7 +1,8 @@
 <template>
-<div class="accordion-wrapper">
+<div class="accordion-wrapper" data-test="main-accordionwrapper">
     <!-- @slot Slot to be filled with accordion item -->
-    <slot />
+    <slot>
+    </slot>
 </div>
 </template>
 
@@ -33,8 +34,6 @@ import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
 export default {
     name: 'k-accordion',
     mixins: [KytosBaseWithIcon],
-    data: function() {
-    },
 }
 
 </script>
