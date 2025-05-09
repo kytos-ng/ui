@@ -10,6 +10,7 @@ Added
 =====
 - Added pinia for state management
 - Replaced ``jquery ajax`` with axios
+- Added helper function for HTTP Requests
 
 [2025.1.0] - 2025-04-14
 ***********************

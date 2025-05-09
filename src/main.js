@@ -74,6 +74,9 @@ import { library, dom } from "@fortawesome/fontawesome-svg-core";
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+
+import http_helpers from './helpers/http-helpers';
+
 library.add(fas, far, fab)
 dom.watch();
 
@@ -130,6 +133,7 @@ kytos.config.globalProperties.$kytos_server_api =  window.kytos_server_api
 kytos.config.globalProperties.$kytos_version = version
 kytos.config.globalProperties.$kytos.eventBus = eventBus;
 kytos.config.globalProperties.$kytos.toRaw = toRaw;
+kytos.config.globalProperties.$http_helpers = http_helpers;
 
 kytos.config.globalProperties.$filters = {
   humanize_bytes(num, precision = 0, suffix = 'bps') {
