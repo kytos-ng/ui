@@ -1,5 +1,5 @@
 <template>
- <div class='k-toolbar-item' :icon="icon" :tooltip="tooltip">
+ <div class='k-toolbar-item' :icon="icon" :tooltip="tooltip" data-test="main-div">
     <!-- @slot Slot with the toolbar item. -->
     <slot>
     </slot>
