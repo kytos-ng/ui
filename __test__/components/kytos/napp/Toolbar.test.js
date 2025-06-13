@@ -176,7 +176,6 @@ describe("Toolbar.vue", () => {
         },
       });
       expect(wrapper.exists()).toBe(true);
-      const store = useNappStore();
 
       expect(axios.get).toHaveBeenCalledTimes(1);
       expect(axios.get).toHaveBeenCalledWith(
