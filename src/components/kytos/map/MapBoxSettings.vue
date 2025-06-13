@@ -9,9 +9,9 @@
 
           <k-accordion-item title="Background">
             <k-button-group>
-              <k-button tooltip="Map Background" icon="desktop"></k-button>
+              <k-button tooltip="Map Background" icon="desktop" @click="emitMapDefaultBackground"></k-button>
               <k-button tooltip="Image Background (disabled)" icon="image" :is-disabled="true"></k-button>
-              <k-button tooltip="No Background" icon="window-close"></k-button>
+              <k-button tooltip="No Background" icon="window-close" @click="emitMapNoBackground"></k-button>
             </k-button-group>
             <k-slider icon="adjust" :initial-value="mapOpacity" :action="emitMapOpacity"></k-slider>
           </k-accordion-item>
@@ -24,6 +24,12 @@
 export default {
 
   methods: {
+    emitMapNoBackground () {
+      this.$kytos.eventBus.$emit('change-map-no-background')
+    },
+    emitMapDefaultBackground () {
+      this.$kytos.eventBus.$emit('change-map-default-background')
+    },
     emitMapOpacity (value) {
       this.$kytos.eventBus.$emit('change-map-opacity', value)
     },
