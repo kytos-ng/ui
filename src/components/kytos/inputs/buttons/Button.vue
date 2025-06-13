@@ -1,6 +1,6 @@
 <template>
-  <button :id="id" class="k-button compact"
-    @click="handleClick"
+  <button class="k-button compact"
+    @click="$emit('click', $event)"
     v-bind:title="tooltip"
     v-bind:disabled="isDisabled"
     data-test="main-button">
@@ -37,17 +37,6 @@ export default {
       default: false
    }
   },
-  methods: {
-     /**
-     * Call click event.
-     *
-     * @public
-     * @param {object} event trigged event
-     */
-    handleClick(event){
-      this.$emit('click', event.target.value); 
-    },
-  }
 }
 </script>
 
