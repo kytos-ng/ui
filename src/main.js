@@ -19,6 +19,9 @@ window.$ = window.jQuery = $;
 import axios from 'axios';
 kytos.config.globalProperties.$http = axios;
 
+import mapboxgl from 'mapbox-gl';
+kytos.config.globalProperties.$mapboxgl = mapboxgl;
+
 import * as d3 from 'd3';
 window.d3 = window.D3 = d3;
 window.kytos_server = location.protocol + "//" + location.host + "/";
