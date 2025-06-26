@@ -2,7 +2,7 @@
  <div class="container">
    <section class="k-menu-bar">
      <span  v-for="item in keymap"  v-hotkey="item" v-show="false"></span>
-     <div class="logo" @click="toggle" v-bind:class="{ compacted: compacted  }">
+     <div class="logo" @click="toggle" v-bind:class="{ compacted: compacted  }" data-test="logo">
        <div class="logo-wrapper" v-show="!compacted">
          <img src="../../../assets/kytosng_logo_white.svg" class="logo-kytos" alt="Kytos">
          <div id="kytos-version">v{{version}}</div>
