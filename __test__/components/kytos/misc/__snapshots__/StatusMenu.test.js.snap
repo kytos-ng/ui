@@ -1,0 +1,1534 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`StatusMenu.vue > DOM Elements > Interface Table 1`] = `
+"<table data-test="interface_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Switch/Node</th>
+      <th>Port</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="interfaceNode_Filter"></th>
+      <th><input data-test="interfacePort_Filter"></th>
+      <th><input data-test="interfaceStatus_Filter"></th>
+      <th><input data-test="interfaceReason_Filter"></th>
+      <th><input data-test="interfaceEnabled_Filter"></th>
+      <th><input data-test="interfaceActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-test="interfaceRow_0">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td>s1</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_1">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td>s1-eth1</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_2">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td>s1-eth2</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_3">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td>s2</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_4">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td>s2-eth1</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_5">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td>s2-eth2</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_6">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td>s2-eth3</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_7">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:03</td>
+      <td>s3</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_8">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:03</td>
+      <td>s3-eth1</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_9">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:03</td>
+      <td>s3-eth2</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > DOM Elements > Link Table 1`] = `
+"<table data-test="link_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="linkName_Filter"></th>
+      <th><input data-test="linkStatus_Filter"></th>
+      <th><input data-test="linkReason_Filter"></th>
+      <th><input data-test="linkEnabled_Filter"></th>
+      <th><input data-test="linkActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-test="linkRow_0">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="linkRow_1">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>cf0f4071be426b3f745027f5d22bc61f8312ae86293c9b28e7e66015607a9260</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > DOM Elements > Switch Table 1`] = `
+"<table data-test="switch_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="switchName_Filter"></th>
+      <th><input data-test="switchStatus_Filter"></th>
+      <th><input data-test="switchReason_Filter"></th>
+      <th><input data-test="switchEnabled_Filter"></th>
+      <th><input data-test="switchActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-test="switchRow_0">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="switchRow_1">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="switchRow_2">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:03</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > Data Streams > HTTP Get Request 1`] = `
+{
+  "00:00:00:00:00:00:00:01": {
+    "active": false,
+    "connection": "",
+    "data_path": "",
+    "dpid": "00:00:00:00:00:00:00:01",
+    "enabled": true,
+    "hardware": "",
+    "id": "00:00:00:00:00:00:00:01",
+    "interfaces": {
+      "00:00:00:00:00:00:00:01:1": {
+        "active": false,
+        "content_switch": [Circular],
+        "dpid": "00:00:00:00:00:00:00:01",
+        "enabled": true,
+        "id": "00:00:00:00:00:00:00:01:1",
+        "interface_id": "00:00:00:00:00:00:00:01:1",
+        "link": "",
+        "lldp": true,
+        "mac": "ca:ee:cb:53:f8:86",
+        "metadata": {},
+        "name": "s1-eth1",
+        "nni": false,
+        "port_number": 1,
+        "speed": 1250000000,
+        "status": "DOWN",
+        "status_reason": [
+          "deactivated",
+        ],
+        "switch": "00:00:00:00:00:00:00:01",
+        "type": "interface",
+        "uni": true,
+      },
+      "00:00:00:00:00:00:00:01:2": {
+        "active": false,
+        "content_switch": [Circular],
+        "dpid": "00:00:00:00:00:00:00:01",
+        "enabled": true,
+        "id": "00:00:00:00:00:00:00:01:2",
+        "interface_id": "00:00:00:00:00:00:00:01:2",
+        "link": "cf0f4071be426b3f745027f5d22bc61f8312ae86293c9b28e7e66015607a9260",
+        "lldp": true,
+        "mac": "12:dc:08:f0:b5:2c",
+        "metadata": {},
+        "name": "s1-eth2",
+        "nni": true,
+        "port_number": 2,
+        "speed": 1250000000,
+        "status": "DOWN",
+        "status_reason": [
+          "deactivated",
+        ],
+        "switch": "00:00:00:00:00:00:00:01",
+        "type": "interface",
+        "uni": false,
+      },
+      "00:00:00:00:00:00:00:01:4294967294": {
+        "active": false,
+        "content_switch": [Circular],
+        "dpid": "00:00:00:00:00:00:00:01",
+        "enabled": true,
+        "id": "00:00:00:00:00:00:00:01:4294967294",
+        "interface_id": "00:00:00:00:00:00:00:01:4294967294",
+        "link": "",
+        "lldp": true,
+        "mac": "56:e2:d7:0d:29:41",
+        "metadata": {},
+        "name": "s1",
+        "nni": false,
+        "port_number": 4294967294,
+        "speed": 0,
+        "status": "DOWN",
+        "status_reason": [
+          "deactivated",
+        ],
+        "switch": "00:00:00:00:00:00:00:01",
+        "type": "interface",
+        "uni": true,
+      },
+    },
+    "manufacturer": "",
+    "metadata": {
+      "lat": "0.0",
+      "lng": "-30.0",
+    },
+    "name": "00:00:00:00:00:00:00:01",
+    "ofp_version": null,
+    "serial": "",
+    "software": null,
+    "status": "DOWN",
+    "status_reason": [
+      "deactivated",
+    ],
+    "type": "switch",
+  },
+  "00:00:00:00:00:00:00:02": {
+    "active": false,
+    "connection": "",
+    "data_path": "s2",
+    "dpid": "00:00:00:00:00:00:00:02",
+    "enabled": true,
+    "hardware": "Open vSwitch",
+    "id": "00:00:00:00:00:00:00:02",
+    "interfaces": {
+      "00:00:00:00:00:00:00:02:1": {
+        "active": false,
+        "content_switch": [Circular],
+        "dpid": "00:00:00:00:00:00:00:02",
+        "enabled": true,
+        "id": "00:00:00:00:00:00:00:02:1",
+        "interface_id": "00:00:00:00:00:00:00:02:1",
+        "link": "",
+        "lldp": true,
+        "mac": "b2:f1:6e:6c:b7:49",
+        "metadata": {},
+        "name": "s2-eth1",
+        "nni": false,
+        "port_number": 1,
+        "speed": 1250000000,
+        "status": "DOWN",
+        "status_reason": [
+          "deactivated",
+        ],
+        "switch": "00:00:00:00:00:00:00:02",
+        "type": "interface",
+        "uni": true,
+      },
+      "00:00:00:00:00:00:00:02:2": {
+        "active": false,
+        "content_switch": [Circular],
+        "dpid": "00:00:00:00:00:00:00:02",
+        "enabled": true,
+        "id": "00:00:00:00:00:00:00:02:2",
+        "interface_id": "00:00:00:00:00:00:00:02:2",
+        "link": "cf0f4071be426b3f745027f5d22bc61f8312ae86293c9b28e7e66015607a9260",
+        "lldp": true,
+        "mac": "06:ed:ff:43:ad:35",
+        "metadata": {},
+        "name": "s2-eth2",
+        "nni": true,
+        "port_number": 2,
+        "speed": 1250000000,
+        "status": "DOWN",
+        "status_reason": [
+          "deactivated",
+        ],
+        "switch": "00:00:00:00:00:00:00:02",
+        "type": "interface",
+        "uni": false,
+      },
+      "00:00:00:00:00:00:00:02:3": {
+        "active": false,
+        "content_switch": [Circular],
+        "dpid": "00:00:00:00:00:00:00:02",
+        "enabled": true,
+        "id": "00:00:00:00:00:00:00:02:3",
+        "interface_id": "00:00:00:00:00:00:00:02:3",
+        "link": "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30",
+        "lldp": true,
+        "mac": "22:ab:5c:35:9a:32",
+        "metadata": {},
+        "name": "s2-eth3",
+        "nni": true,
+        "port_number": 3,
+        "speed": 1250000000,
+        "status": "DOWN",
+        "status_reason": [
+          "deactivated",
+        ],
+        "switch": "00:00:00:00:00:00:00:02",
+        "type": "interface",
+        "uni": false,
+      },
+      "00:00:00:00:00:00:00:02:4294967294": {
+        "active": false,
+        "content_switch": [Circular],
+        "dpid": "00:00:00:00:00:00:00:02",
+        "enabled": true,
+        "id": "00:00:00:00:00:00:00:02:4294967294",
+        "interface_id": "00:00:00:00:00:00:00:02:4294967294",
+        "link": "",
+        "lldp": true,
+        "mac": "e2:44:3b:c5:3b:4e",
+        "metadata": {},
+        "name": "s2",
+        "nni": false,
+        "port_number": 4294967294,
+        "speed": 0,
+        "status": "DOWN",
+        "status_reason": [
+          "deactivated",
+        ],
+        "switch": "00:00:00:00:00:00:00:02",
+        "type": "interface",
+        "uni": true,
+      },
+    },
+    "manufacturer": "Nicira, Inc.",
+    "metadata": {
+      "lat": "0.0",
+      "lng": "-20.0",
+    },
+    "name": "00:00:00:00:00:00:00:02",
+    "ofp_version": null,
+    "serial": "None",
+    "software": "3.1.0",
+    "status": "DOWN",
+    "status_reason": [
+      "deactivated",
+    ],
+    "type": "switch",
+  },
+  "00:00:00:00:00:00:00:03": {
+    "active": false,
+    "connection": "",
+    "data_path": "s3",
+    "dpid": "00:00:00:00:00:00:00:03",
+    "enabled": true,
+    "hardware": "Open vSwitch",
+    "id": "00:00:00:00:00:00:00:03",
+    "interfaces": {
+      "00:00:00:00:00:00:00:03:1": {
+        "active": false,
+        "content_switch": [Circular],
+        "dpid": "00:00:00:00:00:00:00:03",
+        "enabled": true,
+        "id": "00:00:00:00:00:00:00:03:1",
+        "interface_id": "00:00:00:00:00:00:00:03:1",
+        "link": "",
+        "lldp": true,
+        "mac": "26:e9:52:28:3f:50",
+        "metadata": {},
+        "name": "s3-eth1",
+        "nni": false,
+        "port_number": 1,
+        "speed": 1250000000,
+        "status": "DOWN",
+        "status_reason": [
+          "deactivated",
+        ],
+        "switch": "00:00:00:00:00:00:00:03",
+        "type": "interface",
+        "uni": true,
+      },
+      "00:00:00:00:00:00:00:03:2": {
+        "active": false,
+        "content_switch": [Circular],
+        "dpid": "00:00:00:00:00:00:00:03",
+        "enabled": true,
+        "id": "00:00:00:00:00:00:00:03:2",
+        "interface_id": "00:00:00:00:00:00:00:03:2",
+        "link": "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30",
+        "lldp": true,
+        "mac": "d6:d5:04:1e:f8:7c",
+        "metadata": {},
+        "name": "s3-eth2",
+        "nni": true,
+        "port_number": 2,
+        "speed": 1250000000,
+        "status": "DOWN",
+        "status_reason": [
+          "deactivated",
+        ],
+        "switch": "00:00:00:00:00:00:00:03",
+        "type": "interface",
+        "uni": false,
+      },
+      "00:00:00:00:00:00:00:03:4294967294": {
+        "active": false,
+        "content_switch": [Circular],
+        "dpid": "00:00:00:00:00:00:00:03",
+        "enabled": true,
+        "id": "00:00:00:00:00:00:00:03:4294967294",
+        "interface_id": "00:00:00:00:00:00:00:03:4294967294",
+        "link": "",
+        "lldp": true,
+        "mac": "12:cb:a7:29:21:4e",
+        "metadata": {},
+        "name": "s3",
+        "nni": false,
+        "port_number": 4294967294,
+        "speed": 0,
+        "status": "DOWN",
+        "status_reason": [
+          "deactivated",
+        ],
+        "switch": "00:00:00:00:00:00:00:03",
+        "type": "interface",
+        "uni": true,
+      },
+    },
+    "manufacturer": "Nicira, Inc.",
+    "metadata": {
+      "lat": "0.0",
+      "lng": "-10.0",
+    },
+    "name": "00:00:00:00:00:00:00:03",
+    "ofp_version": null,
+    "serial": "None",
+    "software": "3.1.0",
+    "status": "DOWN",
+    "status_reason": [
+      "deactivated",
+    ],
+    "type": "switch",
+  },
+}
+`;
+
+exports[`StatusMenu.vue > User Interactions > Click on interface to get Interface Details 1`] = `
+{
+  "component": "k-interface-info",
+  "content": {
+    "active": false,
+    "content_switch": {
+      "active": false,
+      "connection": "",
+      "data_path": "",
+      "dpid": "00:00:00:00:00:00:00:01",
+      "enabled": true,
+      "hardware": "",
+      "id": "00:00:00:00:00:00:00:01",
+      "interfaces": {
+        "00:00:00:00:00:00:00:01:1": {
+          "active": false,
+          "content_switch": [Circular],
+          "dpid": "00:00:00:00:00:00:00:01",
+          "enabled": true,
+          "id": "00:00:00:00:00:00:00:01:1",
+          "interface_id": "00:00:00:00:00:00:00:01:1",
+          "link": "",
+          "lldp": true,
+          "mac": "ca:ee:cb:53:f8:86",
+          "metadata": {},
+          "name": "s1-eth1",
+          "nni": false,
+          "port_number": 1,
+          "speed": 1250000000,
+          "status": "DOWN",
+          "status_reason": [
+            "deactivated",
+          ],
+          "switch": "00:00:00:00:00:00:00:01",
+          "type": "interface",
+          "uni": true,
+        },
+        "00:00:00:00:00:00:00:01:2": {
+          "active": false,
+          "content_switch": [Circular],
+          "dpid": "00:00:00:00:00:00:00:01",
+          "enabled": true,
+          "id": "00:00:00:00:00:00:00:01:2",
+          "interface_id": "00:00:00:00:00:00:00:01:2",
+          "link": "cf0f4071be426b3f745027f5d22bc61f8312ae86293c9b28e7e66015607a9260",
+          "lldp": true,
+          "mac": "12:dc:08:f0:b5:2c",
+          "metadata": {},
+          "name": "s1-eth2",
+          "nni": true,
+          "port_number": 2,
+          "speed": 1250000000,
+          "status": "DOWN",
+          "status_reason": [
+            "deactivated",
+          ],
+          "switch": "00:00:00:00:00:00:00:01",
+          "type": "interface",
+          "uni": false,
+        },
+        "00:00:00:00:00:00:00:01:4294967294": [Circular],
+      },
+      "manufacturer": "",
+      "metadata": {
+        "lat": "0.0",
+        "lng": "-30.0",
+      },
+      "name": "00:00:00:00:00:00:00:01",
+      "ofp_version": null,
+      "serial": "",
+      "software": null,
+      "status": "DOWN",
+      "status_reason": [
+        "deactivated",
+      ],
+      "type": "switch",
+    },
+    "dpid": "00:00:00:00:00:00:00:01",
+    "enabled": true,
+    "id": "00:00:00:00:00:00:00:01:4294967294",
+    "interface_id": "00:00:00:00:00:00:00:01:4294967294",
+    "link": "",
+    "lldp": true,
+    "mac": "56:e2:d7:0d:29:41",
+    "metadata": {},
+    "name": "s1",
+    "nni": false,
+    "port_number": 4294967294,
+    "speed": 0,
+    "status": "DOWN",
+    "status_reason": [
+      "deactivated",
+    ],
+    "switch": "00:00:00:00:00:00:00:01",
+    "type": "interface",
+    "uni": true,
+  },
+  "icon": "cog",
+  "subtitle": "00:00:00:00:00:00:00:01:4294967294",
+  "title": "Interface Details",
+}
+`;
+
+exports[`StatusMenu.vue > User Interactions > Click on link to get Link Details 1`] = `
+{
+  "component": "kytos-topology-k-info-panel-link_info",
+  "content": {
+    "active": false,
+    "enabled": true,
+    "endpoint_a": {
+      "active": false,
+      "enabled": true,
+      "id": "00:00:00:00:00:00:00:02:3",
+      "link": "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30",
+      "lldp": true,
+      "mac": "22:ab:5c:35:9a:32",
+      "metadata": {},
+      "name": "s2-eth3",
+      "nni": true,
+      "port_number": 3,
+      "speed": 1250000000,
+      "status": "DOWN",
+      "status_reason": [
+        "deactivated",
+      ],
+      "switch": "00:00:00:00:00:00:00:02",
+      "type": "interface",
+      "uni": false,
+    },
+    "endpoint_b": {
+      "active": false,
+      "enabled": true,
+      "id": "00:00:00:00:00:00:00:03:2",
+      "link": "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30",
+      "lldp": true,
+      "mac": "d6:d5:04:1e:f8:7c",
+      "metadata": {},
+      "name": "s3-eth2",
+      "nni": true,
+      "port_number": 2,
+      "speed": 1250000000,
+      "status": "DOWN",
+      "status_reason": [
+        "deactivated",
+      ],
+      "switch": "00:00:00:00:00:00:00:03",
+      "type": "interface",
+      "uni": false,
+    },
+    "id": "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30",
+    "metadata": {},
+    "status": "DOWN",
+    "status_reason": [
+      "deactivated",
+    ],
+  },
+  "icon": "cog",
+  "subtitle": "4d42dc0852278acc...",
+  "title": "Link Details",
+}
+`;
+
+exports[`StatusMenu.vue > User Interactions > Click on switch to get Switch Details 1`] = `
+{
+  "component": "kytos-topology-k-info-panel-switch_info",
+  "content": {
+    "active": false,
+    "connection": "",
+    "data_path": "",
+    "dpid": "00:00:00:00:00:00:00:01",
+    "enabled": true,
+    "hardware": "",
+    "id": "00:00:00:00:00:00:00:01",
+    "interfaces": {
+      "00:00:00:00:00:00:00:01:1": {
+        "active": false,
+        "content_switch": [Circular],
+        "dpid": "00:00:00:00:00:00:00:01",
+        "enabled": true,
+        "id": "00:00:00:00:00:00:00:01:1",
+        "interface_id": "00:00:00:00:00:00:00:01:1",
+        "link": "",
+        "lldp": true,
+        "mac": "ca:ee:cb:53:f8:86",
+        "metadata": {},
+        "name": "s1-eth1",
+        "nni": false,
+        "port_number": 1,
+        "speed": 1250000000,
+        "status": "DOWN",
+        "status_reason": [
+          "deactivated",
+        ],
+        "switch": "00:00:00:00:00:00:00:01",
+        "type": "interface",
+        "uni": true,
+      },
+      "00:00:00:00:00:00:00:01:2": {
+        "active": false,
+        "content_switch": [Circular],
+        "dpid": "00:00:00:00:00:00:00:01",
+        "enabled": true,
+        "id": "00:00:00:00:00:00:00:01:2",
+        "interface_id": "00:00:00:00:00:00:00:01:2",
+        "link": "cf0f4071be426b3f745027f5d22bc61f8312ae86293c9b28e7e66015607a9260",
+        "lldp": true,
+        "mac": "12:dc:08:f0:b5:2c",
+        "metadata": {},
+        "name": "s1-eth2",
+        "nni": true,
+        "port_number": 2,
+        "speed": 1250000000,
+        "status": "DOWN",
+        "status_reason": [
+          "deactivated",
+        ],
+        "switch": "00:00:00:00:00:00:00:01",
+        "type": "interface",
+        "uni": false,
+      },
+      "00:00:00:00:00:00:00:01:4294967294": {
+        "active": false,
+        "content_switch": [Circular],
+        "dpid": "00:00:00:00:00:00:00:01",
+        "enabled": true,
+        "id": "00:00:00:00:00:00:00:01:4294967294",
+        "interface_id": "00:00:00:00:00:00:00:01:4294967294",
+        "link": "",
+        "lldp": true,
+        "mac": "56:e2:d7:0d:29:41",
+        "metadata": {},
+        "name": "s1",
+        "nni": false,
+        "port_number": 4294967294,
+        "speed": 0,
+        "status": "DOWN",
+        "status_reason": [
+          "deactivated",
+        ],
+        "switch": "00:00:00:00:00:00:00:01",
+        "type": "interface",
+        "uni": true,
+      },
+    },
+    "manufacturer": "",
+    "metadata": {
+      "lat": "0.0",
+      "lng": "-30.0",
+    },
+    "name": "00:00:00:00:00:00:00:01",
+    "ofp_version": null,
+    "serial": "",
+    "software": null,
+    "status": "DOWN",
+    "status_reason": [
+      "deactivated",
+    ],
+    "type": "switch",
+  },
+  "icon": "cog",
+  "subtitle": "",
+  "title": "Switch Details",
+}
+`;
+
+exports[`StatusMenu.vue > User Interactions > Select/Deselect Interface 1`] = `
+{
+  "00:00:00:00:00:00:00:01:4294967294": {
+    "active": false,
+    "enabled": true,
+    "id": "00:00:00:00:00:00:00:01:4294967294",
+    "port": "s1",
+    "status": "DOWN",
+    "status_reason": "N/A",
+    "switch": "00:00:00:00:00:00:00:01",
+  },
+}
+`;
+
+exports[`StatusMenu.vue > User Interactions > Select/Deselect Link 1`] = `
+{
+  "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30": {
+    "active": false,
+    "enabled": true,
+    "id": "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30",
+    "name": "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30",
+    "status": "DOWN",
+    "status_reason": "N/A",
+  },
+}
+`;
+
+exports[`StatusMenu.vue > User Interactions > Select/Deselect Switch 1`] = `
+{
+  "00:00:00:00:00:00:00:01": {
+    "active": false,
+    "dpid": "00:00:00:00:00:00:00:01",
+    "enabled": true,
+    "name": "00:00:00:00:00:00:00:01",
+    "status": "DOWN",
+    "status_reason": "N/A",
+  },
+}
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 1`] = `
+"<table data-test="interface_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Switch/Node</th>
+      <th>Port</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="interfaceNode_Filter"></th>
+      <th><input data-test="interfacePort_Filter"></th>
+      <th><input data-test="interfaceStatus_Filter"></th>
+      <th><input data-test="interfaceReason_Filter"></th>
+      <th><input data-test="interfaceEnabled_Filter"></th>
+      <th><input data-test="interfaceActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-test="interfaceRow_0">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td>s1</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_1">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td>s1-eth1</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_2">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td>s1-eth2</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_3">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td>s2</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_4">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td>s2-eth1</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_5">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td>s2-eth2</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_6">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td>s2-eth3</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_7">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:03</td>
+      <td>s3</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_8">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:03</td>
+      <td>s3-eth1</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_9">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:03</td>
+      <td>s3-eth2</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 2`] = `
+"<table data-test="interface_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Switch/Node</th>
+      <th>Port</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="interfaceNode_Filter"></th>
+      <th><input data-test="interfacePort_Filter"></th>
+      <th><input data-test="interfaceStatus_Filter"></th>
+      <th><input data-test="interfaceReason_Filter"></th>
+      <th><input data-test="interfaceEnabled_Filter"></th>
+      <th><input data-test="interfaceActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 3`] = `
+"<table data-test="interface_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Switch/Node</th>
+      <th>Port</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="interfaceNode_Filter"></th>
+      <th><input data-test="interfacePort_Filter"></th>
+      <th><input data-test="interfaceStatus_Filter"></th>
+      <th><input data-test="interfaceReason_Filter"></th>
+      <th><input data-test="interfaceEnabled_Filter"></th>
+      <th><input data-test="interfaceActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-test="interfaceRow_0">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td>s1</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_1">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td>s1-eth1</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_2">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td>s1-eth2</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_3">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td>s2</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_4">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td>s2-eth1</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_5">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td>s2-eth2</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_6">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td>s2-eth3</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_7">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:03</td>
+      <td>s3</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_8">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:03</td>
+      <td>s3-eth1</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="interfaceRow_9">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:03</td>
+      <td>s3-eth2</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 4`] = `
+{
+  "00:00:00:00:00:00:00:01:4294967294": {
+    "active": false,
+    "enabled": true,
+    "id": "00:00:00:00:00:00:00:01:4294967294",
+    "port": "s1",
+    "status": "DOWN",
+    "status_reason": "N/A",
+    "switch": "00:00:00:00:00:00:00:01",
+  },
+}
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 5`] = `
+"<table data-test="interface_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Switch/Node</th>
+      <th>Port</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="interfaceNode_Filter"></th>
+      <th><input data-test="interfacePort_Filter"></th>
+      <th><input data-test="interfaceStatus_Filter"></th>
+      <th><input data-test="interfaceReason_Filter"></th>
+      <th><input data-test="interfaceEnabled_Filter"></th>
+      <th><input data-test="interfaceActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-test="interfaceRow_0">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="check-square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td>s1</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Link 1`] = `
+"<table data-test="link_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="linkName_Filter"></th>
+      <th><input data-test="linkStatus_Filter"></th>
+      <th><input data-test="linkReason_Filter"></th>
+      <th><input data-test="linkEnabled_Filter"></th>
+      <th><input data-test="linkActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-test="linkRow_0">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="linkRow_1">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>cf0f4071be426b3f745027f5d22bc61f8312ae86293c9b28e7e66015607a9260</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Link 2`] = `
+"<table data-test="link_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="linkName_Filter"></th>
+      <th><input data-test="linkStatus_Filter"></th>
+      <th><input data-test="linkReason_Filter"></th>
+      <th><input data-test="linkEnabled_Filter"></th>
+      <th><input data-test="linkActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Link 3`] = `
+"<table data-test="link_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="linkName_Filter"></th>
+      <th><input data-test="linkStatus_Filter"></th>
+      <th><input data-test="linkReason_Filter"></th>
+      <th><input data-test="linkEnabled_Filter"></th>
+      <th><input data-test="linkActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-test="linkRow_0">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="linkRow_1">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>cf0f4071be426b3f745027f5d22bc61f8312ae86293c9b28e7e66015607a9260</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Link 4`] = `
+{
+  "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30": {
+    "active": false,
+    "enabled": true,
+    "id": "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30",
+    "name": "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30",
+    "status": "DOWN",
+    "status_reason": "N/A",
+  },
+}
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Link 5`] = `
+"<table data-test="link_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="linkName_Filter"></th>
+      <th><input data-test="linkStatus_Filter"></th>
+      <th><input data-test="linkReason_Filter"></th>
+      <th><input data-test="linkEnabled_Filter"></th>
+      <th><input data-test="linkActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-test="linkRow_0">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="check-square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Switch 1`] = `
+"<table data-test="switch_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="switchName_Filter"></th>
+      <th><input data-test="switchStatus_Filter"></th>
+      <th><input data-test="switchReason_Filter"></th>
+      <th><input data-test="switchEnabled_Filter"></th>
+      <th><input data-test="switchActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-test="switchRow_0">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="switchRow_1">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="switchRow_2">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:03</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Switch 2`] = `
+"<table data-test="switch_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="switchName_Filter"></th>
+      <th><input data-test="switchStatus_Filter"></th>
+      <th><input data-test="switchReason_Filter"></th>
+      <th><input data-test="switchEnabled_Filter"></th>
+      <th><input data-test="switchActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Switch 3`] = `
+"<table data-test="switch_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="switchName_Filter"></th>
+      <th><input data-test="switchStatus_Filter"></th>
+      <th><input data-test="switchReason_Filter"></th>
+      <th><input data-test="switchEnabled_Filter"></th>
+      <th><input data-test="switchActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-test="switchRow_0">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="switchRow_1">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:02</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr data-test="switchRow_2">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:03</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Switch 4`] = `
+{
+  "00:00:00:00:00:00:00:01": {
+    "active": false,
+    "dpid": "00:00:00:00:00:00:00:01",
+    "enabled": true,
+    "name": "00:00:00:00:00:00:00:01",
+    "status": "DOWN",
+    "status_reason": "N/A",
+  },
+}
+`;
+
+exports[`StatusMenu.vue > User Interactions > Show All and Selected Switch 5`] = `
+"<table data-test="switch_table">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Enabled</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+      <th><input data-test="switchName_Filter"></th>
+      <th><input data-test="switchStatus_Filter"></th>
+      <th><input data-test="switchReason_Filter"></th>
+      <th><input data-test="switchEnabled_Filter"></th>
+      <th><input data-test="switchActive_Filter"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-test="switchRow_0">
+      <td><button class="k-button compact statusTableButton" data-test="main-button">
+          <font-awesome-icon-stub icon="check-square" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false" data-test="main-icon"></font-awesome-icon-stub>
+        </button></td>
+      <td>00:00:00:00:00:00:00:01</td>
+      <td class="red">DOWN</td>
+      <td>N/A</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>"
+`;
