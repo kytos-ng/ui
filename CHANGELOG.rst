@@ -12,6 +12,10 @@ Added
 - Replaced ``jquery ajax`` with axios
 - Added helper function for HTTP Requests
 
+Changed
+=======
+- Fixed build of latest.zip file used in releases to not include the web-ui folder
+
 [2025.1.0] - 2025-04-14
 ***********************
 
