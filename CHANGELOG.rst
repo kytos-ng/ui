@@ -14,6 +14,10 @@ Added
 - Backported k-accordion-item ``defaultState`` props
 
 
+Changed
+=======
+- Fixed build of latest.zip file used in releases to not include the web-ui folder
+
 [2025.1.0] - 2025-04-14
 ***********************
 

@@ -9,7 +9,7 @@
     "dev": "vite serve",
     "build": "vite build --emptyOutDir",
     "preprod": "vite build --emptyOutDir --mode preprod",
-    "zip": "vite build --emptyOutDir > /dev/null && zip -r latest.zip web-ui/index.html web-ui/dist",
+    "zip": "vite build --emptyOutDir > /dev/null && (cd web-ui && zip -r ../latest.zip index.html dist)",
     "preview": "vite preview",
     "test": "vitest",
     "test-run": "vitest run",
