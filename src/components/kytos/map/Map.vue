@@ -1,14 +1,14 @@
 <template>
-  <div id="k-map">
-    <component v-bind:is="this.extraComponent" v-bind:map="this.map" v-bind:original_graph="this.topology.graph"></component>
+  <div id="k-map" ref="mapContainer" data-test="map-container">
   </div>
+  <component v-bind:is="this.extraComponent" v-bind:map="this.map" v-bind:original_graph="this.topology.graph" data-test="map-topology"></component>
 </template>
 
 <script>
-import KytosBase from '../base/KytosBase'
-import KytosBaseWithIcon from '../base/KytosBaseWithIcon'
-import KytosTopology from '../topology/Topology.vue'
-import {json} from "d3-request"
+import KytosBase from '../base/KytosBase';
+import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
+import KytosTopology from '../topology/Topology.vue';
+import "mapbox-gl/dist/mapbox-gl.css";
 
 export default {
   name: 'k-map',
@@ -18,6 +18,8 @@ export default {
       map: undefined,
       map_center: [-104.991531, 39.742043],
       map_zoom: 2,
+      map_style_empty: "mapbox://styles/mapbox/empty-v9",
+      map_style_kytos: "mapbox://styles/kytos/cj9e4mbtm6s532smy6767uftz",
       extraComponent: undefined,
       topology: {
         url: this.$kytos_server_api + "kytos/topology/v3/",
@@ -34,6 +36,8 @@ export default {
        * @type {Number} The Opacity number
        */
       this.$kytos.eventBus.$on("change-map-opacity", this.changeMapOpacity);
+      this.$kytos.eventBus.$on("change-map-no-background", this.setEmptyMapStyle);
+      this.$kytos.eventBus.$on("change-map-default-background", this.setKytosMapStyle);
     },
     changeMapOpacity (value) {
       value = parseInt(value, 10)
@@ -48,21 +52,29 @@ export default {
         this.map.setPaintProperty("background", "background-opacity", value)
       }
     },
-    loadMap () {
-      mapboxgl.accessToken = "pk.eyJ1Ijoia3l0b3MiLCJhIjoiY2o5ZTRsbHpnMjd3ZjMzbnJxc2xqa2hibyJ9.bBZPeP_YLA5oP0heHRpL6A"
-
-      var map = new mapboxgl.Map({
-        container: "k-map",
-        style: "mapbox://styles/kytos/cj9e4mbtm6s532smy6767uftz",
+    setEmptyMapStyle(){
+      this.map.setStyle(this.map_style_empty);
+    },
+    setKytosMapStyle(){
+      this.map.setStyle(this.map_style_kytos);
+    },
+    // Empty mapbox style: "mapbox://styles/mapbox/empty-v9",
+    // Kytos mapbox style: "mapbox://styles/kytos/cj9e4mbtm6s532smy6767uftz"
+    // Dark style: "mapbox://styles/mapbox/dark-v10",
+    async loadMap () {
+      const map = new this.$mapboxgl.Map({
+        accessToken: "pk.eyJ1Ijoia3l0b3MiLCJhIjoiY2o5ZTRsbHpnMjd3ZjMzbnJxc2xqa2hibyJ9.bBZPeP_YLA5oP0heHRpL6A",
+        container: this.$refs.mapContainer,
+        style: this.map_style_kytos,
         center: this.map_center,
-        zoom: this.map_zoom
-      })
-
-      map.dragRotate.disable()
-
-      map.on("load", () => {
+        zoom: this.map_zoom,
+        hash: false
+      });
+      
+      map.dragRotate.disable();
+      map.on("load", async () => {
         map.addLayer({
-          id: "background",
+          id: "kytos-background",
           type: "background",
           paint: {
             "background-color": "#222",
@@ -74,29 +86,36 @@ export default {
               "delay": 0
             }
           }
-        })
-        this.getTopology()
-      })
-      this.map = map
+        });
+        this.getTopology();
+      });
+
+      this.map = map;
+      
     },
-    getTopology () {
-      let topoTimer = this.topoTimer
+    async getTopology () {
       console.log("Fetching topology data")
-      json(this.topology.url, (error, graph) => {
-        if (error) {
+
+      this.$http.get(this.topology.url)
+        .then(response => {
+          this.topology.graph = response.data.topology
+          this.extraComponent = KytosTopology
+        })
+        .catch(error => {
           var msg = "Error while trying to load the topology"
           this.$kytos.eventBus.$emit("statusMessage", msg, true)
           throw error
-        } else {
-          this.topology.graph = graph.topology
-          this.extraComponent = KytosTopology
-        }
-      })
+        });
+
     }
   },
-  mounted () {
-    this.loadMap()
-    this.setListeners()
+  async mounted () {
+    this.loadMap();
+    this.setListeners();
+  },
+  unmounted() {
+    this.map?.remove();
+    this.map = null;
   }
 }
 </script>
@@ -122,4 +141,6 @@ export default {
 
 .mapboxgl-ctrl-attrib
   top: -25px
+.mapboxgl-control-container
+  display: none
 </style>

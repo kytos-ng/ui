@@ -15,6 +15,7 @@ Added
 - Added pinia for state management
 - Replaced ``jquery ajax`` with axios
 - Added helper function for HTTP Requests
+- Fixed map background buttons
 
 Changed
 =======
