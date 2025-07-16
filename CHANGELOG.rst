@@ -40,6 +40,7 @@ Fixed
 - ``k-select`` does not longer updates twices when clicking in any options.
 - Fixed issue were clicking on MapBox with no topology threw an error.
 - Fixed key presses to select an option from ``k-input-auto`` component.
+- Fixed the ``k-chart-timeseries``/Interface Statistics Graph.
 
 [2025.1.0] - 2025-04-14
 ***********************
