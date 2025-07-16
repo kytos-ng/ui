@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import KytosBase from "../base/KytosBase"
+import KytosBase from "../base/KytosBase";
 import * as d3 from 'd3';
 
 export default {
@@ -58,15 +58,8 @@ export default {
     }
   },
   computed: {
-    chartWidth () {
-      let container = document.getElementById(this.plotId).parentElement
-      return container.getBoundingClientRect().width
-    },
     height () {
       return this.updatedHeight - this.margin.top - this.margin.bottom
-    },
-    width () {
-      return this.chartWidth - this.margin.left - this.margin.right
     },
     dpid () {
       return this.interface_id.split(":").slice(0,-1).join(":")
@@ -74,10 +67,19 @@ export default {
     legend_height () {
       return (this.display_legend) ? 40 : 0
     },
-    plotId () { return "timeseries-" + this.id },
+    plotId () { 
+      return "timeseries-" + this.uuid4();
+    },
     maxSpeed () { return Number(this.jsonData.speed) || 0 }
   },
   methods: {
+    chartWidth() {
+      let container = document.getElementById(this.plotId).parentElement
+      return container.getBoundingClientRect().width
+    },
+    width () {
+      return this.chartWidth() - this.margin.left - this.margin.right
+    },
     buildLine (yParam) {
       let x = this.x
       let y = this.y
@@ -95,36 +97,38 @@ export default {
     },
     parseJsonData () {
       let data = []
-      Object.entries(this.jsonData.timestamps).forEach(([idx, timestamp]) => {
-        data.push({"timestamp": new Date(timestamp * 1000),
-                   "tx_bytes": this.jsonData.tx_bytes[idx],
-                   "rx_bytes": this.jsonData.rx_bytes[idx]})
+      this.jsonData.forEach((element) => {
+        data.push({"timestamp": element.timestamp,
+                   "tx_bytes": element.tx_bytes,
+                   "rx_bytes": element.rx_bytes})
       })
       this.data = data
     },
     updateMargins () {
       this.updatedHeight = this.chartHeight
-      this.margin.left = this.chartWidth * 0.02
-      this.margin.right = this.chartWidth * 0.02
+      this.margin.left = this.chartWidth() * 0.02
+      this.margin.right = this.chartWidth() * 0.05
       this.margin.top = this.updatedHeight * 0.08
       this.margin.bottom = this.updatedHeight * 0.05
       if (this.showAxis) {
-        this.margin.left = this.chartWidth * 0.08
-        this.margin.bottom = this.updatedHeight * 0.12
+        this.margin.left = this.chartWidth() * 0.19
+        this.margin.bottom = this.updatedHeight * 0.18
       }
     },
     init () {
       // Init x axis
-      this.x = d3.scaleTime().range([0, this.width])
+      this.x = d3.scaleTime().range([0, this.width()])
       // Init y axis
       this.y = d3.scaleLinear().range([this.height, 0])
 
       // Init x axis
       this.xaxis = d3.axisBottom(this.x)
+        .ticks(7)
 
       // Init y axis
       let humanize_bytes = this.$filters.humanize_bytes
       this.yaxis = d3.axisLeft(this.y)
+        .ticks(5)
         .tickFormat(function(v) { return humanize_bytes(v * 8) })
 
       // Init x grid
@@ -135,7 +139,7 @@ export default {
 
       // Init y grid
       this.ygrid = d3.axisLeft(this.y)
-        .tickSize(-this.width)
+        .tickSize(-this.width())
         .tickFormat("")
 
       // init lines and areas
@@ -146,10 +150,10 @@ export default {
 
       this.chart = d3.select("#" + this.plotId)
         .append("svg")
-          .attr("width", this.width + this.margin.left + this.margin.right)
+          .attr("width", this.width() + this.margin.left + this.margin.right)
           .attr("height", this.height + this.margin.top + this.margin.bottom + this.legend_height)
           .attr("preserveAspectRatio", "xMinYMin meet")
-          .attr("viewBox", "0 0 " + (this.width + this.margin.left + this.margin.right) + " " + (this.height + this.margin.top + this.margin.bottom))
+          .attr("viewBox", "0 0 " + (this.width() + this.margin.left + this.margin.right) + " " + (this.height + this.margin.top + this.margin.bottom))
           .append("g")
           .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
 
@@ -185,7 +189,7 @@ export default {
         });
       }
       // X scale domain
-      this.x.domain(d3.extent(this.data, function(d) { return d.timestamp }))
+      this.x.domain(d3.extent(this.data, function(d) { return d.timestamp })).nice()
 
       // Y scale domain
       let max_y = d3.max(this.data, function(d) { return Math.max(d.tx_bytes, d.rx_bytes) })
@@ -243,8 +247,13 @@ export default {
 
     },
     updateChart () {
+      // Set svg size
+      d3.select("#" + this.plotId)
+        .selectAll("svg")
+        .attr("width", this.width() + this.margin.left + this.margin.right)
+        .attr("height", this.height + this.margin.top + this.margin.bottom + this.legend_height)
       // Set x scale domain
-      this.x.domain(d3.extent(this.data, function(d) { return d.timestamp }))
+      this.x.domain(d3.extent(this.data, function(d) { return d.timestamp })).nice()
 
       // Set y scale domain
       let max_y = d3.max(this.data, function(d) { return Math.max(d.tx_bytes, d.rx_bytes) })
@@ -305,9 +314,12 @@ export default {
     this.updateChart()
   },
   watch: {
-    jsonData () {
-      this.parseJsonData()
-      this.updateChart()
+    jsonData: {
+      handler: function () {
+        this.parseJsonData()
+        this.updateChart()
+      },
+      deep: true
     },
     chartHeight () {
       this.updateMargins()
@@ -351,7 +363,7 @@ export default {
 
   .line
     stroke-width: 2
-    fill: none
+    fill: white
 
   .rx
     &.line
@@ -367,4 +379,8 @@ export default {
 
   .hidden
     display: none
+
+  .tick text 
+    font-size: 10px
+
 </style>

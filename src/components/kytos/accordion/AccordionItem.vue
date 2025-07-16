@@ -5,7 +5,7 @@
       @input="checked = $event.target.checked"
       data-test="main-accordionitem"/>
     <label class="k-accordion-label" :for="id">{{title}}</label>
-    <div v-show="checked" class="tab-content">
+    <div v-if="checked" class="tab-content">
      <!-- @slot Empty Pannel, please define some items inside. -->
     <slot>
        <p>Empty Pannel created, please define some items inside.</p>
