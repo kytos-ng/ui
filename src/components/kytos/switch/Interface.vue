@@ -1,21 +1,22 @@
 <template>
   <div :id="id" class="k-interface" @click="open_interface">
-    <div class="usage" :class="utilization_color_class"></div>
-    <div class="details" :title="mac">
-      <div class="name">{{ name }} ({{ port_number }})</div>
-      <div class="x_bytes">
-        <div class="padding-top-bottom"></div>
-        <div class="tx_bytes">{{ $filters.humanize_bytes(tx_bytes * 8) }} T&nbsp;</div>
-        <div class="padding-middle"></div>
-        <div class="rx_bytes">{{ $filters.humanize_bytes(rx_bytes * 8) }} R&nbsp;</div>
-        <div class="padding-top-bottom"></div>
+    <div class="left_div">
+      <div class="usage" :class="utilization_color_class"></div>
+      <div class="details" :title="mac">
+        <div class="name">{{ name }} ({{ port_number }})</div>
+        <div class="x_bytes">
+          <div class="padding-top-bottom"></div>
+          <div class="tx_bytes">{{ $filters.humanize_bytes(tx_bytes * 8) }} T&nbsp;</div>
+          <div class="padding-middle"></div>
+          <div class="rx_bytes">{{ $filters.humanize_bytes(rx_bytes * 8) }} R&nbsp;</div>
+          <div class="padding-top-bottom"></div>
+        </div>
       </div>
     </div>
-
     <div class="chart">
-    <k-chart-timeseries v-if="chartJsonData" :interface_id="interface_id" :jsonData="chartJsonData" :showGrid="true"
-      :showAxis="true" :plotArea="true" :chartHeight="128"></k-chart-timeseries>
-    <div class="warn" v-else>&nbsp;Interface speed is unavailable</div>
+      <k-chart-timeseries v-if="chartJsonData" :interface_id="interface_id" :jsonData="chartJsonData" :showGrid="true"
+        :showAxis="true" :plotArea="true" :chartHeight="100"></k-chart-timeseries>
+      <div class="warn" v-else>&nbsp;Interface speed is unavailable</div>
     </div>
   </div>
 </template>
@@ -171,6 +172,7 @@ export default {
 
 .k-interface
   display: flex
+  flex-direction: row
   cursor: pointer
   padding-top: 0.3em
   width: 100%
@@ -181,27 +183,35 @@ export default {
    color: dark-theme-variables.$fill-link-h
    background: dark-theme-variables.$fill-bar
 
-  .usage
-    min-width: 4px
+  .left_div
+    flex-grow: 1
+    display: flex
+    flex-direction: row
+    cursor: pointer
 
-    &.high
-      background-color: dark-theme-variables.$kytos-red
-    &.medium
-      background-color: dark-theme-variables.$kytos-yellow
-    &.low
-      background-color: dark-theme-variables.$kytos-green
+    .usage
+      flex-shrink: 0
+      min-width: 4px
+
+      &.high
+        background-color: dark-theme-variables.$kytos-red
+      &.medium
+        background-color: dark-theme-variables.$kytos-yellow
+      &.low
+        background-color: dark-theme-variables.$kytos-green
 
   .details
-    min-width: 90px
+    flex-grow: 1
     background-color: dark-theme-variables.$fill-input-bg
     display: flex
+    gap: 0px
     flex-direction: column
 
     .name
       font-size: 0.7em
       display: block
       overflow: hidden
-      height: 10px
+      height: 20px
       padding: 5px 5px 5px
       flex: 0 0 auto
       word-break: break-all
@@ -242,5 +252,7 @@ export default {
 
   .chart
     min-width: 322px
+    flex-grow: 10
+
 
 </style>
