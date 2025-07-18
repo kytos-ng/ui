@@ -54,7 +54,8 @@ export default {
       rxline: null,
       txarea: null,
       rxarea: null,
-      updatedHeight: null
+      updatedHeight: null,
+      baseChartWidth: 322
     }
   },
   computed: {
@@ -73,12 +74,8 @@ export default {
     maxSpeed () { return Number(this.jsonData.speed) || 0 }
   },
   methods: {
-    chartWidth() {
-      let container = document.getElementById(this.plotId).parentElement
-      return 322
-    },
     width () {
-      return 322 - this.margin.left - this.margin.right
+      return this.baseChartWidth - this.margin.left - this.margin.right
     },
     buildLine (yParam) {
       let x = this.x
@@ -106,16 +103,14 @@ export default {
     },
     updateMargins () {
       this.updatedHeight = this.chartHeight
-      this.margin.left = this.chartWidth() * 0.02
-      this.margin.right = this.chartWidth() * 0.05
+      this.margin.left = this.baseChartWidth * 0.02
+      this.margin.right = this.baseChartWidth * 0.05
       this.margin.top = this.updatedHeight * 0.08
       this.margin.bottom = this.updatedHeight * 0.05
       if (this.showAxis) {
-        this.margin.left = this.chartWidth() * 0.19
+        this.margin.left = this.baseChartWidth * 0.19
         this.margin.bottom = this.updatedHeight * 0.2
       }
-      console.log(this.margin.bottom)
-      console.log(this.margin.top)
     },
     init () {
       // Init x axis
@@ -149,10 +144,6 @@ export default {
       this.rxline = this.buildLine("rx_bytes")
       this.txarea = this.buildArea("tx_bytes")
       this.rxarea = this.buildArea("rx_bytes")
-      console.log(this.height)
-      console.log(this.margin.top)
-      console.log(this.margin.bottom)
-      console.log(this.updatedHeight)
 
       this.chart = d3.select("#" + this.plotId)
         .append("svg")
