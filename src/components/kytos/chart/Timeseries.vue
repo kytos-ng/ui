@@ -75,10 +75,10 @@ export default {
   methods: {
     chartWidth() {
       let container = document.getElementById(this.plotId).parentElement
-      return container.getBoundingClientRect().width
+      return 322
     },
     width () {
-      return this.chartWidth() - this.margin.left - this.margin.right
+      return 322 - this.margin.left - this.margin.right
     },
     buildLine (yParam) {
       let x = this.x
@@ -112,14 +112,16 @@ export default {
       this.margin.bottom = this.updatedHeight * 0.05
       if (this.showAxis) {
         this.margin.left = this.chartWidth() * 0.19
-        this.margin.bottom = this.updatedHeight * 0.18
+        this.margin.bottom = this.updatedHeight * 0.2
       }
+      console.log(this.margin.bottom)
+      console.log(this.margin.top)
     },
     init () {
       // Init x axis
-      this.x = d3.scaleTime().range([0, this.width()])
+      this.x = d3.scaleTime().range([0, this.width()]).nice();
       // Init y axis
-      this.y = d3.scaleLinear().range([this.height, 0])
+      this.y = d3.scaleLinear().range([this.height, 0]).nice();
 
       // Init x axis
       this.xaxis = d3.axisBottom(this.x)
@@ -147,13 +149,16 @@ export default {
       this.rxline = this.buildLine("rx_bytes")
       this.txarea = this.buildArea("tx_bytes")
       this.rxarea = this.buildArea("rx_bytes")
+      console.log(this.height)
+      console.log(this.margin.top)
+      console.log(this.margin.bottom)
+      console.log(this.updatedHeight)
 
       this.chart = d3.select("#" + this.plotId)
         .append("svg")
-          .attr("width", this.width() + this.margin.left + this.margin.right)
-          .attr("height", this.height + this.margin.top + this.margin.bottom + this.legend_height)
           .attr("preserveAspectRatio", "xMinYMin meet")
-          .attr("viewBox", "0 0 " + (this.width() + this.margin.left + this.margin.right) + " " + (this.height + this.margin.top + this.margin.bottom))
+          .attr("viewBox", "0 0 " + (this.width() + this.margin.right + this.margin.left) + " " + (this.height + this.margin.top + this.margin.bottom))
+          .classed("svg-content", true)
           .append("g")
           .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
 
@@ -247,11 +252,6 @@ export default {
 
     },
     updateChart () {
-      // Set svg size
-      d3.select("#" + this.plotId)
-        .selectAll("svg")
-        .attr("width", this.width() + this.margin.left + this.margin.right)
-        .attr("height", this.height + this.margin.top + this.margin.bottom + this.legend_height)
       // Set x scale domain
       this.x.domain(d3.extent(this.data, function(d) { return d.timestamp })).nice()
 
@@ -336,6 +336,11 @@ export default {
   width: 100%
   float: left
   background-color: dark-theme-variables.$fill-bar
+  display: inline-block
+  position: relative
+  padding-bottom: 31.0559%
+  overflow: hidden
+  vertical-align: top
 
   text
     fill: grey
@@ -382,5 +387,11 @@ export default {
 
   .tick text 
     font-size: 10px
+
+  .svg-content
+    display: inline-block
+    position: absolute
+    top: 0
+    left: 0
 
 </style>
