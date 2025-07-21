@@ -6,6 +6,18 @@ All notable changes to the Kytos-NG UI project will be documented in this file.
 UNRELEASED - Under development
 ******************************
 
+[2025.1.1] - 2025-07-21
+***********************
+
+Added
+=====
+- Backported k-accordion-item ``defaultState`` props
+
+
+Changed
+=======
+- Fixed build of latest.zip file used in releases to not include the web-ui folder
+
 [2025.1.0] - 2025-04-14
 ***********************
 
