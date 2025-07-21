@@ -37,9 +37,18 @@ export default {
   mixins: [KytosBaseWithIcon],
   data () {
     return {
-      checked: true
+      checked: this.defaultState
     }
-  }
+  },
+    props: {
+      /**
+       * Default State of the Accordion Item: Checked or Unchecked.
+       */
+      defaultState: {
+        type: Boolean,
+        default: true
+      },
+    }
 }
 </script>
 
