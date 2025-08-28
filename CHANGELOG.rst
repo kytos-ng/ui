@@ -9,6 +9,7 @@ UNRELEASED - Under development
 Changed
 =======
 - The tabs in the Interface Details Menu are now collapsed by default
+- Fixed build of latest.zip file used in releases to not include the web-ui folder
 
 Added
 =====
@@ -18,9 +19,9 @@ Added
 - Autocompletes now supports actions for both input and submit
 - Fixed map background buttons
 
-Changed
-=======
-- Fixed build of latest.zip file used in releases to not include the web-ui folder
+Fixed
+=====
+- Fixed the ``k-chart-timeseries``/Interface Utilization Graph.
 
 [2025.1.0] - 2025-04-14
 ***********************
