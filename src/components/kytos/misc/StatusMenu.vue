@@ -37,11 +37,11 @@
                   <thead>
                     <tr>
                       <th rowspan="2"></th>
-                      <th>Name</th>
-                      <th>Status</th>
-                      <th>Reason</th>
-                      <th>Enabled</th>
-                      <th>Active</th>
+                      <th @click="change_switch_sort_order('name')">Name {{ get_order_icon('name', switch_table_order, 'switch_sorted_column') }}</th>
+                      <th @click="change_switch_sort_order('status')">Status {{ get_order_icon('status', switch_table_order, 'switch_sorted_column') }}</th>
+                      <th @click="change_switch_sort_order('status_reason')">Reason {{ get_order_icon('status_reason', switch_table_order, 'switch_sorted_column') }}</th>
+                      <th @click="change_switch_sort_order('enabled')">Enabled {{ get_order_icon('enabled', switch_table_order, 'switch_sorted_column') }}</th>
+                      <th @click="change_switch_sort_order('active')">Active {{ get_order_icon('active', switch_table_order, 'switch_sorted_column') }}</th>
                     </tr>
                     <tr>
                       <th>
@@ -62,9 +62,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(value, key, index) in filtered_switchData" :key="value.dpid" @click="show_infoPanel(value.dpid)" :data-test="'switchRow_' + index">
-                      <td><k-button class="statusTableButton" :icon="isStoredS(value, key)"
-                          @click.stop="add_remove_Switches(value, key)"></k-button></td>
+                    <tr v-for="(value, index) in filtered_switchData" :key="value.dpid" @click="show_infoPanel(value.dpid)" :data-test="'switchRow_' + index">
+                      <td><k-button class="statusTableButton" :icon="isStoredS(value, index)"
+                          @click.stop="add_remove_Switches(value, index)"></k-button></td>
                       <td>{{ value.name }}</td>
                       <td :class="statusColor(value)">{{ value.status }}</td>
                       <td>{{ splitStatusReasons(value.status_reason) }}</td>
@@ -89,11 +89,11 @@
                   <thead>
                     <tr>
                       <th rowspan="2"></th>
-                      <th>Name</th>
-                      <th>Status</th>
-                      <th>Reason</th>
-                      <th>Enabled</th>
-                      <th>Active</th>
+                      <th @click="change_link_sort_order('name')">Name {{ get_order_icon('name', link_table_order, 'link_sorted_column') }}</th>
+                      <th @click="change_link_sort_order('status')">Status {{ get_order_icon('status', link_table_order, 'link_sorted_column') }}</th>
+                      <th @click="change_link_sort_order('status_reason')">Reason {{ get_order_icon('status_reason', link_table_order, 'link_sorted_column') }}</th>
+                      <th @click="change_link_sort_order('enabled')">Enabled {{ get_order_icon('enabled', link_table_order, 'link_sorted_column') }}</th>
+                      <th @click="change_link_sort_order('active')">Active {{ get_order_icon('active', link_table_order, 'link_sorted_column') }}</th>
                     </tr>
                     <tr>
                       <th>
@@ -114,9 +114,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(value, key, index) in filtered_linkData" :key="value.id" @click="show_infoPanelLink(value.id)" :data-test="'linkRow_' + index">
-                      <td><k-button class="statusTableButton" :icon="isStoredL(value, key)"
-                          @click.stop="add_remove_Links(value, key)"></k-button></td>
+                    <tr v-for="(value, index) in filtered_linkData" :key="value.id" @click="show_infoPanelLink(value.id)" :data-test="'linkRow_' + index">
+                      <td><k-button class="statusTableButton" :icon="isStoredL(value, index)"
+                          @click.stop="add_remove_Links(value, index)"></k-button></td>
                       <td>{{ value.name }}</td>
                       <td :class="statusColor(value)">{{ value.status }}</td>
                       <td>{{ splitStatusReasons(value.status_reason) }}</td>
@@ -141,12 +141,12 @@
                   <thead>
                     <tr>
                       <th rowspan="2"></th>
-                      <th>Switch/Node</th>
-                      <th>Port</th>
-                      <th>Status</th>
-                      <th>Reason</th>
-                      <th>Enabled</th>
-                      <th>Active</th>
+                      <th @click="change_interface_sort_order('switch')">Switch/Node {{ get_order_icon('switch', interface_table_order, 'interface_sorted_column') }}</th>
+                      <th @click="change_interface_sort_order('port')">Port {{ get_order_icon('port', interface_table_order, 'interface_sorted_column') }}</th>
+                      <th @click="change_interface_sort_order('status')">Status {{ get_order_icon('status', interface_table_order, 'interface_sorted_column') }}</th>
+                      <th @click="change_interface_sort_order('status_reason')">Reason {{ get_order_icon('status_reason', interface_table_order, 'interface_sorted_column') }}</th>
+                      <th @click="change_interface_sort_order('enabled')">Enabled {{ get_order_icon('enabled', interface_table_order, 'interface_sorted_column') }}</th>
+                      <th @click="change_interface_sort_order('active')">Active {{ get_order_icon('active', interface_table_order, 'interface_sorted_column') }}</th>
                     </tr>
                     <tr>
                       <th>
@@ -170,10 +170,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(value, key, index) in filtered_interfaceData" :key="value.id"
+                    <tr v-for="(value, index) in filtered_interfaceData" :key="value.id"
                       @click="show_infoPanelInterface(value.id)" :data-test="'interfaceRow_' + index">
-                      <td><k-button class="statusTableButton" :icon="isStoredI(value, key)"
-                          @click.stop="add_remove_Interfaces(value, key)"></k-button></td>
+                      <td><k-button class="statusTableButton" :icon="isStoredI(value, index)"
+                          @click.stop="add_remove_Interfaces(value, index)"></k-button></td>
                       <td>{{ value.switch }}</td>
                       <td>{{ value.port }}</td>
                       <td :class="statusColor(value)">{{ value.status }}</td>
@@ -235,10 +235,17 @@ export default {
         ["enabled", ""],
         ["active", ""]
       ],
-      selectedSwitches: {},
-      selectedLinks: {},
-      selectedInterfaces: {},
-      change: 1
+      selectedSwitches: [],
+      selectedLinks: [],
+      selectedInterfaces: [],
+      change: 1,
+      switch_table_order: 1,
+      link_table_order: 1,
+      interface_table_order: 1,
+      switch_sorted_column: "status",
+      link_sorted_column: "status",
+      interface_sorted_column: "status",
+      order_icons: ["▼", "", "▲"]
     }
   },
   methods: {
@@ -395,7 +402,7 @@ export default {
      */
     add_remove_Switches(item, index) {
       if (this.selectedSwitches[index]?.dpid == item.dpid) {
-        delete this.selectedSwitches[index]
+        this.selectedSwitches.splice(index,1)
       } else {
         this.selectedSwitches[index] = item;
       }
@@ -404,7 +411,7 @@ export default {
     },
     add_remove_Links(item, index) {
       if (this.selectedLinks[index]?.id == item.id) {
-        delete this.selectedLinks[index]
+        this.selectedLinks.splice(index,1)
       } else {
         this.selectedLinks[index] = item;
       }
@@ -413,7 +420,7 @@ export default {
     },
     add_remove_Interfaces(item, index) {
       if (this.selectedInterfaces[index]?.id == item.id) {
-        delete this.selectedInterfaces[index]
+        this.selectedInterfaces.splice(index,1)
       } else {
         this.selectedInterfaces[index] = item;
       }
@@ -442,6 +449,43 @@ export default {
     //Formats status reason data for table
     splitStatusReasons(statusReasons) {
       return statusReasons.toString()
+    },
+    //Orders table data by Status (Down, Disabled, and Up)
+    order_by_status(table_items) {
+      console.log(table_items)
+      let status_down_items = table_items.filter(table_item => table_item.status === "DOWN");
+      let status_disabled_items = table_items.filter(table_item => table_item.status === "DISABLED");
+      let status_up_items = table_items.filter(table_item => table_item.status === "UP");
+      return [...status_down_items, ...status_disabled_items, ...status_up_items];
+    },
+    //When a column from a table is clicked it will change the sort order
+    change_switch_sort_order(attribute) {
+      if(this.switch_sorted_column != attribute) {
+        this.switch_table_order = 1;
+        this.switch_sorted_column = attribute;
+      }
+      this.switch_table_order = (this.switch_table_order+1) % 3;
+    },
+    change_link_sort_order(attribute) {
+      if(this.link_sorted_column != attribute) {
+        this.link_table_order = 1;
+        this.link_sorted_column = attribute;
+      }
+      this.link_table_order = (this.link_table_order+1) % 3;
+    },
+    change_interface_sort_order(attribute) {
+      if(this.interface_sorted_column != attribute) {
+        this.interface_table_order = 1;
+        this.interface_sorted_column = attribute;
+      }
+      this.interface_table_order = (this.interface_table_order+1) % 3;
+    },
+    //Retrieves the icon used to indicate order for a specific column
+    get_order_icon(attribute, table_order, table_type) {
+      if (this[table_type] === attribute) {
+        return this.order_icons[table_order];
+      }
+      return "";
     }
   },
   computed: {
@@ -459,149 +503,183 @@ export default {
      */
     //Base Data
     switchData: function () {
-      var switch_table_data = {}
+      var switch_table_data = []
       if (Object.keys(this.switches).length != 0) {
+        var switch_counter = 0
         for (const s in this.switches) {
-          switch_table_data[s] = {}
+          switch_table_data[switch_counter] = {}
           if (this.switches[s].metadata.node_name != undefined && this.switches[s].metadata.node_name != "") {
-            switch_table_data[s]["name"] = this.switches[s].metadata.node_name
+            switch_table_data[switch_counter]["name"] = this.switches[s].metadata.node_name
           } else {
-            switch_table_data[s]["name"] = this.switches[s].dpid
+            switch_table_data[switch_counter]["name"] = this.switches[s].dpid
           }
-          switch_table_data[s]["status"] = this.switches[s].status
-          switch_table_data[s]["status_reason"] = this.switches[s].status_reason.includes("maintenance") ? this.switches[s].status_reason : "N/A"
-          switch_table_data[s]["enabled"] = this.switches[s].enabled
-          switch_table_data[s]["active"] = this.switches[s].active
-          switch_table_data[s]["dpid"] = this.switches[s].dpid
+          switch_table_data[switch_counter]["status"] = this.switches[s].status
+          switch_table_data[switch_counter]["status_reason"] = this.switches[s].status_reason.includes("maintenance") ? this.switches[s].status_reason : "N/A"
+          switch_table_data[switch_counter]["enabled"] = this.switches[s].enabled
+          switch_table_data[switch_counter]["active"] = this.switches[s].active
+          switch_table_data[switch_counter]["dpid"] = this.switches[s].dpid
+          switch_counter++
         }
       }
       return switch_table_data
     },
     linkData: function () {
-      var link_table_data = {}
+      var link_table_data = []
       if (Object.keys(this.links).length != 0) {
+        var link_counter = 0
         for (const l in this.links) {
-          link_table_data[l] = {}
+          link_table_data[link_counter] = {}
           if (this.links[l].metadata.link_name != undefined && this.links[l].metadata.link_name != "") {
-            link_table_data[l]["name"] = this.links[l].metadata.link_name
+            link_table_data[link_counter]["name"] = this.links[l].metadata.link_name
           } else {
-            link_table_data[l]["name"] = this.links[l].id
+            link_table_data[link_counter]["name"] = this.links[l].id
           }
-          link_table_data[l]["status"] = this.links[l].status
-          link_table_data[l]["status_reason"] = this.links[l].status_reason.includes("maintenance") ? this.links[l].status_reason : "N/A"
-          link_table_data[l]["enabled"] = this.links[l].enabled
-          link_table_data[l]["active"] = this.links[l].active
-          link_table_data[l]["id"] = this.links[l].id
+          link_table_data[link_counter]["status"] = this.links[l].status
+          link_table_data[link_counter]["status_reason"] = this.links[l].status_reason.includes("maintenance") ? this.links[l].status_reason : "N/A"
+          link_table_data[link_counter]["enabled"] = this.links[l].enabled
+          link_table_data[link_counter]["active"] = this.links[l].active
+          link_table_data[link_counter]["id"] = this.links[l].id
+          link_counter++
         }
       }
       return link_table_data
     },
     interfaceData: function () {
-      var interface_table_data = {}
+      var interface_table_data = []
       if ((Object.keys(this.switches).length != 0) && (Object.keys(this.interfaces).length != 0)) {
+        var interface_counter = 0
         for (const i in this.interfaces) {
-          interface_table_data[i] = {}
+          interface_table_data[interface_counter] = {}
           if (this.interfaces[i].metadata.port_name != undefined && this.interfaces[i].metadata.port_name != "") {
-            interface_table_data[i]["port"] = this.interfaces[i].metadata.port_name
+            interface_table_data[interface_counter]["port"] = this.interfaces[i].metadata.port_name
           } else {
-            interface_table_data[i]["port"] = this.interfaces[i].name
+            interface_table_data[interface_counter]["port"] = this.interfaces[i].name
           }
-          interface_table_data[i]["status"] = this.interfaces[i].status
-          interface_table_data[i]["status_reason"] = this.interfaces[i].status_reason.includes("maintenance") ? this.interfaces[i].status_reason : "N/A"
-          interface_table_data[i]["enabled"] = this.interfaces[i].enabled
-          interface_table_data[i]["active"] = this.interfaces[i].active
-          interface_table_data[i]["switch"] = this.interfaces[i].switch
-          interface_table_data[i]["id"] = this.interfaces[i].id
+          interface_table_data[interface_counter]["status"] = this.interfaces[i].status
+          interface_table_data[interface_counter]["status_reason"] = this.interfaces[i].status_reason.includes("maintenance") ? this.interfaces[i].status_reason : "N/A"
+          interface_table_data[interface_counter]["enabled"] = this.interfaces[i].enabled
+          interface_table_data[interface_counter]["active"] = this.interfaces[i].active
+          interface_table_data[interface_counter]["switch"] = this.interfaces[i].switch
+          interface_table_data[interface_counter]["id"] = this.interfaces[i].id
+          interface_counter++
         }
       }
       return interface_table_data
     },
     //Filtered Data
     filtered_switchData: function () {
-      var current_data = {}
+      var current_data = []
       var updater = this.change
       //Selects Data to filter from selectedSwitches.
       switch (this.currentSwitchData) {
         case "ORIGINAL":
-          current_data = structuredClone(this.$kytos.toRaw(this.switchData))
+          current_data = this.order_by_status(structuredClone(this.$kytos.toRaw(this.switchData)))
           break;
         case "PRE_SELECTED":
-          current_data = structuredClone(this.$kytos.toRaw(this.selectedSwitches))
+          current_data = this.order_by_status(structuredClone(this.$kytos.toRaw(this.selectedSwitches)))
           break;
         default:
-          current_data = structuredClone(this.$kytos.toRaw(this.switchData))
+          current_data = this.order_by_status(structuredClone(this.$kytos.toRaw(this.switchData)))
           break;
       }
       //Filters Data based on current textFilter.
       for (const element of this.switchTextFilter) {
         if (element[1] != "") {
-          for (const s in current_data) {
+          for (let s = 0; s < current_data.length; s++) {
             var separatedFilter = element[1].toString()
             var separatedProperty = current_data[s][element[0]].toString()
-            if (!(separatedProperty.includes(separatedFilter) || separatedFilter.includes(separatedProperty))) {
-              delete current_data[s]
+            if (!(separatedProperty.toLowerCase().includes(separatedFilter) || separatedFilter.toLowerCase().includes(separatedProperty))) {
+              current_data.splice(s, 1)
             }
           }
         }
       }
+      //Sort data based on column
+      current_data.sort((a, b) => {
+          if (a[this.switch_sorted_column] < b[this.switch_sorted_column]) {
+            return -1*(this.switch_table_order-1);
+          }
+          if (a[this.switch_sorted_column] > b[this.switch_sorted_column]) {
+            return 1*(this.switch_table_order-1);
+          }
+          return 0*(this.switch_table_order-1);
+      })
       return current_data
     },
     filtered_linkData: function () {
-      var current_data = {}
+      var current_data = []
       var updater = this.change
       //Selects Data to filter from selectedLinks.
       switch (this.currentLinkData) {
         case "ORIGINAL":
-          current_data = structuredClone(this.$kytos.toRaw(this.linkData))
+          current_data = this.order_by_status(structuredClone(this.$kytos.toRaw(this.linkData)))
           break;
         case "PRE_SELECTED":
-          current_data = structuredClone(this.$kytos.toRaw(this.selectedLinks))
+          current_data = this.order_by_status(structuredClone(this.$kytos.toRaw(this.selectedLinks)))
           break;
         default:
-          current_data = structuredClone(this.$kytos.toRaw(this.linkData))
+          current_data = this.order_by_status(structuredClone(this.$kytos.toRaw(this.linkData)))
           break;
       }
       //Filters Data based on current textFilter.
       for (const element of this.linkTextFilter) {
         if (element[1] != "") {
-          for (const l in current_data) {
+          for (let l = 0; l < current_data.length; l++) {
             var separatedFilter = element[1].toString()
             var separatedProperty = current_data[l][element[0]].toString()
-            if (!(separatedProperty.includes(separatedFilter) || separatedFilter.includes(separatedProperty))) {
-              delete current_data[l]
+            if (!(separatedProperty.toLowerCase().includes(separatedFilter) || separatedFilter.toLowerCase().includes(separatedProperty))) {
+              current_data.splice(l, 1)
             }
           }
         }
       }
+      current_data.sort((a, b) => {
+          if (a[this.link_sorted_column] < b[this.link_sorted_column]) {
+            return -1*(this.link_table_order-1);
+          }
+          if (a[this.link_sorted_column] > b[this.link_sorted_column]) {
+            return 1*(this.link_table_order-1);
+          }
+          return 0*(this.link_table_order-1);
+      })
       return current_data
     },
     filtered_interfaceData: function () {
-      var current_data = {}
+      var current_data = []
       var updater = this.change
       //Selects Data to filter from selectedInterfaces.
       switch (this.currentInterfaceData) {
         case "ORIGINAL":
-          current_data = structuredClone(this.$kytos.toRaw(this.interfaceData))
+          current_data = this.order_by_status(structuredClone(this.$kytos.toRaw(this.interfaceData)))
           break;
         case "PRE_SELECTED":
-          current_data = structuredClone(this.$kytos.toRaw(this.selectedInterfaces))
+          current_data = this.order_by_status(structuredClone(this.$kytos.toRaw(this.selectedInterfaces)))
           break;
         default:
-          current_data = structuredClone(this.$kytos.toRaw(this.interfaceData))
+          current_data = this.order_by_status(structuredClone(this.$kytos.toRaw(this.interfaceData)))
           break;
       }
       //Filters Data based on current textFilter.
       for (const element of this.interfaceTextFilter) {
         if (element[1] != "") {
-          for (const i in current_data) {
+          for (let i = 0; i < current_data.length; i++) {
             var separatedFilter = element[1].toString()
             var separatedProperty = current_data[i][element[0]].toString()
-            if (!(separatedProperty.includes(separatedFilter) || separatedFilter.includes(separatedProperty))) {
-              delete current_data[i]
+            if (!(separatedProperty.toLowerCase().includes(separatedFilter) || separatedFilter.toLowerCase().includes(separatedProperty))) {
+              current_data.splice(i, 1)
             }
           }
         }
       }
+      current_data.sort((a, b) => {
+          if (a[this.interface_sorted_column] < b[this.interface_sorted_column]) {
+            return -1*(this.interface_table_order-1);
+          }
+          if (a[this.interface_sorted_column] > b[this.interface_sorted_column]) {
+            return 1*(this.interface_table_order-1);
+          }
+          return 0*(this.interface_table_order-1);
+      })
       return current_data
     }
   },
@@ -640,23 +718,29 @@ export default {
   },
   //Watches to see if data is changed to then store it within localStorage.
   watch: {
-    switchTextFilter(newVal) {
-      localStorage.setItem('kytos/ui/switchTextFilter', JSON.stringify(newVal))
+    switchTextFilter: {
+      handler: function (newVal) { localStorage.setItem('kytos/ui/switchTextFilter', JSON.stringify(newVal)) },
+      deep: true
     },
-    linkTextFilter(newVal) {
-      localStorage.setItem('kytos/ui/linkTextFilter', JSON.stringify(newVal))
+    linkTextFilter: {
+      handler: function (newVal) { localStorage.setItem('kytos/ui/linkTextFilter', JSON.stringify(newVal)) },
+      deep: true
     },
-    interfaceTextFilter(newVal) {
-      localStorage.setItem('kytos/ui/interfaceTextFilter', JSON.stringify(newVal))
+    interfaceTextFilter: {
+      handler: function (newVal) { localStorage.setItem('kytos/ui/interfaceTextFilter', JSON.stringify(newVal)) },
+      deep: true
     },
-    currentSwitchData(newVal) {
-      localStorage.setItem('kytos/ui/currentSwitchData', JSON.stringify(newVal))
+    currentSwitchData: {
+      handler: function (newVal) { localStorage.setItem('kytos/ui/currentSwitchData', JSON.stringify(newVal)) },
+      deep: true
     },
-    currentLinkData(newVal) {
-      localStorage.setItem('kytos/ui/currentLinkData', JSON.stringify(newVal))
+    currentLinkData: {
+      handler: function (newVal) { localStorage.setItem('kytos/ui/currentLinkData', JSON.stringify(newVal)) },
+      deep: true
     },
-    currentInterfaceData(newVal) {
-      localStorage.setItem('kytos/ui/currentInterfaceData', JSON.stringify(newVal))
+    currentInterfaceData: {
+      handler: function (newVal) { localStorage.setItem('kytos/ui/currentInterfaceData', JSON.stringify(newVal)) },
+      deep: true
     },
     selectedSwitches: {
       handler: function () {
