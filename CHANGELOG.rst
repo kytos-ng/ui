@@ -12,6 +12,7 @@ Changed
 
 Added
 =====
+- Status Menu now sorts tables by column
 - Added pinia for state management
 - Replaced ``jquery ajax`` with axios
 - Added helper function for HTTP Requests
