@@ -1,11 +1,14 @@
 <template>
    <label class="k-select no-compact">
-    <div class="k-select__title">
+    <div v-if="title" class="k-select__title">
       <icon v-if="icon && iconName"  :icon="iconName" data-test="main-icon"></icon>
       {{title}}
     </div>
-    <select class="k-select__select" v-model="selected" @change="emitEvent" multiple data-test="main-select">
-      <option v-for="item in options" :value="item.value" :key="item.value">
+    <div v-if="enable_filter">
+      <input v-model="filter_text"></input>
+    </div>
+    <select class="k-select__select" v-model="selected" multiple data-test="main-select">
+      <option v-for="item in shown_options" :value="item.value" :key="item.value">
         {{item.description}} 
       </option>
     </select>
@@ -49,11 +52,21 @@ export default {
     action: {
       type: Function,
       default: function (value) { return }
+    },
+    title: {
+      type: String,
+      required: false,
+    },
+    enable_filter: {
+      type: Boolean,
+      default: false,
+      required: false
     }
   },
   data () {
     return {
-      selected: []
+      selected: [],
+      filter_text: "",
     }
   },
   methods: {
@@ -63,6 +76,17 @@ export default {
     },
     clear () {
       this.selected = [];
+    },
+  },
+  computed: {
+    shown_options: function() {
+      if (this.filter_text) {
+        let filtered = this.options.filter((option) => {
+          return option.description.toUpperCase().includes(this.filter_text.toUpperCase())
+        })
+        return filtered;
+      }
+      return this.options;
     }
   },
   beforeMount () {
