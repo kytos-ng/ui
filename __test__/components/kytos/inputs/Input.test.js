@@ -1,6 +1,7 @@
 import { mount, shallowMount } from '@vue/test-utils';
 import Input from '@/components/kytos/inputs/Input.vue';
 import { describe, test, expect, beforeAll, afterEach, vi } from "vitest";
+import { wrap } from 'yargs';
 
 
 
@@ -86,6 +87,14 @@ describe("Input.vue", () => {
             expect(fn).toHaveBeenCalledTimes(1);
             expect(fn).toHaveBeenCalledWith(text);
         });
+
+        test("Test keypress event and method call", async () => {
+            wrapper = mount(Input);
+            const isNumberSpy = vi.spyOn(wrapper.vm, 'isNumber');
+            const input = wrapper.find('input');
+            await input.trigger('keypress', {key: 'a'});
+            expect(isNumberSpy).toBeCalled()
+        });
     });
 
     describe("User Interactions", () => {
@@ -157,5 +166,29 @@ describe("Input.vue", () => {
             await wrapper.get('[data-test="main-input"]').setValue(text);
             expect(wrapper.props('value')).toBe(text);
             });
+    });
+
+    //Methods
+
+    describe("Methods", () => {
+        test("isNumber Method with letter", () => {
+            const fn = vi.fn();
+            wrapper = shallowMount(Input, {
+                props: {only_numbers: true}
+            });
+            const event = {key: 'a', preventDefault: fn};
+            wrapper.vm.isNumber(event);
+            expect(event.preventDefault).toHaveBeenCalled();
+        });
+
+        test("isNumber Method with number", () => {
+            const fn = vi.fn();
+            wrapper = shallowMount(Input, {
+                props: {only_numbers: true}
+            });
+            const event = {key: '1', preventDefault: fn};
+            wrapper.vm.isNumber(event);
+            expect(event.preventDefault).not.toHaveBeenCalled();
+        });
     });
 });
