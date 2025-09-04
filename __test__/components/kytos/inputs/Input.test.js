@@ -1,7 +1,6 @@
 import { mount, shallowMount } from '@vue/test-utils';
 import Input from '@/components/kytos/inputs/Input.vue';
 import { describe, test, expect, beforeAll, afterEach, vi } from "vitest";
-import { wrap } from 'yargs';
 
 
 
