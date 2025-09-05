@@ -829,6 +829,7 @@ export default {
     border: 1px solid
     color: #b3b3b3
     border-color: #322c5d
+    font-size: 1.5em
   
   .data_status_table td
     vertical-align: middle
@@ -864,5 +865,4 @@ export default {
     float: none
     width: 100%
     box-sizing: border-box
-  
   </style>
