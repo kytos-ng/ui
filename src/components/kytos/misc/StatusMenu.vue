@@ -63,8 +63,8 @@
                   </thead>
                   <tbody>
                     <tr v-for="(value, index) in filtered_switchData" :key="value.dpid" @click="show_infoPanel(value.dpid)" :data-test="'switchRow_' + index">
-                      <td><k-button class="statusTableButton" :icon="isStoredS(value, index)"
-                          @click.stop="add_remove_Switches(value, index)"></k-button></td>
+                      <td><k-button class="statusTableButton" :icon="isStoredS(value)"
+                          @click.stop="add_remove_Switches(value)"></k-button></td>
                       <td>{{ value.name }}</td>
                       <td :class="statusColor(value)">{{ value.status }}</td>
                       <td>{{ splitStatusReasons(value.status_reason) }}</td>
@@ -115,8 +115,8 @@
                   </thead>
                   <tbody>
                     <tr v-for="(value, index) in filtered_linkData" :key="value.id" @click="show_infoPanelLink(value.id)" :data-test="'linkRow_' + index">
-                      <td><k-button class="statusTableButton" :icon="isStoredL(value, index)"
-                          @click.stop="add_remove_Links(value, index)"></k-button></td>
+                      <td><k-button class="statusTableButton" :icon="isStoredL(value)"
+                          @click.stop="add_remove_Links(value)"></k-button></td>
                       <td>{{ value.name }}</td>
                       <td :class="statusColor(value)">{{ value.status }}</td>
                       <td>{{ splitStatusReasons(value.status_reason) }}</td>
@@ -172,8 +172,8 @@
                   <tbody>
                     <tr v-for="(value, index) in filtered_interfaceData" :key="value.id"
                       @click="show_infoPanelInterface(value.id)" :data-test="'interfaceRow_' + index">
-                      <td><k-button class="statusTableButton" :icon="isStoredI(value, index)"
-                          @click.stop="add_remove_Interfaces(value, index)"></k-button></td>
+                      <td><k-button class="statusTableButton" :icon="isStoredI(value)"
+                          @click.stop="add_remove_Interfaces(value)"></k-button></td>
                       <td>{{ value.switch }}</td>
                       <td>{{ value.port }}</td>
                       <td :class="statusColor(value)">{{ value.status }}</td>
@@ -282,22 +282,22 @@ export default {
      * @description Sets the current "Hidden/Selected" table column button icon by verifying if Object id
      *              is found within current list. Split for each individual table: Switches, Links, and Interfaces.
      */
-    isStoredS(item, index) {
-      if (this.selectedSwitches[index]?.dpid == item.dpid) {
+    isStoredS(item) {
+      if (this.selectedSwitches.some(selectedSwitch => selectedSwitch.dpid == item.dpid)) {
         return "check-square"
       } else {
         return "square"
       }
     },
-    isStoredL(item, index) {
-      if (this.selectedLinks[index]?.id == item.id) {
+    isStoredL(item) {
+      if (this.selectedLinks.some(selectedLink => selectedLink.id == item.id)) {
         return "check-square"
       } else {
         return "square"
       }
     },
-    isStoredI(item, index) {
-      if (this.selectedInterfaces[index]?.id == item.id) {
+    isStoredI(item) {
+      if (this.selectedInterfaces.some(selectedInterface => selectedInterface.id == item.id)) {
         return "check-square"
       } else {
         return "square"
@@ -400,29 +400,29 @@ export default {
      * @description Adds and Removes elements from the respective "selected" list based on id.
      *              Split for each individual table: Switches, Links, and Interfaces.
      */
-    add_remove_Switches(item, index) {
-      if (this.selectedSwitches[index]?.dpid == item.dpid) {
-        this.selectedSwitches.splice(index,1)
+    add_remove_Switches(item) {
+      if (this.selectedSwitches.some(selectedSwitch => selectedSwitch.dpid == item.dpid)) {
+        this.selectedSwitches.splice(this.selectedSwitches.findIndex(selectedSwitch => selectedSwitch.dpid == item.dpid), 1);
       } else {
-        this.selectedSwitches[index] = item;
+        this.selectedSwitches.push(item);
       }
       this.change = this.change * -1
       this.$forceUpdate();
     },
-    add_remove_Links(item, index) {
-      if (this.selectedLinks[index]?.id == item.id) {
-        this.selectedLinks.splice(index,1)
+    add_remove_Links(item) {
+      if (this.selectedLinks.some(selectedLink => selectedLink.id == item.id)) {
+        this.selectedLinks.splice(this.selectedLinks.findIndex(selectedLink => selectedLink.id == item.id), 1);
       } else {
-        this.selectedLinks[index] = item;
+        this.selectedLinks.push(item);
       }
       this.change = this.change * -1
       this.$forceUpdate();
     },
-    add_remove_Interfaces(item, index) {
-      if (this.selectedInterfaces[index]?.id == item.id) {
-        this.selectedInterfaces.splice(index,1)
+    add_remove_Interfaces(item) {
+      if (this.selectedInterfaces.some(selectedInterface => selectedInterface.id == item.id)) {
+        this.selectedInterfaces.splice(this.selectedInterfaces.findIndex(selectedInterface => selectedInterface.id == item.id), 1);
       } else {
-        this.selectedInterfaces[index] = item;
+        this.selectedInterfaces.push(item);
       }
       this.change = this.change * -1
       this.$forceUpdate();
@@ -452,7 +452,6 @@ export default {
     },
     //Orders table data by Status (Down, Disabled, and Up)
     order_by_status(table_items) {
-      console.log(table_items)
       let status_down_items = table_items.filter(table_item => table_item.status === "DOWN");
       let status_disabled_items = table_items.filter(table_item => table_item.status === "DISABLED");
       let status_up_items = table_items.filter(table_item => table_item.status === "UP");
@@ -585,13 +584,11 @@ export default {
       //Filters Data based on current textFilter.
       for (const element of this.switchTextFilter) {
         if (element[1] != "") {
-          for (let s = 0; s < current_data.length; s++) {
-            var separatedFilter = element[1].toString()
-            var separatedProperty = current_data[s][element[0]].toString()
-            if (!(separatedProperty.toLowerCase().includes(separatedFilter) || separatedFilter.toLowerCase().includes(separatedProperty))) {
-              current_data.splice(s, 1)
-            }
-          }
+          current_data = current_data.filter((item) => {
+            let separatedFilter = element[1].toString().toLowerCase()
+            let separatedProperty = item[element[0]].toString().toLowerCase()
+            return (separatedProperty.includes(separatedFilter) || separatedFilter.includes(separatedProperty))
+          })
         }
       }
       //Sort data based on column
@@ -604,7 +601,7 @@ export default {
           }
           return 0*(this.switch_table_order-1);
       })
-      return current_data
+      return current_data;
     },
     filtered_linkData: function () {
       var current_data = []
@@ -624,13 +621,11 @@ export default {
       //Filters Data based on current textFilter.
       for (const element of this.linkTextFilter) {
         if (element[1] != "") {
-          for (let l = 0; l < current_data.length; l++) {
-            var separatedFilter = element[1].toString()
-            var separatedProperty = current_data[l][element[0]].toString()
-            if (!(separatedProperty.toLowerCase().includes(separatedFilter) || separatedFilter.toLowerCase().includes(separatedProperty))) {
-              current_data.splice(l, 1)
-            }
-          }
+          current_data = current_data.filter((item) => {
+            let separatedFilter = element[1].toString().toLowerCase()
+            let separatedProperty = item[element[0]].toString().toLowerCase()
+            return (separatedProperty.includes(separatedFilter) || separatedFilter.includes(separatedProperty))
+          })
         }
       }
       current_data.sort((a, b) => {
@@ -642,7 +637,7 @@ export default {
           }
           return 0*(this.link_table_order-1);
       })
-      return current_data
+      return current_data;
     },
     filtered_interfaceData: function () {
       var current_data = []
@@ -662,13 +657,11 @@ export default {
       //Filters Data based on current textFilter.
       for (const element of this.interfaceTextFilter) {
         if (element[1] != "") {
-          for (let i = 0; i < current_data.length; i++) {
-            var separatedFilter = element[1].toString()
-            var separatedProperty = current_data[i][element[0]].toString()
-            if (!(separatedProperty.toLowerCase().includes(separatedFilter) || separatedFilter.toLowerCase().includes(separatedProperty))) {
-              current_data.splice(i, 1)
-            }
-          }
+            current_data = current_data.filter((item) => {
+            let separatedFilter = element[1].toString().toLowerCase()
+            let separatedProperty = item[element[0]].toString().toLowerCase()
+            return (separatedProperty.includes(separatedFilter) || separatedFilter.includes(separatedProperty))
+          })
         }
       }
       current_data.sort((a, b) => {
@@ -680,7 +673,7 @@ export default {
           }
           return 0*(this.interface_table_order-1);
       })
-      return current_data
+      return current_data;
     }
   },
   created() {
