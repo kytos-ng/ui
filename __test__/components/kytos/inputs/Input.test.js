@@ -89,10 +89,10 @@ describe("Input.vue", () => {
 
         test("Test keypress event and method call", async () => {
             wrapper = mount(Input);
-            const isNumberSpy = vi.spyOn(wrapper.vm, 'isNumber');
+            const filterKeySpy = vi.spyOn(wrapper.vm, 'filterKey');
             const input = wrapper.find('input');
             await input.trigger('keypress', {key: 'a'});
-            expect(isNumberSpy).toBeCalled()
+            expect(filterKeySpy).toBeCalled()
         });
     });
 
@@ -170,23 +170,23 @@ describe("Input.vue", () => {
     //Methods
 
     describe("Methods", () => {
-        test("isNumber Method with letter", () => {
+        test("filterKey Method with letter", () => {
             const fn = vi.fn();
             wrapper = shallowMount(Input, {
-                props: {only_numbers: true}
+                props: {only_digits: true}
             });
             const event = {key: 'a', preventDefault: fn};
-            wrapper.vm.isNumber(event);
+            wrapper.vm.filterKey(event);
             expect(event.preventDefault).toHaveBeenCalled();
         });
 
-        test("isNumber Method with number", () => {
+        test("filterKey Method with number", () => {
             const fn = vi.fn();
             wrapper = shallowMount(Input, {
-                props: {only_numbers: true}
+                props: {only_digits: true}
             });
             const event = {key: '1', preventDefault: fn};
-            wrapper.vm.isNumber(event);
+            wrapper.vm.filterKey(event);
             expect(event.preventDefault).not.toHaveBeenCalled();
         });
     });

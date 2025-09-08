@@ -6,7 +6,7 @@
       ref="inputValue"
       v-bind:disabled="isDisabled" onshow="this.focus()" autofocus 
       data-test="main-input"
-      @keypress="isNumber($event)"/>
+      @keypress="filterKey($event)"/>
   </div>
 </template>
 
@@ -57,7 +57,7 @@ export default {
       type: Function,
       default: function(val) {return}
    },
-   only_numbers: {
+   only_digits: {
       type: Boolean,
       default: false,
       required: false,
@@ -78,8 +78,9 @@ export default {
       this.$emit('update:value', this.$refs.inputValue.value)
       this.action(this.$refs.inputValue.value)
     },
-    isNumber: function(event) {
-      if (this.only_numbers && !/^[0-9]$/.test(event.key) ) {
+    filterKey: function(event) {
+      if (this.only_digits && !/^[0-9]$/.test(event.key) ) {
+        // If Digits only allowed, prevent non-digit input
         event.preventDefault();
       };
     },
