@@ -86,6 +86,14 @@ describe("Input.vue", () => {
             expect(fn).toHaveBeenCalledTimes(1);
             expect(fn).toHaveBeenCalledWith(text);
         });
+
+        test("Test keypress event and method call", async () => {
+            wrapper = mount(Input);
+            const filterKeySpy = vi.spyOn(wrapper.vm, 'filterKey');
+            const input = wrapper.find('input');
+            await input.trigger('keypress', {key: 'a'});
+            expect(filterKeySpy).toBeCalled()
+        });
     });
 
     describe("User Interactions", () => {
@@ -157,5 +165,29 @@ describe("Input.vue", () => {
             await wrapper.get('[data-test="main-input"]').setValue(text);
             expect(wrapper.props('value')).toBe(text);
             });
+    });
+
+    //Methods
+
+    describe("Methods", () => {
+        test("filterKey Method with letter", () => {
+            const fn = vi.fn();
+            wrapper = shallowMount(Input, {
+                props: {only_digits: true}
+            });
+            const event = {key: 'a', preventDefault: fn};
+            wrapper.vm.filterKey(event);
+            expect(event.preventDefault).toHaveBeenCalled();
+        });
+
+        test("filterKey Method with number", () => {
+            const fn = vi.fn();
+            wrapper = shallowMount(Input, {
+                props: {only_digits: true}
+            });
+            const event = {key: '1', preventDefault: fn};
+            wrapper.vm.filterKey(event);
+            expect(event.preventDefault).not.toHaveBeenCalled();
+        });
     });
 });

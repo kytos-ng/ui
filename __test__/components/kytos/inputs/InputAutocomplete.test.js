@@ -90,7 +90,7 @@ describe("InputAutocomplete.vue", () => {
             expect(autocomplete.attributes('aria-label')).toBe(testValue);
         });
 
-        test("InputAutocomplete Action", async () => {
+        test("InputAutocomplete Input Action", async () => {
             const fn = vi.fn();
             const testCandidates = ['test1', 'test2', 'test3'];
             wrapper = mount(InputAutocomplete, {
@@ -106,11 +106,11 @@ describe("InputAutocomplete.vue", () => {
             expect(wrapper.exists()).toBe(true);
             const mainInputAutocomplete = wrapper.getComponent(Input);
 
-            expect(wrapper.props().hasOwnProperty('action')).toBe(true);
+            expect(wrapper.props().hasOwnProperty('input_action')).toBe(true);
 
-            await wrapper.setProps({ action: fn });
+            await wrapper.setProps({ input_action: fn });
 
-            expect(wrapper.props('action')).toBe(fn);
+            expect(wrapper.props('input_action')).toBe(fn);
 
             const input = mainInputAutocomplete.get('[data-test="main-input"]');
 
@@ -118,6 +118,29 @@ describe("InputAutocomplete.vue", () => {
 
             expect(fn).toHaveBeenCalledTimes(1);
             expect(fn).toHaveBeenCalledWith(testCandidates[1]);
+        });
+
+        test("InputAutocomplete Submit Action", async () => {
+            const fn = vi.fn();
+            const testCandidates = ['test1', 'test2', 'test3'];
+            wrapper = mount(InputAutocomplete, {
+                props: {
+                    candidates: testCandidates
+                },
+                global: {
+                    components: {
+                        'k-input': Input
+                    }
+                }
+            });
+            expect(wrapper.exists()).toBe(true);
+            const mainInputAutocomplete = wrapper.getComponent(Input);
+
+            expect(wrapper.props().hasOwnProperty('submit_action')).toBe(true);
+
+            await wrapper.setProps({ submit_action: fn });
+
+            expect(wrapper.props('submit_action')).toBe(fn);
         });
 
         test("InputAutocomplete Candidates", async () => {

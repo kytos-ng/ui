@@ -13,6 +13,7 @@ Changed
 - Status Menu order of rows are set to DOWN/DISABLED/UP by default
 - Status Menu column header size has been increased
 - Fixed build of latest.zip file used in releases to not include the web-ui folder
+- Added prop to `k-input` called `only_digits` to only allow digits characters to be registered when a key is pressed.
 
 Added
 =====
@@ -20,6 +21,8 @@ Added
 - Added pinia for state management
 - Replaced ``jquery ajax`` with axios
 - Added helper function for HTTP Requests
+- Autocompletes now supports actions for both input and submit
+- Fixed map background buttons
 
 [2025.1.0] - 2025-04-14
 ***********************

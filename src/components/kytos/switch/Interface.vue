@@ -21,7 +21,6 @@
 <script>
 import KytosBase from '../base/KytosBase'
 import InterfaceInfo from '../../../kytos/interfaceInfo.vue'
-import {json} from "d3-request"
 
 /**
  * Representation of the interfaces used.
