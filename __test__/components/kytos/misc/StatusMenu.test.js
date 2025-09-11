@@ -1519,7 +1519,7 @@ describe("StatusMenu.vue", () => {
       const row1 = wrapper.get("[data-test^=switchRow]");
       const checkbox = row1.getComponent(Button);
 
-      expect(wrapper.vm.selectedSwitches).toEqual({});
+      expect(wrapper.vm.selectedSwitches).toEqual([]);
 
       await checkbox.trigger("click");
 
@@ -1527,14 +1527,14 @@ describe("StatusMenu.vue", () => {
 
       await checkbox.trigger("click");
 
-      expect(wrapper.vm.selectedSwitches).toEqual({});
+      expect(wrapper.vm.selectedSwitches).toEqual([]);
     });
 
     test("Select/Deselect Link", async () => {
       const row1 = wrapper.get("[data-test^=linkRow]");
       const checkbox = row1.getComponent(Button);
 
-      expect(wrapper.vm.selectedLinks).toEqual({});
+      expect(wrapper.vm.selectedLinks).toEqual([]);
 
       await checkbox.trigger("click");
 
@@ -1542,14 +1542,14 @@ describe("StatusMenu.vue", () => {
 
       await checkbox.trigger("click");
 
-      expect(wrapper.vm.selectedLinks).toEqual({});
+      expect(wrapper.vm.selectedLinks).toEqual([]);
     });
 
     test("Select/Deselect Interface", async () => {
       const row1 = wrapper.get("[data-test^=interfaceRow]");
       const checkbox = row1.getComponent(Button);
 
-      expect(wrapper.vm.selectedInterfaces).toEqual({});
+      expect(wrapper.vm.selectedInterfaces).toEqual([]);
 
       await checkbox.trigger("click");
 
@@ -1557,7 +1557,7 @@ describe("StatusMenu.vue", () => {
 
       await checkbox.trigger("click");
 
-      expect(wrapper.vm.selectedInterfaces).toEqual({});
+      expect(wrapper.vm.selectedInterfaces).toEqual([]);
     });
 
     test("Show All and Selected Switch", async () => {
@@ -1578,7 +1578,7 @@ describe("StatusMenu.vue", () => {
       const row1 = wrapper.get("[data-test^=switchRow]");
       const checkbox = row1.getComponent(Button);
 
-      expect(wrapper.vm.selectedSwitches).toEqual({});
+      expect(wrapper.vm.selectedSwitches).toEqual([]);
 
       await checkbox.trigger("click");
 
@@ -1607,7 +1607,7 @@ describe("StatusMenu.vue", () => {
       const row1 = wrapper.get("[data-test^=linkRow]");
       const checkbox = row1.getComponent(Button);
 
-      expect(wrapper.vm.selectedLinks).toEqual({});
+      expect(wrapper.vm.selectedLinks).toEqual([]);
 
       await checkbox.trigger("click");
 
@@ -1636,7 +1636,7 @@ describe("StatusMenu.vue", () => {
       const row1 = wrapper.get("[data-test^=interfaceRow]");
       const checkbox = row1.getComponent(Button);
 
-      expect(wrapper.vm.selectedInterfaces).toEqual({});
+      expect(wrapper.vm.selectedInterfaces).toEqual([]);
 
       await checkbox.trigger("click");
 
@@ -1934,7 +1934,7 @@ describe("StatusMenu.vue", () => {
       expect(Storage.prototype.setItem).toHaveBeenCalledOnce();
       expect(Storage.prototype.setItem).toHaveBeenCalledWith(
         "kytos/ui/selectedSwitches",
-        '{"00:00:00:00:00:00:00:01":{"name":"00:00:00:00:00:00:00:01","status":"DOWN","status_reason":"N/A","enabled":true,"active":false,"dpid":"00:00:00:00:00:00:00:01"}}'
+        '[{"name":"00:00:00:00:00:00:00:01","status":"DOWN","status_reason":"N/A","enabled":true,"active":false,"dpid":"00:00:00:00:00:00:00:01"}]'
       );
     });
   });
