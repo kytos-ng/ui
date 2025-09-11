@@ -9,6 +9,8 @@ UNRELEASED - Under development
 Changed
 =======
 - The tabs in the Interface Details Menu are now collapsed by default
+- Changed ``InfoPanel`` prop name ``mySubtitle`` to ``subtitle`` since it was used with that name across many NApps.
+- Increase default font size from titles in ``k-accordion`` (collapsable panels) from 0.7 to 0.9.
 
 Added
 =====
@@ -17,6 +19,7 @@ Added
 - Added helper function for HTTP Requests
 - Autocompletes now supports actions for both input and submit
 - Fixed map background buttons
+- Added ``InfoPanel`` prop ``subtitle_2`` to display a second subtitle if necessary.
 
 Changed
 =======
