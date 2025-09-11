@@ -9,6 +9,7 @@ UNRELEASED - Under development
 Changed
 =======
 - The tabs in the Interface Details Menu are now collapsed by default
+- Added prop to `k-input` called `only_digits` to only allow digits characters to be registered when a key is pressed.
 
 Added
 =====
