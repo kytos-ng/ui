@@ -805,6 +805,7 @@ exports[`StatusMenu.vue > User Interactions > Click on switch to get Switch Deta
   },
   "icon": "cog",
   "subtitle": "",
+  "subtitle_2": "",
   "title": "Switch Details",
 }
 `;

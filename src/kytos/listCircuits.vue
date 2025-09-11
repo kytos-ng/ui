@@ -98,7 +98,8 @@ export default {
                      "content": s,
                      "icon": "cog",
                      "title": "Switch Details",
-                     "subtitle": s.connection}
+                     "subtitle": s.metadata.node_name || '',
+                     "subtitle_2": s.connection}
       this.$kytos.eventBus.$emit("showInfoPanel", content)
     }
   },
