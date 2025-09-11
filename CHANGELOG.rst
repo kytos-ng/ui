@@ -23,6 +23,7 @@ Added
 - Added helper function for HTTP Requests
 - Autocompletes now supports actions for both input and submit
 - Fixed map background buttons
+- MapBox Settings will now be stored within localStorage
 
 [2025.1.0] - 2025-04-14
 ***********************
