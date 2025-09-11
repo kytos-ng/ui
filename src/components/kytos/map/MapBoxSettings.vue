@@ -63,8 +63,42 @@ export default {
         switchLabels: [],
         interfaceLabels: [],
         mapOpacity: 100,
-        shapes: []
       }
-  }
+  },
+  //Extracts data from localStorage (if available) when first mounted.
+  mounted() {
+    switchLabels_storage = JSON.parse(localStorage.getItem('kytos/ui/MapBoxSettings/switchLabels'));
+    interfaceLabels_storage = JSON.parse(localStorage.getItem('kytos/ui/MapBoxSettings/interfaceLabels'));
+    mapOpacity_storage = JSON.parse(localStorage.getItem('kytos/ui/MapBoxSettings/mapOpacity'));
+    if (switchLabels_storage) {
+      this.switchLabels = switchLabels_storage;
+    }
+    if (interfaceLabels_storage) {
+      this.interfaceLabels = interfaceLabels_storage;
+    }
+    if (mapOpacity_storage) {
+      this.mapOpacity = mapOpacity_storage;
+    }
+  },
+  //Watches to see if data is changed to then store it within localStorage.
+  watch: {
+    switchLabels: {
+      handler: function (newVal) {
+        localStorage.setItem('kytos/ui/MapBoxSettings/switchLabels', JSON.stringify(newVal))
+      },
+      deep: true
+    },
+    interfaceLabels: {
+      handler: function (newVal) {
+        localStorage.setItem('kytos/ui/MapBoxSettings/interfaceLabels', JSON.stringify(newVal))
+      },
+      deep: true
+    },
+    mapOpacity: {
+      handler: function (newVal) {
+        localStorage.setItem('kytos/ui/MapBoxSettings/mapOpacity', JSON.stringify(newVal))
+      }
+    },
+  }  
 }
 </script>
