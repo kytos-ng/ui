@@ -3,8 +3,8 @@
       <k-context-panel title_color="#554077" title="MapBox Settings" icon="cog">
         <k-accordion>
           <k-accordion-item title="Custom Labels">
-            <k-dropdown title="Switch Labels:" icon="circle" :options="switchLabels" :event="{name: 'topology-toggle-label', content: {node_type: 'switch'}}"></k-dropdown>
-            <k-dropdown title="Interface Labels:" icon="plug" :options="interfaceLabels" :event="{name: 'topology-toggle-label', content: {node_type: 'interface'}}"></k-dropdown>
+            <k-dropdown title="Switch Labels:" icon="circle" :options="switchLabels" v-model:value="selectedSwitchLabel" :event="{name: 'topology-toggle-label', content: {node_type: 'switch'}}"></k-dropdown>
+            <k-dropdown title="Interface Labels:" icon="plug" :options="interfaceLabels" v-model:value="selectedInterfaceLabel" :event="{name: 'topology-toggle-label', content: {node_type: 'interface'}}"></k-dropdown>
           </k-accordion-item>
 
           <k-accordion-item title="Background">
@@ -13,7 +13,7 @@
               <k-button tooltip="Image Background (disabled)" icon="image" :is-disabled="true"></k-button>
               <k-button tooltip="No Background" icon="window-close" @click="emitMapNoBackground"></k-button>
             </k-button-group>
-            <k-slider icon="adjust" :initial-value="mapOpacity" :action="emitMapOpacity"></k-slider>
+            <k-slider icon="adjust" v-model:modifiableValue.number="mapOpacity" :action="emitMapOpacity"></k-slider>
           </k-accordion-item>
         </k-accordion>
       </k-context-panel>
@@ -63,18 +63,20 @@ export default {
         switchLabels: [],
         interfaceLabels: [],
         mapOpacity: 100,
+        selectedSwitchLabel: "",
+        selectedInterfaceLabel: ""
       }
   },
   //Extracts data from localStorage (if available) when first mounted.
   mounted() {
-    let switchLabels_storage = JSON.parse(localStorage.getItem('kytos/ui/MapBoxSettings/switchLabels'));
-    let interfaceLabels_storage = JSON.parse(localStorage.getItem('kytos/ui/MapBoxSettings/interfaceLabels'));
-    let mapOpacity_storage = JSON.parse(localStorage.getItem('kytos/ui/MapBoxSettings/mapOpacity'));
-    if (switchLabels_storage) {
-      this.switchLabels = switchLabels_storage;
+    let selectedSwitchLabel_storage = localStorage.getItem('kytos/ui/MapBoxSettings/selectedSwitchLabel');
+    let selectedInterfaceLabel_storage = JSON.parse(localStorage.getItem('kytos/ui/MapBoxSettings/selectedInterfaceLabel'));
+    let mapOpacity_storage = parseInt(localStorage.getItem('kytos/ui/MapBoxSettings/mapOpacity'), 10);
+    if (selectedSwitchLabel_storage) {
+      this.selectedSwitchLabel = selectedSwitchLabel_storage;
     }
-    if (interfaceLabels_storage) {
-      this.interfaceLabels = interfaceLabels_storage;
+    if (selectedInterfaceLabel_storage) {
+      this.selectedInterfaceLabel = selectedInterfaceLabel_storage;
     }
     if (mapOpacity_storage) {
       this.mapOpacity = mapOpacity_storage;
@@ -82,21 +84,19 @@ export default {
   },
   //Watches to see if data is changed to then store it within localStorage.
   watch: {
-    switchLabels: {
+    selectedSwitchLabel: {
       handler: function (newVal) {
-        localStorage.setItem('kytos/ui/MapBoxSettings/switchLabels', JSON.stringify(newVal))
-      },
-      deep: true
+        localStorage.setItem('kytos/ui/MapBoxSettings/selectedSwitchLabel', newVal)
+      }
     },
-    interfaceLabels: {
+    selectedInterfaceLabel: {
       handler: function (newVal) {
-        localStorage.setItem('kytos/ui/MapBoxSettings/interfaceLabels', JSON.stringify(newVal))
-      },
-      deep: true
+        localStorage.setItem('kytos/ui/MapBoxSettings/selectedInterfaceLabel', newVal)
+      }
     },
     mapOpacity: {
       handler: function (newVal) {
-        localStorage.setItem('kytos/ui/MapBoxSettings/mapOpacity', JSON.stringify(newVal))
+        localStorage.setItem('kytos/ui/MapBoxSettings/mapOpacity', String(newVal))
       }
     },
   }  
