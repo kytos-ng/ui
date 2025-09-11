@@ -9,6 +9,10 @@ UNRELEASED - Under development
 Changed
 =======
 - The tabs in the Interface Details Menu are now collapsed by default
+- Status Menu filters are no longer case sensitive
+- Status Menu order of rows are set to DOWN/DISABLED/UP by default
+- Status Menu column header size has been increased
+- Fixed build of latest.zip file used in releases to not include the web-ui folder
 
 Added
 =====
@@ -16,10 +20,6 @@ Added
 - Added pinia for state management
 - Replaced ``jquery ajax`` with axios
 - Added helper function for HTTP Requests
-
-Changed
-=======
-- Fixed build of latest.zip file used in releases to not include the web-ui folder
 
 [2025.1.0] - 2025-04-14
 ***********************
