@@ -30,8 +30,9 @@ describe("Select.vue", () => {
                 }
             });
             expect(wrapper.exists()).toBe(true);
-
             expect(wrapper.vm.selected).toEqual(testValue);
+            expect(wrapper.vm.title).toEqual(undefined);
+            expect(wrapper.vm.enable_filter).toEqual(false);
         });
 
         test("Select Options", () => {
@@ -79,6 +80,25 @@ describe("Select.vue", () => {
 
             expect(fn).toHaveBeenCalledTimes(2);
             expect(fn).toHaveBeenCalledWith([testOptions[0].value, testOptions[2].value]);
+        });
+
+        test("Select Enable Filter", async () => {
+            wrapper = mount(Select, {
+                props: {
+                    options: testOptions,
+                    enable_filter: true,
+                }
+            });
+            expect(wrapper.exists()).toBe(true);
+
+            let actual = wrapper.vm.isAMatch(testOptions[0]);
+            expect("no_filter").toEqual(actual);
+            
+            await wrapper.find('input').setValue("Desc1");
+            actual = wrapper.vm.isAMatch(testOptions[0]);
+            expect("matched").toEqual(actual);
+            actual = wrapper.vm.isAMatch(testOptions[1]);
+            expect("not_matched").toEqual(actual);
         });
     });
 
@@ -145,7 +165,8 @@ describe("Select.vue", () => {
             const testIcon = "arrow-right";
             wrapper = shallowMount(Select, {
                 props: {
-                    options: testOptions
+                    options: testOptions,
+                    title: "TestSelect"
                 }
             });
             expect(wrapper.exists()).toBe(true);

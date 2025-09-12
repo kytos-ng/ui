@@ -4,11 +4,11 @@
       <icon v-if="icon && iconName"  :icon="iconName" data-test="main-icon"></icon>
       {{title}}
     </div>
-    <div v-if="enable_filter">
+    <div class="input_filter" v-if="enable_filter">
       <input v-model="filter_text"></input>
     </div>
-    <select class="k-select__select" v-model="selected" multiple data-test="main-select">
-      <option v-for="item in shown_options" :value="item.value" :key="item.value">
+    <select class="k-select__select" v-model="selected" @change="emitEvent" multiple data-test="main-select">
+      <option :class="isAMatch(item)" v-for="item in options" :value="item.value" :key="item.value">
         {{item.description}} 
       </option>
     </select>
@@ -77,17 +77,15 @@ export default {
     clear () {
       this.selected = [];
     },
-  },
-  computed: {
-    shown_options: function() {
+    isAMatch (option) {
       if (this.filter_text) {
-        let filtered = this.options.filter((option) => {
-          return option.description.toUpperCase().includes(this.filter_text.toUpperCase())
-        })
-        return filtered;
+        if (option.description.toUpperCase().includes(this.filter_text.toUpperCase())) {
+          return "matched";
+        }
+        return "not_matched";
       }
-      return this.options;
-    }
+      return "no_filter";
+    },
   },
   beforeMount () {
     // Initialize the selected values with the v-model:value property
@@ -122,6 +120,12 @@ export default {
  font-size: 0.8em
  color: dark-theme-variables.$fill-text
 
+.k-select .input_filter input
+ background: lightgray
+ border-radius: 3px;
+ font-size: 0.9em;
+ width: 99.5%
+
  &:hover svg
   fill: dark-theme-variables.$fill-icon-h
   color: dark-theme-variables.$fill-icon-h
@@ -130,12 +134,6 @@ export default {
    padding-bottom: 2px
    padding-left: 3px
    padding-top: 0px
-
-  .k-select__select
-   margin-left: 5px
-   width: 130px
-   max-width: 130px
-   height: 100%
 
 .k-select__title
  padding-bottom: 10px
@@ -172,5 +170,7 @@ export default {
 
  &:hover *
   color: dark-theme-variables.$fill-shortkey
-  background-color: dark-theme-variables.$fill-button-bg-h
+
+.k-select__select option.not_matched
+ display: none
 </style>
