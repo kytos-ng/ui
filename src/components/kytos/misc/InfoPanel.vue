@@ -16,7 +16,8 @@
       <icon v-if="myIcon && iconName" :icon="iconName"></icon>
       <div v-if="myTitle" class="panel-title">
         <h1> {{ myTitle }}
-          <small v-if="mySubtitle">{{ mySubtitle }}</small>
+          <small v-if="subtitle">{{ subtitle }}</small>
+          <small v-if="subtitle_2">{{ subtitle_2 }}</small>
         </h1>
       </div>
     </div>
@@ -54,7 +55,8 @@ export default {
       content: undefined,
       myIcon: 'cog',
       myTitle: '',
-      mySubtitle: '',
+      subtitle: '',
+      subtitle_2: '',
       maximized: false,
       lastContent: {},
       hasContent: false,
@@ -96,7 +98,8 @@ export default {
       this.infoPanelView = content.component
       this.content = content.content
       this.myTitle = content.title
-      this.mySubtitle = content.subtitle
+      this.subtitle = content.subtitle
+      this.subtitle_2 = content.subtitle_2
       this.myIcon = content.icon
       this.classObject['k-info-panel-max'] = content.maximized
       $('.k-info-panel').toggleClass('show')

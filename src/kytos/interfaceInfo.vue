@@ -198,7 +198,8 @@ export default {
                            content: this.content_switch,
                            icon: "cog",
                            title: "Switch Details",
-                           subtitle: this.content_switch.connection,}
+                           subtitle: this.content_switch.metadata.node_name || '',
+                           subtitle_2: this.content_switch.connection,}
       this.$kytos.eventBus.$emit("showInfoPanel", panel_content)
     },
     get_metadata: function() {

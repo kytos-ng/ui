@@ -335,7 +335,8 @@ export default {
         content: this.switches[s],
         icon: "cog",
         title: "Switch Details",
-        subtitle: this.switches[s].connection
+        subtitle: this.switches[s].metadata.node_name || '',
+        subtitle_2: this.switches[s].connection,
       }
       this.$kytos.eventBus.$emit("showInfoPanel", content)
     },
