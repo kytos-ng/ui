@@ -122,8 +122,8 @@ export default {
 
 .k-select .input_filter input
  background: lightgray
- border-radius: 3px;
- font-size: 0.9em;
+ border-radius: 3px
+ font-size: 0.9em
  width: 99.5%
 
  &:hover svg
