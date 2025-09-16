@@ -5,12 +5,12 @@ exports[`StatusMenu.vue > DOM Elements > Interface Table 1`] = `
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Switch/Node</th>
-      <th>Port</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Switch/Node </th>
+      <th>Port </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="interfaceNode_Filter"></th>
@@ -141,11 +141,11 @@ exports[`StatusMenu.vue > DOM Elements > Link Table 1`] = `
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Name </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="linkName_Filter"></th>
@@ -185,11 +185,11 @@ exports[`StatusMenu.vue > DOM Elements > Switch Table 1`] = `
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Name </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="switchName_Filter"></th>
@@ -805,13 +805,14 @@ exports[`StatusMenu.vue > User Interactions > Click on switch to get Switch Deta
   },
   "icon": "cog",
   "subtitle": "",
+  "subtitle_2": "",
   "title": "Switch Details",
 }
 `;
 
 exports[`StatusMenu.vue > User Interactions > Select/Deselect Interface 1`] = `
-{
-  "00:00:00:00:00:00:00:01:4294967294": {
+[
+  {
     "active": false,
     "enabled": true,
     "id": "00:00:00:00:00:00:00:01:4294967294",
@@ -820,12 +821,12 @@ exports[`StatusMenu.vue > User Interactions > Select/Deselect Interface 1`] = `
     "status_reason": "N/A",
     "switch": "00:00:00:00:00:00:00:01",
   },
-}
+]
 `;
 
 exports[`StatusMenu.vue > User Interactions > Select/Deselect Link 1`] = `
-{
-  "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30": {
+[
+  {
     "active": false,
     "enabled": true,
     "id": "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30",
@@ -833,12 +834,12 @@ exports[`StatusMenu.vue > User Interactions > Select/Deselect Link 1`] = `
     "status": "DOWN",
     "status_reason": "N/A",
   },
-}
+]
 `;
 
 exports[`StatusMenu.vue > User Interactions > Select/Deselect Switch 1`] = `
-{
-  "00:00:00:00:00:00:00:01": {
+[
+  {
     "active": false,
     "dpid": "00:00:00:00:00:00:00:01",
     "enabled": true,
@@ -846,7 +847,7 @@ exports[`StatusMenu.vue > User Interactions > Select/Deselect Switch 1`] = `
     "status": "DOWN",
     "status_reason": "N/A",
   },
-}
+]
 `;
 
 exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 1`] = `
@@ -854,12 +855,12 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 1`
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Switch/Node</th>
-      <th>Port</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Switch/Node </th>
+      <th>Port </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="interfaceNode_Filter"></th>
@@ -990,12 +991,12 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 2`
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Switch/Node</th>
-      <th>Port</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Switch/Node </th>
+      <th>Port </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="interfaceNode_Filter"></th>
@@ -1015,12 +1016,12 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 3`
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Switch/Node</th>
-      <th>Port</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Switch/Node </th>
+      <th>Port </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="interfaceNode_Filter"></th>
@@ -1147,8 +1148,8 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 3`
 `;
 
 exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 4`] = `
-{
-  "00:00:00:00:00:00:00:01:4294967294": {
+[
+  {
     "active": false,
     "enabled": true,
     "id": "00:00:00:00:00:00:00:01:4294967294",
@@ -1157,7 +1158,7 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 4`
     "status_reason": "N/A",
     "switch": "00:00:00:00:00:00:00:01",
   },
-}
+]
 `;
 
 exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 5`] = `
@@ -1165,12 +1166,12 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Interface 5`
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Switch/Node</th>
-      <th>Port</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Switch/Node </th>
+      <th>Port </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="interfaceNode_Filter"></th>
@@ -1202,11 +1203,11 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Link 1`] = `
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Name </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="linkName_Filter"></th>
@@ -1246,11 +1247,11 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Link 2`] = `
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Name </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="linkName_Filter"></th>
@@ -1269,11 +1270,11 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Link 3`] = `
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Name </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="linkName_Filter"></th>
@@ -1309,8 +1310,8 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Link 3`] = `
 `;
 
 exports[`StatusMenu.vue > User Interactions > Show All and Selected Link 4`] = `
-{
-  "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30": {
+[
+  {
     "active": false,
     "enabled": true,
     "id": "4d42dc0852278accac7d9df15418f6d921db160b13d674029a87cef1b5f67f30",
@@ -1318,7 +1319,7 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Link 4`] = `
     "status": "DOWN",
     "status_reason": "N/A",
   },
-}
+]
 `;
 
 exports[`StatusMenu.vue > User Interactions > Show All and Selected Link 5`] = `
@@ -1326,11 +1327,11 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Link 5`] = `
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Name </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="linkName_Filter"></th>
@@ -1360,11 +1361,11 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Switch 1`] =
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Name </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="switchName_Filter"></th>
@@ -1414,11 +1415,11 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Switch 2`] =
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Name </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="switchName_Filter"></th>
@@ -1437,11 +1438,11 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Switch 3`] =
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Name </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="switchName_Filter"></th>
@@ -1487,8 +1488,8 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Switch 3`] =
 `;
 
 exports[`StatusMenu.vue > User Interactions > Show All and Selected Switch 4`] = `
-{
-  "00:00:00:00:00:00:00:01": {
+[
+  {
     "active": false,
     "dpid": "00:00:00:00:00:00:00:01",
     "enabled": true,
@@ -1496,7 +1497,7 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Switch 4`] =
     "status": "DOWN",
     "status_reason": "N/A",
   },
-}
+]
 `;
 
 exports[`StatusMenu.vue > User Interactions > Show All and Selected Switch 5`] = `
@@ -1504,11 +1505,11 @@ exports[`StatusMenu.vue > User Interactions > Show All and Selected Switch 5`] =
   <thead>
     <tr>
       <th rowspan="2"></th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Reason</th>
-      <th>Enabled</th>
-      <th>Active</th>
+      <th>Name </th>
+      <th>Status </th>
+      <th>Reason </th>
+      <th>Enabled </th>
+      <th>Active </th>
     </tr>
     <tr>
       <th><input data-test="switchName_Filter"></th>

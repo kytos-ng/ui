@@ -71,7 +71,7 @@ export default {
   padding: 1px 0 5px 20px
   margin-top: 5px
   cursor: pointer
-  font-size: 0.7em
+  font-size: 0.9em
   color: dark-theme-variables.$fill-icon
   border-bottom: 1px solid dark-theme-variables.$fill-bar
 
