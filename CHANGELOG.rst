@@ -17,6 +17,7 @@ Added
 - Added helper function for HTTP Requests
 - Autocompletes now supports actions for both input and submit
 - Fixed map background buttons
+- Added ``enable_filter`` prop for ``k-select`` component to enable an input box which content will filter options.
 
 Changed
 =======
