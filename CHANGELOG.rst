@@ -25,7 +25,7 @@ Added
 - Added helper function for HTTP Requests
 - Autocompletes now supports actions for both input and submit
 - Fixed map background buttons
-- Added ``InfoPanel`` prop ``subtitle_2`` to display a second subtitle if necessary.
+- Added ``enable_filter`` prop for ``k-select`` component to enable an input box which content will filter options.
 
 [2025.1.0] - 2025-04-14
 ***********************
