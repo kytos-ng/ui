@@ -114,9 +114,6 @@ export default {
     },
     deep: true
    },
-   value () {
-    this.selected = this.value;
-   }
  }
 }
 </script>
