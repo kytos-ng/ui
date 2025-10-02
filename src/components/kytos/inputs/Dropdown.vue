@@ -106,10 +106,13 @@ export default {
    selected () {
      this.emitEvent()
    },
-   options () {
-     this.options.forEach((item) => {
+   options: {
+    handler: function () {
+      this.options.forEach((item) => {
        if (this.selected == '' && item.selected) {this.selected = item.value }
-     })
+      })
+    },
+    deep: true
    },
    value () {
     this.selected = this.value;

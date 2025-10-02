@@ -9,6 +9,7 @@ import KytosBase from '../base/KytosBase';
 import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
 import KytosTopology from '../topology/Topology.vue';
 import "mapbox-gl/dist/mapbox-gl.css";
+import { useMapSettingsStore } from '../../../stores/mapsettingsStore';
 
 export default {
   name: 'k-map',
@@ -35,7 +36,6 @@ export default {
        * @event change-map-opacity
        * @type {Number} The Opacity number
        */
-      this.$kytos.eventBus.$on("change-map-opacity", this.changeMapOpacity);
       this.$kytos.eventBus.$on("change-map-no-background", this.setEmptyMapStyle);
       this.$kytos.eventBus.$on("change-map-default-background", this.setKytosMapStyle);
     },
@@ -88,10 +88,30 @@ export default {
           }
         });
         this.getTopology();
+
+        const store = useMapSettingsStore();
+
+        let setMapFuncs = {
+          "": () => {},
+          "change_map_no_background": () => {this.map.setStyle(this.map_style_empty)},
+          "change_map_default_background": () => {this.map.setStyle(this.map_style_kytos)}
+        }
+
+        // Change map to current pinia store data.
+        this.changeMapOpacity(store.mapOpacity);
+
+        // Subscribe to store and update map based changes to it.
+        let prevStyle = "";
+        store.$subscribe((mutation, state) => {
+          this.changeMapOpacity(state.mapOpacity);
+          if (state.mapStyle != prevStyle) {
+            setMapFuncs[state.mapStyle]();
+          }
+          prevStyle = state.mapStyle;
+        })
       });
 
       this.map = map;
-      
     },
     async getTopology () {
       console.log("Fetching topology data")

@@ -1,8 +1,8 @@
 <template>
   <div class="k-slider">
     <icon v-if="icon && iconName" :icon="iconName" data-test="main-icon"></icon>
-    <span class="range-slider__value">{{modifiableValue}}</span>
-    <input @input="doRange" :id="id" class="k-slider__range" type="range" :value="modifiableValue" :min="min" :max="max" :step="step" data-test="main-slider">
+    <span class="range-slider__value">{{value}}</span>
+    <input @input="doRange" :id="id" class="k-slider__range" type="range" v-model.number="value" :min="min" :max="max" :step="step" data-test="main-slider">
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
 /**
  * A GUI widget that allows the users specify a numeric value which must be no less than a given value, and no more than another given value.
  *
- * @example <k-slider icon="adjust" :modifiable-value="mapOpacity" :action="emitMapOpacity"></k-slider>
+ * @example <k-slider icon="adjust" :initial-value="mapOpacity" :action="emitMapOpacity"></k-slider>
  * @example /_static/imgs/components/input/k-slider.png
  */
 
@@ -24,7 +24,7 @@ export default {
     /**
      * Initial value assigned to slider input.
      */
-    modifiableValue: {
+    initialValue: {
       type: Number,
       default: 0
     },
@@ -57,11 +57,12 @@ export default {
       default: 1
     }
   },
-  emits: ['update:modifiableValue'],
+  data () {
+    return {value: this.initialValue}
+  },
   methods: {
-    doRange (event) {
-      this.$emit('update:modifiableValue', event.target.value)
-      this.action(this.modifiableValue)
+    doRange () {
+      this.action(this.value)
     }
   }
 }
