@@ -43,9 +43,6 @@ export default {
                                    description: content.description,
                                    selected: content.selected})
     },
-    toggleLabel (type, label) {
-      this.$kytos.eventBus.$emit('topology-toggle-label', type, label)
-    },
     ...mapActions(useMapSettingsStore, ['changeMapOpacity', 'changeMapStyle']),
     ...mapActions(useTopologySettingsStore, ['onChangeSwitchLabel', 'onChangeInterfaceLabel'])
   },

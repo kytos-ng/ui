@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 export const useTopologySettingsStore = defineStore("topologysettings", {
   state: () => {
     return {
-        current_switch_label: (localStorage.getItem('kytos/ui/MapBoxSettings/selectedSwitchLabel') || ""),
+        current_switch_label: (localStorage.getItem('kytos/ui/MapBoxSettings/selectedSwitchLabel') || "node_name"),
         current_interface_label: (localStorage.getItem('kytos/ui/MapBoxSettings/selectedInterfaceLabel') || "")
     };
   },
