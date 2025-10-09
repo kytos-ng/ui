@@ -99,11 +99,7 @@ export default {
       this.selected = _selected;
     }
   },
-  watch: {
-    selected () {
-      this.emitEvent();
-    },
-  }
+  watch: {}
 }
 </script>
 
