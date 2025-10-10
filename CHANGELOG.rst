@@ -27,6 +27,10 @@ Added
 - Fixed map background buttons
 - Added ``enable_filter`` prop for ``k-select`` component to enable an input box which content will filter options.
 
+Fixed
+=====
+- ``k-select`` does not longer updates twices when clicking in any options.
+
 [2025.1.0] - 2025-04-14
 ***********************
 
