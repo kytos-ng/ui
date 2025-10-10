@@ -26,6 +26,8 @@ Added
 - Autocompletes now supports actions for both input and submit
 - Fixed map background buttons
 - Added ``enable_filter`` prop for ``k-select`` component to enable an input box which content will filter options.
+- Added ESLint and Prettier for linting and formatting.
+- Added github workflows for linting and formatting.
 
 Fixed
 =====
