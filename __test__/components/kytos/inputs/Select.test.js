@@ -78,7 +78,7 @@ describe("Select.vue", () => {
 
             await mainSelect.setValue(['testVal1', 'testVal3']);
 
-            expect(fn).toHaveBeenCalledTimes(2);
+            expect(fn).toHaveBeenCalledTimes(1);
             expect(fn).toHaveBeenCalledWith([testOptions[0].value, testOptions[2].value]);
         });
 
@@ -195,7 +195,7 @@ describe("Select.vue", () => {
 
             await mainSelect.setValue(['testVal1', 'testVal3']);
 
-            expect(wrapper.emitted('update:value')).toHaveLength(2);
+            expect(wrapper.emitted('update:value')).toHaveLength(1);
             expect(wrapper.emitted('update:value')[0]).toEqual([[testOptions[0].value, testOptions[2].value]]);
         });
     });
