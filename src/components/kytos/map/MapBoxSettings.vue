@@ -3,17 +3,17 @@
       <k-context-panel title_color="#554077" title="MapBox Settings" icon="cog">
         <k-accordion>
           <k-accordion-item title="Custom Labels">
-            <k-dropdown title="Switch Labels:" icon="circle" :options="switchLabels" :event="{name: 'topology-toggle-label', content: {node_type: 'switch'}}"></k-dropdown>
-            <k-dropdown title="Interface Labels:" icon="plug" :options="interfaceLabels" :event="{name: 'topology-toggle-label', content: {node_type: 'interface'}}"></k-dropdown>
+            <k-dropdown title="Switch Labels:" icon="circle" :options="switchLabels" v-model:value="current_switch_label" :action="onChangeSwitchLabel"></k-dropdown>
+            <k-dropdown title="Interface Labels:" icon="plug" :options="interfaceLabels" v-model:value="current_interface_label" :action="onChangeInterfaceLabel"></k-dropdown>
           </k-accordion-item>
 
           <k-accordion-item title="Background">
             <k-button-group>
-              <k-button tooltip="Map Background" icon="desktop" @click="emitMapDefaultBackground"></k-button>
+              <k-button tooltip="Map Background" icon="desktop" @click="changeMapStyle('change_map_default_background')"></k-button>
               <k-button tooltip="Image Background (disabled)" icon="image" :is-disabled="true"></k-button>
-              <k-button tooltip="No Background" icon="window-close" @click="emitMapNoBackground"></k-button>
+              <k-button tooltip="No Background" icon="window-close" @click="changeMapStyle('change_map_no_background')"></k-button>
             </k-button-group>
-            <k-slider icon="adjust" :initial-value="mapOpacity" :action="emitMapOpacity"></k-slider>
+            <k-slider icon="adjust" :initial-value="mapOpacity" :action="changeMapOpacity"></k-slider>
           </k-accordion-item>
         </k-accordion>
       </k-context-panel>
@@ -21,18 +21,12 @@
 </template>
 
 <script>
-export default {
+import { mapWritableState, mapActions } from 'pinia'
+import { useMapSettingsStore } from '../../../stores/mapsettingsStore'
+import { useTopologySettingsStore } from '../../../stores/topologysettingsStore'
 
+export default {
   methods: {
-    emitMapNoBackground () {
-      this.$kytos.eventBus.$emit('change-map-no-background')
-    },
-    emitMapDefaultBackground () {
-      this.$kytos.eventBus.$emit('change-map-default-background')
-    },
-    emitMapOpacity (value) {
-      this.$kytos.eventBus.$emit('change-map-opacity', value)
-    },
     addSwitchLabel (content) {
       let value = content.value
       let exist = this.switchLabels.filter(label => label.value == value)
@@ -49,22 +43,23 @@ export default {
                                    description: content.description,
                                    selected: content.selected})
     },
-    toggleLabel (type, label) {
-      this.$kytos.eventBus.$emit('topology-toggle-label', type, label)
-    },
+    ...mapActions(useMapSettingsStore, ['changeMapOpacity', 'changeMapStyle']),
+    ...mapActions(useTopologySettingsStore, ['onChangeSwitchLabel', 'onChangeInterfaceLabel'])
   },
-  created: function() {
-    // Registering listeners
-    this.$kytos.eventBus.$on('menu-add-switch-label', this.addSwitchLabel)
-    this.$kytos.eventBus.$on('menu-add-interface-label', this.addInterfaceLabel)
+  computed: {
+    ...mapWritableState(useMapSettingsStore, ['mapOpacity']),
+    ...mapWritableState(useTopologySettingsStore, ['current_switch_label', 'current_interface_label']),
   },
   data: function() {
       return {
         switchLabels: [],
-        interfaceLabels: [],
-        mapOpacity: 100,
-        shapes: []
+        interfaceLabels: []
       }
+  },
+  created() {
+    // Registering listeners
+    this.$kytos.eventBus.$on('menu-add-switch-label', this.addSwitchLabel)
+    this.$kytos.eventBus.$on('menu-add-interface-label', this.addInterfaceLabel)
   }
 }
 </script>

@@ -5,6 +5,7 @@
 import * as d3 from "d3";
 import KytosBase from '../base/KytosBase';
 import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
+import { useTopologySettingsStore } from '../../../stores/topologysettingsStore';
 
 export default {
   name: "k-topology",
@@ -37,6 +38,14 @@ export default {
     },
     map_height () {
       return $("#k-map canvas").height()
+    },
+    current_switch_label () {
+      const store = useTopologySettingsStore();
+      return store.current_switch_label;
+    },
+    current_interface_label () {
+      const store = useTopologySettingsStore();
+      return store.current_interface_label;
     }
   },
   mounted () {
@@ -61,13 +70,6 @@ export default {
       this.$kytos.eventBus.$on("topology-highlightAll", (p) => {
         if (!this.check_switch_under_click(p)) this.highlight_all_elements()
       })
-      /**
-       * Change the switches label
-       *
-       * @event topology-toggle-label
-       * @type {object} A content with label and node-type
-       */
-      this.$kytos.eventBus.$on("topology-toggle-label", this.toggle_labels)
     },
     clear_links_color(){
       $.each(this.graph.links, function(index, link){
@@ -351,13 +353,6 @@ export default {
 
       this.$kytos.eventBus.$emit("showInfoPanel", content)
     },
-    toggle_labels (content) {
-      let label_type = content.value
-      let node_type = content.node_type
-      $(".label." + node_type).fadeOut()
-      $(".label." + node_type + "." + label_type).fadeIn()
-      this.labels_display[node_type] = label_type
-    },
     fix_name (name) {
       return name.toString().replace(/:/g, "__")
     },
@@ -546,6 +541,32 @@ export default {
       this.$kytos.eventBus.$emit("statusMessage", "Topology built. Have fun!")
     }
   },
+  //Update UI based on individual store state
+  watch: {
+    current_switch_label: {
+      handler: function (newVal) {
+        let label_type = newVal
+        let node_type = "switch"
+        $(".label." + node_type).fadeOut()
+        $(".label." + node_type + "." + label_type).fadeIn()
+        this.labels_display[node_type] = label_type
+      },
+      immediate: true,
+      deep: true
+    },
+    //For interfaces (once they are available)
+    // current_interface_label: {
+    //   handler: function (newVal) {
+    //     let label_type = newVal
+    //     let node_type = "interface"
+    //     $(".label." + node_type).fadeOut()
+    //     $(".label." + node_type + "." + label_type).fadeIn()
+    //     this.labels_display[node_type] = label_type
+    //   },
+    //   immediate: true,
+    //   deep: true
+    // }
+  }, 
   beforeUnmount () {
     // Removing listeners
     this.$kytos.eventBus.$off("topology-highlightAll")

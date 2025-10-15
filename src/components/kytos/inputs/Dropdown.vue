@@ -77,7 +77,7 @@ export default {
  },
  methods: {
    emitEvent () {
-     if (this.event !== undefined){
+     if (this.event){
        let content = this.event.content
        content.value = this.selected
        this.$kytos.eventBus.$emit(this.event.name, content)
@@ -106,11 +106,14 @@ export default {
    selected () {
      this.emitEvent()
    },
-   options () {
-     this.options.forEach((item) => {
+   options: {
+    handler: function () {
+      this.options.forEach((item) => {
        if (this.selected == '' && item.selected) {this.selected = item.value }
-     })
-   }
+      })
+    },
+    deep: true
+   },
  }
 }
 </script>
