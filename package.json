@@ -15,9 +15,12 @@
     "test-run": "vitest run",
     "coverage": "vitest run --coverage",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:file": "eslint",
+    "lint:check": "eslint",
+    "lint:file": "eslint --fix",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --check .",
+    "format:check": "prettier --check",
+    "format:file": "prettier --write",
     "format:fix": "prettier --write .",
     "validate": "npm run lint && npm run format"
   },
