@@ -6,13 +6,14 @@ import { resolve } from 'path';
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
   if (mode === 'preprod') {
     return {
-      plugins: [vue()],
+      plugins: [vue(), eslintPlugin()],
       build: {
         outDir: './web-ui/',
         assetsDir: './dist/',
         sourcemap: true,
         minify: false
       },
+      
       resolve: {
         alias: {
           '@': resolve(__dirname, './src')
@@ -34,7 +35,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     }
   } else {
     return {
-      plugins: [vue()],
+      plugins: [vue(), eslintPlugin()],
       build: {
         outDir: './web-ui/',
         assetsDir: './dist/',
