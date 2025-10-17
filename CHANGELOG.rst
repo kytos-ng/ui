@@ -31,6 +31,7 @@ Added
 Fixed
 =====
 - ``k-select`` does not longer updates twices when clicking in any options.
+- Fixed issue were clicking on MapBox with no topology threw an error.
 
 [2025.1.0] - 2025-04-14
 ***********************

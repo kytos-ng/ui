@@ -89,11 +89,14 @@ export default {
 
       // closest switch to the clicked point
       s = this.simulation.find(p.x, p.y)
-      // distance between the switch and the clicked point (p)
-      dx2 = Math.pow((s.x - p.x), 2)
-      dy2 = Math.pow((s.y - p.y), 2)
-      dist = Math.sqrt(dx2 + dy2)
-      if (dist <= this.size.switch) return true
+      // Check if s.x and s.y are both defined
+      if (s?.x && s?.y) {
+        // distance between the switch and the clicked point (p)
+        dx2 = Math.pow((s.x - p.x), 2)
+        dy2 = Math.pow((s.y - p.y), 2)
+        dist = Math.sqrt(dx2 + dy2)
+        if (dist <= this.size.switch) return true
+      }
       return false
     },
     add_iep_nodes () {
