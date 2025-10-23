@@ -12,7 +12,7 @@ const {
 const compat = new FlatCompat({
     baseDirectory: __dirname,
     recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all
+    //allConfig: js.configs.all
 });
 
 module.exports = defineConfig([{
@@ -28,6 +28,9 @@ module.exports = defineConfig([{
     },
 
     extends: compat.extends("eslint:recommended", "plugin:vue/recommended", "prettier"),
-    rules: {},
+    rules: {
+        "vue/attributes-order": "off",
+        "vue/component-definition-name-casing": "off"
+    },
     settings: {},
 }]);
