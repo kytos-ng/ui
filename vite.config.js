@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite';
 import { configDefaults } from 'vitest/config';
 import vue from '@vitejs/plugin-vue';
+import eslint from 'vite-plugin-eslint';
 import { resolve } from 'path';
 
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
   if (mode === 'preprod') {
     return {
-      plugins: [vue(), eslintPlugin()],
+      plugins: [vue(), /**eslint()**/],
       build: {
         outDir: './web-ui/',
         assetsDir: './dist/',
@@ -35,7 +36,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     }
   } else {
     return {
-      plugins: [vue(), eslintPlugin()],
+      plugins: [vue(), /**eslint()**/],
       build: {
         outDir: './web-ui/',
         assetsDir: './dist/',
