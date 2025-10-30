@@ -1,5 +1,6 @@
 const {
     defineConfig,
+    globalIgnores
 } = require("eslint/config");
 
 const globals = require("globals");
@@ -15,22 +16,23 @@ const compat = new FlatCompat({
     //allConfig: js.configs.all
 });
 
-module.exports = defineConfig([{
-    languageOptions: {
-        globals: {
-            ...globals.browser,
-            ...globals.node,
+module.exports = defineConfig([
+    globalIgnores(["web-ui/", "coverage/"]),
+    {
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                ...globals.node,
+            },
+            ecmaVersion: "latest",
+            sourceType: "module",
+            parserOptions: {},
         },
-
-        ecmaVersion: "latest",
-        sourceType: "module",
-        parserOptions: {},
-    },
-
-    extends: compat.extends("eslint:recommended", "plugin:vue/recommended", "prettier"),
-    rules: {
-        "vue/attributes-order": "off",
-        "vue/component-definition-name-casing": "off"
-    },
-    settings: {},
-}]);
+        extends: compat.extends("eslint:recommended", "plugin:vue/recommended", "prettier"),
+        rules: {
+            "vue/attributes-order": "off",
+            "vue/component-definition-name-casing": "off"
+        },
+        settings: {}
+    }
+]);
