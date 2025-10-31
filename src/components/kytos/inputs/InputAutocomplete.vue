@@ -141,7 +141,11 @@ export default {
    /**
    * Function called after input changes.
    */
-   action: {
+     input_action: {
+      type: Function,
+      default: function(val) {return}
+   },
+   submit_action: {
       type: Function,
       default: function(val) {return}
    },
@@ -152,7 +156,7 @@ export default {
   methods: {
     updateText(event) {
       this.$emit('update:value', event.target.value)
-      this.action(event.target.value)
+      this.input_action(event.target.value)
     },
     /**
     * Autocomplete search results
@@ -174,7 +178,7 @@ export default {
     handleSubmit(result) {
       // handle the autocomplete submit event when the user selects a result from the list
       this.$emit('update:value', result)
-      this.action(result)
+      this.submit_action(result)
     },
     handleFocus(event) {
       this.focused = true

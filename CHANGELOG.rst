@@ -6,6 +6,13 @@ All notable changes to the Kytos-NG UI project will be documented in this file.
 UNRELEASED - Under development
 ******************************
 
+[2025.1.2] - 2025-10-31
+***********************
+Added
+=====
+- Added pinia and axios
+- Autocompletes now supports actions for both input and submit
+
 [2025.1.1] - 2025-07-21
 ***********************
 
