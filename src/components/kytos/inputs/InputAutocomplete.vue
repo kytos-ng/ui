@@ -141,7 +141,7 @@ export default {
    /**
    * Function called after input changes.
    */
-     input_action: {
+   input_action: {
       type: Function,
       default: function(val) {return}
    },
