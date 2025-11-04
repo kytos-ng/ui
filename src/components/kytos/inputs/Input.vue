@@ -4,6 +4,7 @@
     <input :value="value" class="k-input" :title="tooltip" :placeholder="placeholder"
       @input="updateText"
       ref="inputValue"
+      v-bind="$attrs"
       v-bind:disabled="isDisabled" onshow="this.focus()" autofocus 
       data-test="main-input"
       @keypress="filterKey($event)"/>
@@ -22,6 +23,7 @@ import KytosBaseWithIcon from '../base/KytosBaseWithIcon';
 
 export default {
   name: 'k-input',
+  inheritAttrs: false,
   mixins: [KytosBaseWithIcon],
   props: {
    /**

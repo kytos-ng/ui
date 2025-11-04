@@ -241,7 +241,7 @@ describe("InputAutocomplete.vue", () => {
 
             //Select one value from autocomplete list
 
-            await mainInputAutocomplete.trigger('blur');
+            await input.trigger('blur');
 
             expect(wrapper.emitted('blur')).toHaveLength(1);
 
@@ -263,8 +263,7 @@ describe("InputAutocomplete.vue", () => {
                 }
             });
             expect(wrapper.exists()).toBe(true);
-
-            expect(wrapper.find('[data-test="main-inputauto"]').exists()).toBe(true);
+            expect(wrapper.find('[data-test="main-input"]').exists()).toBe(true);
         });
 
         test("Icon", async () => {
@@ -413,9 +412,10 @@ describe("InputAutocomplete.vue", () => {
             });
             expect(wrapper.exists()).toBe(true);
             const mainInputAutocomplete = wrapper.getComponent(Input);
+            const input = mainInputAutocomplete.get('[data-test="main-input"]');
 
-            mainInputAutocomplete.element.value = text
-            await mainInputAutocomplete.trigger('focus');
+            input.element.value = text
+            await input.trigger('focus');
 
             expect(wrapper.emitted('focus')).toHaveLength(1);
         });
@@ -438,7 +438,7 @@ describe("InputAutocomplete.vue", () => {
             const input = mainInputAutocomplete.get('[data-test="main-input"]');
 
             await input.setValue(text);
-            await mainInputAutocomplete.trigger('blur', text);
+            await input.trigger('blur', text);
 
             expect(wrapper.emitted('blur')).toHaveLength(1);
         });
