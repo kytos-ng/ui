@@ -13,7 +13,10 @@
     "preview": "vite preview",
     "test": "vitest",
     "test-run": "vitest run",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "lint": "eslint",
+    "format": "prettier",
+    "validate": "npm run lint && npm run format"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
@@ -27,6 +30,7 @@
     "d3": "^7.9.0",
     "glob": "^7.2.0",
     "jsdocgen": "^0.2.4",
+    "mapbox-gl": "^2.15.0",
     "pinia": "^3.0.2",
     "string-width-cjs": "^5.1.1",
     "tiny-emitter": "^2.1.0",
@@ -34,22 +38,30 @@
     "v-hotkey3": "^0.1.4",
     "vue": "^3.1.0",
     "vue-docgen-api": "^4.43.2",
-    "write-file": "^1.0.0",
-    "mapbox-gl": "^2.15.0"
+    "write-file": "^1.0.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.37.0",
     "@pinia/testing": "^1.0.1",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vitest/coverage-v8": "^3.0.7",
     "@vue/compiler-sfc": "^3.1.0",
     "@vue/test-utils": "^2.4.6",
     "cross-env": "^7.0.3",
+    "eslint": "^9.37.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-vue": "^10.5.0",
+    "globals": "^16.4.0",
     "happy-dom": "^17.1.9",
     "jquery": "^3.6.0",
     "jquery-slider": "^0.0.1",
     "jsdom": "^26.0.0",
+    "prettier": "^3.6.2",
     "sass": "^1.85.1",
     "vite": "^6.0.7",
+    "vite-plugin-eslint": "^1.8.1",
     "vitest": "^3.0.7",
     "vue3-sfc-loader": "^0.9.5",
     "yargs": "^17.3.1"
