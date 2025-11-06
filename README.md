@@ -71,9 +71,6 @@ npm run lint -- --fix .
 # tries to fix the potentially fixable problems within the specified file
 npm run lint -- --fix file
 
-# lints all files
-npm run lint
-
 # checks the formatting of all files
 npm run format -- --check .
 
