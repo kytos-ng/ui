@@ -17,7 +17,7 @@ const compat = new FlatCompat({
 });
 
 module.exports = defineConfig([
-    globalIgnores(["web-ui/", "coverage/"]),
+    globalIgnores(["web-ui/", "coverage/", "src/assets/", "src/components/kytos/terminal/*.js"]),
     {
         languageOptions: {
             globals: {
