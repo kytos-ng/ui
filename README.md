@@ -53,3 +53,33 @@ $ kytos web update <version>
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## Linting and Formatting
+
+```bash
+# lints all files (the --ext option can be used to specify the files that should be searched for)
+npm run lint
+
+npm run lint -- . --ext .js,.jsx,.ts,.tsx
+
+# lints the specified file
+npm run lint -- file
+
+# tries to fix the potentially fixable problems within all files
+npm run lint -- --fix .
+
+# tries to fix the potentially fixable problems within the specified file
+npm run lint -- --fix file
+
+# checks the formatting of all files
+npm run format -- --check .
+
+# checks the formatting of the specified file
+npm run format -- --check file
+
+# fixes the formatting of all files
+npm run format -- --write .
+
+# fixes the formatting of the specified file
+npm run format -- --write file
+```
