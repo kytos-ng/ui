@@ -17,7 +17,7 @@ const post_error = (
 ) => {
   let notification = {
     icon: "gear",
-    title: `${title} (${error.response.status}):`,
+    title: `${title} (${error.response.status || 0}):`,
     description: `${description.prefix}${
       error.response.data.description
         ? error.response.data.description
