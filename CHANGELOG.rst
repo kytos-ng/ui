@@ -17,6 +17,10 @@ Changed
 - Changed ``InfoPanel`` prop name ``mySubtitle`` to ``subtitle`` since it was used with that name across many NApps.
 - Increase default font size from titles in ``k-accordion`` (collapsable panels) from 0.7 to 0.9.
 
+Fixed
+=====
+- Fixed issue where creating the switch info panel would trigger dozens of repeated requests
+
 Added
 =====
 - Status Menu now sorts tables by column
