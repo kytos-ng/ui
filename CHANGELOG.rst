@@ -28,6 +28,7 @@ Added
 - Added ``enable_filter`` prop for ``k-select`` component to enable an input box which content will filter options.
 - MapBox Settings will now be stored within localStorage
 - Added ESLint and Prettier for linting and formatting.
+- Added 0 as a fallback to the ``http_helpers`` response status code.
 
 Fixed
 =====
