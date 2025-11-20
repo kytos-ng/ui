@@ -29,6 +29,7 @@ Added
 - MapBox Settings will now be stored within localStorage
 - Added ESLint and Prettier for linting and formatting.
 - Added 0 as a fallback to the ``http_helpers`` response status code.
+- Added the ability to disable k-input-auto.
 
 Fixed
 =====
