@@ -337,7 +337,16 @@ export default {
       d3.selectAll('line').classed("downlight", true)
     },
     highlight_switch (obj) {
-      //clone object to avoid passing by reference
+      // Clone object to avoid passing by reference
+      /**
+       * This object has position data that is constantly being updated.
+       * Javascript objects and arrays are passed by reference as default.
+       * So if this object is sent by reference instead of cloned, its position
+       * data will constantly be updated, and these changes will be reflected across
+       * other components.
+       * For example, if you then watch this object, which was passed by reference in some 
+       * other component, it would constantly trigger it.
+       */
       var obj_clone = structuredClone(this.$kytos.toRaw(obj))
       // Avoid highlighting IEPs for now
       if (obj_clone.type != "switch") return
