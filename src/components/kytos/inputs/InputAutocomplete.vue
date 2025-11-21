@@ -34,6 +34,7 @@
             :value="value"
             :title="tooltip"
             :placeholder="placeholder"
+            :isDisabled="!isEditable"
             @input="updateText"
             @focus="handleFocus"
             @blur="handleBlur"
@@ -165,6 +166,13 @@ export default {
    input_action: {
       type: Function,
       default: function(val) {return}
+   },
+   /**
+    * If true disables the input functionality of the input component (used for display purposes).
+    */
+   isEditable: {
+      type: Boolean,
+      default: true
    },
    submit_action: {
       type: Function,
