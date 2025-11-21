@@ -120,6 +120,26 @@ describe("InputAutocomplete.vue", () => {
             expect(fn).toHaveBeenCalledWith(testCandidates[1]);
         });
 
+        test("InputAutocomplete isEditable", async () => {
+            wrapper = mount(InputAutocomplete, {
+                global: {
+                    components: {
+                        'k-input': Input
+                    }
+                }
+            });
+            expect(wrapper.exists()).toBe(true);
+            const mainInputAutocomplete = wrapper.getComponent(Input);
+
+            expect(wrapper.props().hasOwnProperty('isEditable')).toBe(true);
+
+            await wrapper.setProps({isEditable: false });
+
+            expect(wrapper.props('isEditable')).toBe(false);
+
+            expect(mainInputAutocomplete.props('isDisabled')).toBe(true);
+        });
+
         test("InputAutocomplete Submit Action", async () => {
             const fn = vi.fn();
             const testCandidates = ['test1', 'test2', 'test3'];
