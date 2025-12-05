@@ -145,6 +145,13 @@ export default {
     }
   },
   mounted() {
+    if (JSON.parse(localStorage.getItem(`kytos/ui/interfaceChartJsonData/${this.interface_switch}/${Number(this.port_number)}`))) {
+      let unprocessedJsonData = JSON.parse(localStorage.getItem(`kytos/ui/interfaceChartJsonData/${this.interface_switch}/${Number(this.port_number)}`));
+      this.chartJsonData = unprocessedJsonData.map(item => ({
+        ...item,
+        timestamp: new Date(item.timestamp)
+      }));
+    }
     this.update_chart()
     this.interval = setInterval(this.update_chart, 50000)
   },
@@ -154,11 +161,18 @@ export default {
 
   watch: {
     chartJsonData: {
-      handler: function () {
-        let data = this.chartJsonData
-        let last_index = data.length - 1
-        this.tx_bytes = data[last_index].tx_bytes
-        this.rx_bytes = data[last_index].rx_bytes
+      handler: function (newVal) {
+        let data = this.chartJsonData;
+        localStorage.setItem(`kytos/ui/interfaceChartJsonData/${this.interface_switch}/${Number(this.port_number)}`, JSON.stringify(newVal));
+        if (data.length > 1) {
+          let last_index = data.length - 1;
+          let delta_tx = data[last_index].tx_bytes - data[last_index - 1].tx_bytes;
+          let delta_rx = data[last_index].rx_bytes - data[last_index - 1].rx_bytes;
+          let delta_time_tx = data[last_index].timestamp.getTime() - data[last_index-1].timestamp.getTime();
+          let delta_time_rx = data[last_index].timestamp.getTime() - data[last_index-1].timestamp.getTime();
+          this.tx_bytes = Math.round(((delta_tx/delta_time_tx) + Number.EPSILON) * 100) / 100;
+          this.rx_bytes = Math.round(((delta_rx/delta_time_rx) + Number.EPSILON) * 100) / 100;
+        }
       },
       deep: true
     }
