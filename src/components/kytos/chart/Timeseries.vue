@@ -93,13 +93,41 @@ export default {
           .y1(function(d) { return y(d[yParam]) })
     },
     parseJsonData () {
-      let data = []
+      let data = [];
+      let transformed_data = [];
       this.jsonData.forEach((element) => {
         data.push({"timestamp": element.timestamp,
                    "tx_bytes": element.tx_bytes,
-                   "rx_bytes": element.rx_bytes})
-      })
-      this.data = data
+                   "rx_bytes": element.rx_bytes});
+      });
+      transformed_data = this.calculateBPS(data);
+      this.data = transformed_data;
+    },
+    calculateBPS (data) {
+      let transformed_data = [];
+      if (data.length < 2) {
+        return [{
+          "timestamp": 0,
+          "tx_bytes": 0,
+          "rx_bytes": 0
+        }]
+      }
+      for (let i = 1; i < (data.length); i++) {
+        let initial = data[i - 1];
+        let final = data[i];
+        let delta_tx = final.tx_bytes - initial.tx_bytes;
+        let delta_rx = final.rx_bytes - initial.rx_bytes;
+        let delta_time = final.timestamp.getTime() - initial.timestamp.getTime();
+        let bpsT = delta_tx / delta_time;
+        let bpsR = delta_rx / delta_time;
+        let midpoint_time = new Date((final.timestamp.getTime() + initial.timestamp.getTime()) / 2);
+        transformed_data.push({
+          "timestamp": midpoint_time,
+          "tx_bytes": bpsT,
+          "rx_bytes": bpsR
+        })
+      }
+      return transformed_data;
     },
     updateMargins () {
       this.updatedHeight = this.chartHeight
@@ -359,7 +387,7 @@ export default {
 
   .line
     stroke-width: 2
-    fill: white
+    fill: transparent
 
   .rx
     &.line
