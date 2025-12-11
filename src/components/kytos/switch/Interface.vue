@@ -1,8 +1,9 @@
 <template>
   <div :id="id" class="k-interface" @click="open_interface">
+    <div class="left_div">
       <div class="usage" :class="utilization_color_class"></div>
       <div class="details" :title="mac">
-        <div class="name">{{name}} ({{port_number}})</div>
+        <div class="name">{{ name }} ({{ port_number }})</div>
         <div class="x_bytes">
           <div class="padding-top-bottom"></div>
           <div class="tx_bytes">{{ $filters.humanize_bytes(tx_bytes * 8) }} T&nbsp;</div>
@@ -11,10 +12,12 @@
           <div class="padding-top-bottom"></div>
         </div>
       </div>
-
-<k-chart-timeseries v-if="chartJsonData" :interface_id="interface_id" :jsonData="chartJsonData" :showGrid="false" :showAxis="false" :plotArea="false" :chartHeight="45"></k-chart-timeseries>
+    </div>
+    <div class="chart">
+      <k-chart-timeseries v-if="chartJsonData" :interface_id="interface_id" :jsonData="chartJsonData" :showGrid="true"
+        :showAxis="true" :plotArea="true" :chartHeight="100"></k-chart-timeseries>
       <div class="warn" v-else>&nbsp;Interface speed is unavailable</div>
-
+    </div>
   </div>
 </template>
 
@@ -50,6 +53,10 @@ export default {
       type: String,
       required: true,
     },
+    interface_switch: {
+      type: String,
+      required: true,
+    },
     content_switch: {
       type: Object,
       required: true,
@@ -79,22 +86,21 @@ export default {
       required: false,
     },
   },
-  data () {
+  data() {
     return {
-      chartJsonData: null,
+      chartJsonData: [],
       interval: null,
       tx_bytes: null,
       rx_bytes: null,
     }
   },
   computed: {
-    dpid () {
-      return this.interface_id.split(":").slice(0,-1).join(":")
+    dpid() {
+      return this.interface_id.split(":").slice(0, -1).join(":")
     },
-    endpoint () {
-      // TODO: of_stats/kronos must implement the endpoint
-      //let url = this.$kytos_server_api + "kytos/of_stats/v1/"
-      //return url + this.dpid + "/ports/" + Number(this.port_number)
+    endpoint() {
+      let url = this.$kytos_server_api + "amlight/kytos_stats/v1/port/stats"
+      return url + `?dpid=${this.interface_switch}&port=${Number(this.port_number)}`
     },
     utilization_color_class: function () {
       if (this.speed === null) return ''
@@ -110,41 +116,65 @@ export default {
   },
   methods: {
     open_interface() {
-      var content = {"component": InterfaceInfo,
-                     "content": this,
-                     "icon": "cog",
-                     "title": "Interface Details",
-                     "subtitle": this.name}
+      var content = {
+        "component": InterfaceInfo,
+        "content": this,
+        "icon": "cog",
+        "title": "Interface Details",
+        "subtitle": this.name
+      }
       this.$kytos.eventBus.$emit("showInfoPanel", content)
 
     },
-    parseInterfaceData (data) {
-      if (!data) {
+    parseInterfaceData(response) {
+      if (!response) {
         var msg = "Error while trying to fetch interface data."
         this.$kytos.eventBus.$emit('statusMessage', msg, true)
       } else {
-        this.chartJsonData = data['data']
+        response.data[this.interface_switch][this.port_number].timestamp = new Date();
+        this.chartJsonData.push(response.data[this.interface_switch][this.port_number])
       }
     },
-    update_chart() {
-      // TODO: of_stats/kronos must implement the endpoint
-      //json(this.endpoint, this.parseInterfaceData)
+    async update_chart() {
+      try {
+        const response = await this.$http.get(this.endpoint);
+        this.parseInterfaceData(response);
+      } catch (err) {
+        this.$http_helpers.post_error(this, err, 'Could not retrieve interface stats');
+      }
     }
   },
-  mounted () {
+  mounted() {
+    if (JSON.parse(localStorage.getItem(`kytos/ui/interfaceChartJsonData/${this.interface_switch}/${Number(this.port_number)}`))) {
+      let unprocessedJsonData = JSON.parse(localStorage.getItem(`kytos/ui/interfaceChartJsonData/${this.interface_switch}/${Number(this.port_number)}`));
+      this.chartJsonData = unprocessedJsonData.map(item => ({
+        ...item,
+        timestamp: new Date(item.timestamp)
+      }));
+    }
     this.update_chart()
-    this.interval = setInterval(this.update_chart, 60000)
+    this.interval = setInterval(this.update_chart, 50000)
   },
-  beforeUnmount () {
+  beforeUnmount() {
     clearInterval(this.interval)
   },
 
   watch: {
-    chartJsonData () {
-      let data = this.chartJsonData
-      let last_index = data.tx_bytes.length - 1
-      this.tx_bytes = data.tx_bytes[last_index]
-      this.rx_bytes = data.rx_bytes[last_index]
+    chartJsonData: {
+      handler: function (newVal) {
+        let data = this.chartJsonData;
+        localStorage.setItem(`kytos/ui/interfaceChartJsonData/${this.interface_switch}/${Number(this.port_number)}`, JSON.stringify(newVal));
+        if (data.length > 1) {
+          let last_index = data.length - 1;
+          let delta_tx = data[last_index].tx_bytes - data[last_index - 1].tx_bytes;
+          let delta_rx = data[last_index].rx_bytes - data[last_index - 1].rx_bytes;
+          let delta_time_tx = data[last_index].timestamp.getTime() - data[last_index-1].timestamp.getTime();
+          let delta_time_rx = data[last_index].timestamp.getTime() - data[last_index-1].timestamp.getTime();
+          this.tx_bytes = Math.round(((delta_tx/delta_time_tx) + Number.EPSILON) * 100) / 100;
+          this.rx_bytes = Math.round(((delta_rx/delta_time_rx) + Number.EPSILON) * 100) / 100;
+        }
+      },
+      deep: true
     }
   }
 }
@@ -156,6 +186,7 @@ export default {
 
 .k-interface
   display: flex
+  flex-direction: row
   cursor: pointer
   padding-top: 0.3em
   width: 100%
@@ -166,27 +197,35 @@ export default {
    color: dark-theme-variables.$fill-link-h
    background: dark-theme-variables.$fill-bar
 
-  .usage
-    min-width: 4px
+  .left_div
+    flex-grow: 1
+    display: flex
+    flex-direction: row
+    cursor: pointer
 
-    &.high
-      background-color: dark-theme-variables.$kytos-red
-    &.medium
-      background-color: dark-theme-variables.$kytos-yellow
-    &.low
-      background-color: dark-theme-variables.$kytos-green
+    .usage
+      flex-shrink: 0
+      min-width: 4px
+
+      &.high
+        background-color: dark-theme-variables.$kytos-red
+      &.medium
+        background-color: dark-theme-variables.$kytos-yellow
+      &.low
+        background-color: dark-theme-variables.$kytos-green
 
   .details
-    min-width: 90px
+    flex-grow: 1
     background-color: dark-theme-variables.$fill-input-bg
     display: flex
+    gap: 0px
     flex-direction: column
 
     .name
       font-size: 0.7em
       display: block
       overflow: hidden
-      height: 10px
+      height: 20px
       padding: 5px 5px 5px
       flex: 0 0 auto
       word-break: break-all
@@ -224,5 +263,10 @@ export default {
     width: 100%
     align-self: center
     justify-content: center
+
+  .chart
+    min-width: 322px
+    flex-grow: 10
+
 
 </style>
