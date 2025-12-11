@@ -337,22 +337,33 @@ export default {
       d3.selectAll('line').classed("downlight", true)
     },
     highlight_switch (obj) {
+      // Clone object to avoid passing by reference
+      /**
+       * This object has position data that is constantly being updated.
+       * Javascript objects and arrays are passed by reference as default.
+       * So if this object is sent by reference instead of cloned, its position
+       * data will constantly be updated, and these changes will be reflected across
+       * other components.
+       * For example, if you then watch this object, which was passed by reference in some 
+       * other component, it would constantly trigger it.
+       */
+      var obj_clone = structuredClone(this.$kytos.toRaw(obj))
       // Avoid highlighting IEPs for now
-      if (obj.type != "switch") return
+      if (obj_clone.type != "switch") return
       // downlight all
       this.downlight_all_elements()
-      this.node_highlight(obj)
-      this.get_switch_interfaces(obj).forEach((_interface) => {
+      this.node_highlight(obj_clone)
+      this.get_switch_interfaces(obj_clone).forEach((_interface) => {
         this.node_highlight(_interface)
         this.get_node_links(_interface).forEach((_link) => {this.link_highlight(_link)})
       })
       // this event need to be registered to be better
       var content = {component: 'kytos-topology-k-info-panel-switch_info',
-                     content: obj,
+                     content: obj_clone,
                      icon: "cog",
                      title: "Switch Details",
-                     subtitle: obj.metadata.node_name || '',
-                     subtitle_2: obj.connection}
+                     subtitle: obj_clone.metadata.node_name || '',
+                     subtitle_2: obj_clone.connection}
 
       this.$kytos.eventBus.$emit("showInfoPanel", content)
     },
