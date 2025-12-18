@@ -24,6 +24,8 @@
 <script>
 import KytosBase from '../base/KytosBase'
 import InterfaceInfo from '../../../kytos/interfaceInfo.vue'
+import { mapState } from 'pinia';
+import { useInterfaceStore } from '../../../stores/interfaceStore';
 
 /**
  * Representation of the interfaces used.
@@ -95,13 +97,6 @@ export default {
     }
   },
   computed: {
-    dpid() {
-      return this.interface_id.split(":").slice(0, -1).join(":")
-    },
-    endpoint() {
-      let url = this.$kytos_server_api + "amlight/kytos_stats/v1/port/stats"
-      return url + `?dpid=${this.interface_switch}&port=${Number(this.port_number)}`
-    },
     utilization_color_class: function () {
       if (this.speed === null) return ''
 
@@ -112,7 +107,8 @@ export default {
       if (utilization > 0.8) return 'high'
       if (utilization > 0.5) return 'medium'
       return 'low'
-    }
+    },
+    ...mapState(useInterfaceStore, ['interfaceChartData'])
   },
   methods: {
     open_interface() {
@@ -126,44 +122,15 @@ export default {
       this.$kytos.eventBus.$emit("showInfoPanel", content)
 
     },
-    parseInterfaceData(response) {
-      if (!response) {
-        var msg = "Error while trying to fetch interface data."
-        this.$kytos.eventBus.$emit('statusMessage', msg, true)
-      } else {
-        response.data[this.interface_switch][this.port_number].timestamp = new Date();
-        this.chartJsonData.push(response.data[this.interface_switch][this.port_number])
-      }
-    },
-    async update_chart() {
-      try {
-        const response = await this.$http.get(this.endpoint);
-        this.parseInterfaceData(response);
-      } catch (err) {
-        this.$http_helpers.post_error(this, err, 'Could not retrieve interface stats');
-      }
-    }
   },
   mounted() {
-    if (JSON.parse(localStorage.getItem(`kytos/ui/interfaceChartJsonData/${this.interface_switch}/${Number(this.port_number)}`))) {
-      let unprocessedJsonData = JSON.parse(localStorage.getItem(`kytos/ui/interfaceChartJsonData/${this.interface_switch}/${Number(this.port_number)}`));
-      this.chartJsonData = unprocessedJsonData.map(item => ({
-        ...item,
-        timestamp: new Date(item.timestamp)
-      }));
-    }
-    this.update_chart()
-    this.interval = setInterval(this.update_chart, 50000)
-  },
-  beforeUnmount() {
-    clearInterval(this.interval)
+    this.chartJsonData = this.interfaceChartData?.[this.interface_switch]?.[this.port_number] || [];
   },
 
   watch: {
     chartJsonData: {
       handler: function (newVal) {
         let data = this.chartJsonData;
-        localStorage.setItem(`kytos/ui/interfaceChartJsonData/${this.interface_switch}/${Number(this.port_number)}`, JSON.stringify(newVal));
         if (data.length > 1) {
           let last_index = data.length - 1;
           let delta_tx = data[last_index].tx_bytes - data[last_index - 1].tx_bytes;
