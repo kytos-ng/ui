@@ -13,8 +13,8 @@ export const useInterfaceStore = defineStore('interfaceData', {
         pollingInterval: null
     }),
     actions: {
-        updateData() {
-            this.fetchTopology();
+        async updateData() {
+            await this.fetchTopology();
             Object.entries(this.interfaces).forEach(([id, stored_interfaces]) => {
                 Object.entries(stored_interfaces).forEach(
                     ([interface_id, stored_interface]) => {
@@ -102,7 +102,9 @@ export const useInterfaceStore = defineStore('interfaceData', {
         },
         startPolling(_this) {
             this._this = _this;
-            if (this.pollingInterval) clearInterval(this.pollingInterval);
+            if (this.pollingInterval) {
+                clearInterval(this.pollingInterval);
+            }
 
             this.updateData();
             this.pollingInterval = setInterval(() => {

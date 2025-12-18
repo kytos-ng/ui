@@ -124,7 +124,7 @@ export default {
     },
   },
   mounted() {
-    this.chartJsonData = this.interfaceChartData?.[this.interface_switch]?.[this.port_number] || [];
+    this.chartJsonData = this.interfaceChartData?.[this.interface_switch]?.[this.port_number];
   },
 
   watch: {
