@@ -17,15 +17,15 @@ const post_error = (
 ) => {
   let notification = {
     icon: "gear",
-    title: `${title} (${error.response.status || 0}):`,
+    title: `${title} (${error.response?.status || 0}):`,
     description: `${description.prefix}${
-      error.response.data.description
+      error.response?.data.description
         ? error.response.data.description
-        : error.response.data
+        : error.response?.data
     }${description.suffix}`,
   };
 
-  _this.$kytos.eventBus.$emit("setNotification", notification);
+  _this?.$kytos?.eventBus.$emit("setNotification", notification);
 };
 
 const http_helpers = { post_error };

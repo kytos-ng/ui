@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import http_helpers from '../helpers/http-helpers';
 
 export const useInterfaceStore = defineStore('interfaceData', {
     state: () => ({
@@ -45,11 +46,7 @@ export const useInterfaceStore = defineStore('interfaceData', {
                     }
                 }
             } catch (err) {
-                this._this.$http_helpers.post_error(
-                    this._this,
-                    err,
-                    'Could not reach links data'
-                );
+                http_helpers.post_error(this._this, err, 'Could not reach links data');
             }
         },
         async fetchInterface(stored_interface) {
@@ -96,7 +93,7 @@ export const useInterfaceStore = defineStore('interfaceData', {
                     }
                 }
             } catch (err) {
-                this._this.$http_helpers.post_error(
+                http_helpers.post_error(
                     this._this,
                     err,
                     'Could not retrieve interface stats'
