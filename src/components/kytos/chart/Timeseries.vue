@@ -148,7 +148,7 @@ export default {
 
       // Init x axis
       this.xaxis = d3.axisBottom(this.x)
-        .ticks(d3.timeSecond.every(50))
+        .ticks(4)
         .tickFormat(d3.timeFormat("%H:%M"))
         
 
@@ -160,7 +160,7 @@ export default {
 
       // Init x grid
       this.xgrid = d3.axisBottom(this.x)
-        .ticks(d3.timeSecond.every(50))
+        .ticks(20)
         .tickSize(-this.height)
         .tickFormat("")
 
