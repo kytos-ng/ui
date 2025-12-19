@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import KytosBase from "../base/KytosBase"
+import KytosBase from "../base/KytosBase";
 import * as d3 from 'd3';
 
 export default {
@@ -54,19 +54,13 @@ export default {
       rxline: null,
       txarea: null,
       rxarea: null,
-      updatedHeight: null
+      updatedHeight: null,
+      baseChartWidth: 322
     }
   },
   computed: {
-    chartWidth () {
-      let container = document.getElementById(this.plotId).parentElement
-      return container.getBoundingClientRect().width
-    },
     height () {
       return this.updatedHeight - this.margin.top - this.margin.bottom
-    },
-    width () {
-      return this.chartWidth - this.margin.left - this.margin.right
     },
     dpid () {
       return this.interface_id.split(":").slice(0,-1).join(":")
@@ -74,10 +68,15 @@ export default {
     legend_height () {
       return (this.display_legend) ? 40 : 0
     },
-    plotId () { return "timeseries-" + this.id },
+    plotId () { 
+      return "timeseries-" + this.uuid4();
+    },
     maxSpeed () { return Number(this.jsonData.speed) || 0 }
   },
   methods: {
+    width () {
+      return this.baseChartWidth - this.margin.left - this.margin.right
+    },
     buildLine (yParam) {
       let x = this.x
       let y = this.y
@@ -94,38 +93,70 @@ export default {
           .y1(function(d) { return y(d[yParam]) })
     },
     parseJsonData () {
-      let data = []
-      Object.entries(this.jsonData.timestamps).forEach(([idx, timestamp]) => {
-        data.push({"timestamp": new Date(timestamp * 1000),
-                   "tx_bytes": this.jsonData.tx_bytes[idx],
-                   "rx_bytes": this.jsonData.rx_bytes[idx]})
-      })
-      this.data = data
+      let data = [];
+      let transformed_data = [];
+      this.jsonData.forEach((element) => {
+        data.push({"timestamp": element.timestamp,
+                   "tx_bytes": element.tx_bytes,
+                   "rx_bytes": element.rx_bytes});
+      });
+      transformed_data = this.calculateBPS(data);
+      this.data = transformed_data;
+    },
+    calculateBPS (data) {
+      let transformed_data = [];
+      if (data.length < 2) {
+        return [{
+          "timestamp": 0,
+          "tx_bytes": 0,
+          "rx_bytes": 0
+        }]
+      }
+      for (let i = 1; i < (data.length); i++) {
+        let initial = data[i - 1];
+        let final = data[i];
+        let delta_tx = final.tx_bytes - initial.tx_bytes;
+        let delta_rx = final.rx_bytes - initial.rx_bytes;
+        let delta_time = final.timestamp.getTime() - initial.timestamp.getTime();
+        let bpsT = delta_tx * 1000 * 8 / delta_time;
+        let bpsR = delta_rx * 1000 * 8 / delta_time;
+        let midpoint_time = new Date((final.timestamp.getTime() + initial.timestamp.getTime()) / 2);
+        transformed_data.push({
+          "timestamp": midpoint_time,
+          "tx_bytes": bpsT,
+          "rx_bytes": bpsR
+        })
+      }
+      return transformed_data;
     },
     updateMargins () {
       this.updatedHeight = this.chartHeight
-      this.margin.left = this.chartWidth * 0.02
-      this.margin.right = this.chartWidth * 0.02
+      this.margin.left = this.baseChartWidth * 0.02
+      this.margin.right = this.baseChartWidth * 0.05
       this.margin.top = this.updatedHeight * 0.08
       this.margin.bottom = this.updatedHeight * 0.05
       if (this.showAxis) {
-        this.margin.left = this.chartWidth * 0.08
-        this.margin.bottom = this.updatedHeight * 0.12
+        this.margin.left = this.baseChartWidth * 0.19
+        this.margin.bottom = this.updatedHeight * 0.2
       }
     },
     init () {
       // Init x axis
-      this.x = d3.scaleTime().range([0, this.width])
+      this.x = d3.scaleTime().range([0, this.width()])
       // Init y axis
-      this.y = d3.scaleLinear().range([this.height, 0])
+      this.y = d3.scaleLinear().range([this.height, 0]).nice();
 
       // Init x axis
       this.xaxis = d3.axisBottom(this.x)
+        .ticks(4)
+        .tickFormat(d3.timeFormat("%H:%M"))
+        
 
       // Init y axis
       let humanize_bytes = this.$filters.humanize_bytes
       this.yaxis = d3.axisLeft(this.y)
-        .tickFormat(function(v) { return humanize_bytes(v * 8) })
+        .ticks(5)
+        .tickFormat(function(v) { return humanize_bytes(v) })
 
       // Init x grid
       this.xgrid = d3.axisBottom(this.x)
@@ -135,7 +166,7 @@ export default {
 
       // Init y grid
       this.ygrid = d3.axisLeft(this.y)
-        .tickSize(-this.width)
+        .tickSize(-this.width())
         .tickFormat("")
 
       // init lines and areas
@@ -146,10 +177,9 @@ export default {
 
       this.chart = d3.select("#" + this.plotId)
         .append("svg")
-          .attr("width", this.width + this.margin.left + this.margin.right)
-          .attr("height", this.height + this.margin.top + this.margin.bottom + this.legend_height)
           .attr("preserveAspectRatio", "xMinYMin meet")
-          .attr("viewBox", "0 0 " + (this.width + this.margin.left + this.margin.right) + " " + (this.height + this.margin.top + this.margin.bottom))
+          .attr("viewBox", "0 0 " + (this.width() + this.margin.right + this.margin.left) + " " + (this.height + this.margin.top + this.margin.bottom))
+          .classed("svg-content", true)
           .append("g")
           .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")")
 
@@ -305,9 +335,12 @@ export default {
     this.updateChart()
   },
   watch: {
-    jsonData () {
-      this.parseJsonData()
-      this.updateChart()
+    jsonData: {
+      handler: function () {
+        this.parseJsonData()
+        this.updateChart()
+      },
+      deep: true
     },
     chartHeight () {
       this.updateMargins()
@@ -324,6 +357,11 @@ export default {
   width: 100%
   float: left
   background-color: dark-theme-variables.$fill-bar
+  display: inline-block
+  position: relative
+  padding-bottom: 31.0559%
+  overflow: hidden
+  vertical-align: top
 
   text
     fill: grey
@@ -351,7 +389,7 @@ export default {
 
   .line
     stroke-width: 2
-    fill: none
+    fill: transparent
 
   .rx
     &.line
@@ -367,4 +405,14 @@ export default {
 
   .hidden
     display: none
+
+  .tick text 
+    font-size: 10px
+
+  .svg-content
+    display: inline-block
+    position: absolute
+    top: 0
+    left: 0
+
 </style>
