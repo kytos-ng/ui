@@ -118,8 +118,8 @@ export default {
         let delta_tx = final.tx_bytes - initial.tx_bytes;
         let delta_rx = final.rx_bytes - initial.rx_bytes;
         let delta_time = final.timestamp.getTime() - initial.timestamp.getTime();
-        let bpsT = delta_tx / delta_time;
-        let bpsR = delta_rx / delta_time;
+        let bpsT = delta_tx * 1000 * 8 / delta_time;
+        let bpsR = delta_rx * 1000 * 8 / delta_time;
         let midpoint_time = new Date((final.timestamp.getTime() + initial.timestamp.getTime()) / 2);
         transformed_data.push({
           "timestamp": midpoint_time,
@@ -142,23 +142,25 @@ export default {
     },
     init () {
       // Init x axis
-      this.x = d3.scaleTime().range([0, this.width()]).nice();
+      this.x = d3.scaleTime().range([0, this.width()])
       // Init y axis
       this.y = d3.scaleLinear().range([this.height, 0]).nice();
 
       // Init x axis
       this.xaxis = d3.axisBottom(this.x)
-        .ticks(7)
+        .ticks(d3.timeSecond.every(50))
+        .tickFormat(d3.timeFormat("%H:%M"))
+        
 
       // Init y axis
       let humanize_bytes = this.$filters.humanize_bytes
       this.yaxis = d3.axisLeft(this.y)
         .ticks(5)
-        .tickFormat(function(v) { return humanize_bytes(v * 8) })
+        .tickFormat(function(v) { return humanize_bytes(v) })
 
       // Init x grid
       this.xgrid = d3.axisBottom(this.x)
-        .ticks(20)
+        .ticks(d3.timeSecond.every(50))
         .tickSize(-this.height)
         .tickFormat("")
 
@@ -213,7 +215,7 @@ export default {
         });
       }
       // X scale domain
-      this.x.domain(d3.extent(this.data, function(d) { return d.timestamp })).nice()
+      this.x.domain(d3.extent(this.data, function(d) { return d.timestamp }))
 
       // Y scale domain
       let max_y = d3.max(this.data, function(d) { return Math.max(d.tx_bytes, d.rx_bytes) })
@@ -272,7 +274,7 @@ export default {
     },
     updateChart () {
       // Set x scale domain
-      this.x.domain(d3.extent(this.data, function(d) { return d.timestamp })).nice()
+      this.x.domain(d3.extent(this.data, function(d) { return d.timestamp }))
 
       // Set y scale domain
       let max_y = d3.max(this.data, function(d) { return Math.max(d.tx_bytes, d.rx_bytes) })

@@ -85,7 +85,7 @@ export const useInterfaceStore = defineStore('interfaceData', {
                     if (
                         this.interfaceChartData[stored_interface.switch][
                             stored_interface.port_number
-                        ].length > 15
+                        ].length > 7
                     ) {
                         this.interfaceChartData[stored_interface.switch][
                             stored_interface.port_number
@@ -93,11 +93,15 @@ export const useInterfaceStore = defineStore('interfaceData', {
                     }
                 }
             } catch (err) {
-                http_helpers.post_error(
-                    this._this,
-                    err,
-                    'Could not retrieve interface stats'
-                );
+                if (this._this.$http.isAxiosError(err)) {
+                    http_helpers.post_error(
+                        this._this,
+                        err,
+                        'Could not retrieve interface stats'
+                    );
+                } else {
+                    throw err;
+                }
             }
         },
         startPolling(_this) {

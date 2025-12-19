@@ -6,9 +6,9 @@
         <div class="name">{{ name }} ({{ port_number }})</div>
         <div class="x_bytes">
           <div class="padding-top-bottom"></div>
-          <div class="tx_bytes">{{ $filters.humanize_bytes(tx_bytes * 8) }} T&nbsp;</div>
+          <div class="tx_bytes">{{ $filters.humanize_bytes(tx_bytes) }} T&nbsp;</div>
           <div class="padding-middle"></div>
-          <div class="rx_bytes">{{ $filters.humanize_bytes(rx_bytes * 8) }} R&nbsp;</div>
+          <div class="rx_bytes">{{ $filters.humanize_bytes(rx_bytes) }} R&nbsp;</div>
           <div class="padding-top-bottom"></div>
         </div>
       </div>
@@ -137,8 +137,8 @@ export default {
           let delta_rx = data[last_index].rx_bytes - data[last_index - 1].rx_bytes;
           let delta_time_tx = data[last_index].timestamp.getTime() - data[last_index-1].timestamp.getTime();
           let delta_time_rx = data[last_index].timestamp.getTime() - data[last_index-1].timestamp.getTime();
-          this.tx_bytes = Math.round(((delta_tx/delta_time_tx) + Number.EPSILON) * 100) / 100;
-          this.rx_bytes = Math.round(((delta_rx/delta_time_rx) + Number.EPSILON) * 100) / 100;
+          this.tx_bytes = Math.round(((delta_tx * 1000 * 8/delta_time_tx) + Number.EPSILON) * 100) / 100;
+          this.rx_bytes = Math.round(((delta_rx * 1000 * 8/delta_time_rx) + Number.EPSILON) * 100) / 100;
         }
       },
       deep: true
