@@ -1,6 +1,6 @@
 <template>
-  <div id="app" :class="{ compacted: compacted  }">
-  
+  <div id="app" :class="{ compacted: compacted }">
+
     <!-- Force Node to load the favicon.png asset for the head. -->
     <img src="./assets/imgs/favicon.png" style="display:none">
 
@@ -23,48 +23,73 @@ import { useInterfaceStore } from './stores/interfaceStore';
 
 export default {
   name: 'app',
-  data () {
+  data() {
     return {
-     compacted: false,
-     SwitchLabels: [{value: 1, description: "DPID"},
-                    {value: 2, description: "Name"},
-                    {value: 3, description: "Hardware"},
-                    {value: 4, description: "Connection"}
-                   ],
-     HostLabels: [{value: 1, description: "MAC Address"},
-                  {value: 2, description: "Name"}
-                 ],
-     InterfaceLabels: [{value: 1, description: "Port Number"},
-                       {value: 2, description: "Port Name"},
-                       {value: 3, description: "MAC Address"},
-                      ],
-   }
+      compacted: false,
+      SwitchLabels: [{ value: 1, description: "DPID" },
+      { value: 2, description: "Name" },
+      { value: 3, description: "Hardware" },
+      { value: 4, description: "Connection" }
+      ],
+      HostLabels: [{ value: 1, description: "MAC Address" },
+      { value: 2, description: "Name" }
+      ],
+      InterfaceLabels: [{ value: 1, description: "Port Number" },
+      { value: 2, description: "Port Name" },
+      { value: 3, description: "MAC Address" },
+      ],
+      isStatsAvailable: false,
+    }
 
   },
   methods: {
-    toggle () {
+    toggle() {
       this.compacted = !this.compacted
 
       $(".k-toolbar").show();
 
       this.$nextTick(function () {
-      // DOM is now updated
-        $(".k-toolbar .k-menu-item").not(":hidden").each(function() {
-            $(this).each(function(){
-                if ($(this).find(".compact").length == 0){
-                    $(".compacted .k-toolbar").css("display","none");
-                }
-            });
+        // DOM is now updated
+        $(".k-toolbar .k-menu-item").not(":hidden").each(function () {
+          $(this).each(function () {
+            if ($(this).find(".compact").length == 0) {
+              $(".compacted .k-toolbar").css("display", "none");
+            }
+          });
         });
       });
     },
+   async checkStatsAvailability() {
+      try {
+        const response = await this.$http.get(this.$kytos_server_api + "kytos/core/napps_enabled");
+        const kytos_stats = '["amlight","kytos_stats"]';
+        this.isStatsAvailable = response.data.napps.some(NApps => {
+          return JSON.stringify(NApps) === kytos_stats;
+        });
+      } catch (err) {
+        if (this.$http.isAxiosError(err)) {
+          http_helpers.post_error(
+            this,
+            err,
+            'Could not get the list of enabled napps'
+          );
+        } else {
+          throw err;
+        }
+      }
+    },
     ...mapActions(useInterfaceStore, ['startPolling', 'stopPolling'])
   },
-  mounted () {
-    this.startPolling(this);
+  async mounted() {
+    await this.checkStatsAvailability();
+    if (this.isStatsAvailable) {
+      this.startPolling(this);
+    }
   },
-  unmounted () {
-    this.stopPolling();
+  unmounted() {
+    if (this.isStatsAvailable) {
+      this.stopPolling();
+    }
   }
 
 }
