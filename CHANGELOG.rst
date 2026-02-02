@@ -6,6 +6,9 @@ All notable changes to the Kytos-NG UI project will be documented in this file.
 UNRELEASED - Under development
 ******************************
 
+[2025.2.0] - 2026-02-02
+***********************
+
 Changed
 =======
 - The tabs in the Interface Details Menu are now collapsed by default
