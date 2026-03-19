@@ -332,7 +332,7 @@ export default {
                          + _this.new_tag_ranges,
             icon: 'cog',
           }
-          _this.$kytos.$emit("setNotification", notification)
+          _this.$kytos.eventBus.$emit("setNotification", notification)
         })
         _request.fail(function(data) {
           let notification = {
@@ -341,7 +341,7 @@ export default {
                          + 'but there was an error obtaining the resized "available_tags". Try refreshing the page.',
             icon: 'cog',
           }
-          _this.$kytos.$emit("setNotification", notification)
+          _this.$kytos.eventBus.$emit("setNotification", notification)
         })
       });
       request.fail(function(data) {
@@ -350,7 +350,7 @@ export default {
           description: data.status + ': ' + ( data.responseJSON !== undefined ? data.responseJSON.description : data.responseText ) + ' "tag_ranges" was not set.',
           icon: 'cog',
         }
-        _this.$kytos.$emit("setNotification", notification)
+        _this.$kytos.eventBus.$emit("setNotification", notification)
       });
     },
     get_tag_types: function() {
