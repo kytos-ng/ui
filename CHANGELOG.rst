@@ -6,6 +6,12 @@ All notable changes to the Kytos-NG UI project will be documented in this file.
 UNRELEASED - Under development
 ******************************
 
+Fixed
+=====
+
+- Pinned ``axios`` version 1.14.0 to avoid compromised third party packages
+
+
 [2025.2.0] - 2026-02-02
 ***********************
 
