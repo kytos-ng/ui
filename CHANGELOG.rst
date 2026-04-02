@@ -8,7 +8,7 @@ UNRELEASED - Under development
 
 Fixed
 =====
-
+- Fixed notifications from updating tag ranges not appearing.
 - Pinned ``axios`` version 1.14.0 to avoid compromised third party packages
 
 
