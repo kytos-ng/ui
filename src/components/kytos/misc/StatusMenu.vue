@@ -761,109 +761,109 @@ export default {
 
 <style lang="sass">
 
-  @use '../../../assets/styles/dark-theme-variables'
-  
-  .k-status-menu
-    -webkit-order: 4
-    -ms-flex-order: 4
-    order: 4
-    display: flex
-    flex-direction: column
-    min-height: calc(100% - 45px)
+@use '../../../assets/styles/dark-theme-variables'
+
+.k-status-menu
+  -webkit-order: 4
+  -ms-flex-order: 4
+  order: 4
+  display: flex
+  flex-direction: column
+  min-height: calc(100% - 45px)
+  padding: 10px
+  position: fixed
+  right: 0
+  top: 0
+  background-color: dark-theme-variables.$fill-panel
+  width: calc(100% - 300px)
+  z-index: 998
+  box-shadow: 10px 0px 20px 5px rgba(0, 0, 0, 0.4)
+
+.k-status-title
+  display: flex
+  flex-direction: row
+  align-items: center
+
+  svg
+    fill: dark-theme-variables.$fill-icon
+    width: 50px
+    height: 50px
     padding: 10px
-    position: fixed
-    right: 0
-    top: 0
-    background-color: dark-theme-variables.$fill-panel
-    width: calc(100% - 300px)
-    z-index: 998
-    box-shadow: 10px 0px 20px 5px rgba(0, 0, 0, 0.4)
-  
-  .k-status-title
-    display: flex
-    flex-direction: row
-    align-items: center
-  
-    svg
-      fill: dark-theme-variables.$fill-icon
-      width: 50px
-      height: 50px
-      padding: 10px
-      margin-right: 5px
-  
-  .panel-title
-    padding: 0
-    margin: 0
-    color: dark-theme-variables.$fill-text
-  
-    & > h1
-      font-size: 1.2em
-      font-weight: bold
-      color: dark-theme-variables.$fill-text
-  
-  .k-status-wrapper
-    -webkit-flex: 1 1 auto
-    overflow-y: auto
-    height: 0px
-  
-  .data_status_table
-    color: #ccc
-    text-align: center
-    margin: 0 auto
-    display: block
-    padding: 0.5em 0 1em 0.3em
-    font-size: 0.8em
-    overflow-x: hidden
-    overflow-y: auto
-  
-  .data_status_table table
-    display: table
-    width: 100%
-  
-  .data_status_table thead
+    margin-right: 5px
+
+.panel-title
+  padding: 0
+  margin: 0
+  color: dark-theme-variables.$fill-text
+
+  & > h1
+    font-size: 1.2em
     font-weight: bold
-    background: #554077
-  
-  .data_status_table th
-    padding: 0.6em 0 0.6em 0
-    vertical-align: middle
-    border: 1px solid
-    color: #b3b3b3
-    border-color: #322c5d
-    font-size: 1.5em
-  
-  .data_status_table td
-    vertical-align: middle
-    padding: 0.45em 0 0.45em 0
-    word-break: break-all
-  
-  .data_status_table tbody tr:hover
-    color: #eee
-    background-color: #666
-  
-  .yellow
-    background-color: #f9a825
-    color: #222
-  
-  .green
-    background-color: #8bc34a
-    color: #222
-  
-  .red
-    background-color: #dd2c00
-    color: #222
-  
-  .darkWhite
-    background-color: #CCC
-    color: #222
-  
-  .selectedButton
-    color: dark-theme-variables.$fill-button-hover
-    background: dark-theme-variables.$fill-button-bg-h
-  
-  .statusTableButton
-    margin: auto
-    float: none
-    width: 100%
-    box-sizing: border-box
-  </style>
+    color: dark-theme-variables.$fill-text
+
+.k-status-wrapper
+  -webkit-flex: 1 1 auto
+  overflow-y: auto
+  height: 0px
+
+.data_status_table
+  color: #ccc
+  text-align: center
+  margin: 0 auto
+  display: block
+  padding: 0.5em 0 1em 0.3em
+  font-size: 0.8em
+  overflow-x: hidden
+  overflow-y: auto
+
+.data_status_table table
+  display: table
+  width: 100%
+
+.data_status_table thead
+  font-weight: bold
+  background: #554077
+
+.data_status_table th
+  padding: 0.6em 0 0.6em 0
+  vertical-align: middle
+  border: 1px solid
+  color: #b3b3b3
+  border-color: #322c5d
+  font-size: 1.5em
+
+.data_status_table td
+  vertical-align: middle
+  padding: 0.45em 0 0.45em 0
+  word-break: break-all
+
+.data_status_table tbody tr:hover
+  color: #eee
+  background-color: #666
+
+.yellow
+  background-color: #f9a825
+  color: #222
+
+.green
+  background-color: #8bc34a
+  color: #222
+
+.red
+  background-color: #dd2c00
+  color: #222
+
+.darkWhite
+  background-color: #CCC
+  color: #222
+
+.selectedButton
+  color: dark-theme-variables.$fill-button-hover
+  background: dark-theme-variables.$fill-button-bg-h
+
+.statusTableButton
+  margin: auto
+  float: none
+  width: 100%
+  box-sizing: border-box
+</style>

@@ -106,57 +106,57 @@ export default {
 
 <style lang="sass">
 
-    @use '../../../assets/styles/dark-theme-variables'
+@use '../../../assets/styles/dark-theme-variables'
 
-    .modal-mask
-        position: fixed
-        z-index: 9998
-        top: 0
-        left: 0
-        width: 100%
-        height: 100%
-        background-color: rgba(0, 0, 0, 0.5)
-        display: table
-        transition: opacity 0.3s ease
+.modal-mask
+    position: fixed
+    z-index: 9998
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(0, 0, 0, 0.5)
+    display: table
+    transition: opacity 0.3s ease
 
-    .modal-wrapper
-        display: table-cell
-        vertical-align: middle
+.modal-wrapper
+    display: table-cell
+    vertical-align: middle
 
-    .modal-container
-        width: 300px
-        margin: 0px auto
-        padding: 10px 10px 10px 20px
-        background-color: #e8e8e8
-        border-radius: 2px
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33)
-        transition: all 0.3s ease
-        font-family: Helvetica, Arial, sans-serif
+.modal-container
+    width: 300px
+    margin: 0px auto
+    padding: 10px 10px 10px 20px
+    background-color: #e8e8e8
+    border-radius: 2px
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33)
+    transition: all 0.3s ease
+    font-family: Helvetica, Arial, sans-serif
 
-    .modal-body
-        margin: 20px 0
-        word-wrap: break-word
-        overflow-wrap: break-word
+.modal-body
+    margin: 20px 0
+    word-wrap: break-word
+    overflow-wrap: break-word
 
-    .modal-default-button
-        float: right
+.modal-default-button
+    float: right
 
-    .modal-enter
-        opacity: 0
+.modal-enter
+    opacity: 0
 
-    .modal-leave-active
-        opacity: 0
+.modal-leave-active
+    opacity: 0
 
-    .modal-footer
-        justify-content: end
-        display: flex
+.modal-footer
+    justify-content: end
+    display: flex
 
-    #modalOK
-        color: #ffc5c5
-        background: #be0000
+#modalOK
+    color: #ffc5c5
+    background: #be0000
 
-    .modal-header
-        font-weight: bold
-        margin-top: 2%
+.modal-header
+    font-weight: bold
+    margin-top: 2%
 
 </style>
