@@ -20,6 +20,7 @@
 <script>
 import { mapActions } from 'pinia';
 import { useInterfaceStore } from './stores/interfaceStore';
+import http_helpers from './helpers/http-helpers';
 
 export default {
   name: 'app',
