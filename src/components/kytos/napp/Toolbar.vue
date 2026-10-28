@@ -59,31 +59,30 @@
  }
  </script>
  
- <style lang="sass">
- 
- @use '../../../assets/styles/dark-theme-variables'
- 
+<style lang="sass">
+
+@use '../../../assets/styles/dark-theme-variables'
+
+.k-toolbar
+  -webkit-order: 2
+  -ms-flex-order: 2
+  z-index: 999
+  margin-top: 40px
+  padding: 5px 10px
+  background: dark-theme-variables.$fill-panel
+  width: 220px
+  display: block
+
+.compacted
  .k-toolbar
-   -webkit-order: 2
-   -ms-flex-order: 2
-   z-index: 999
-   margin-top: 40px
-   padding: 5px 10px
-   background: dark-theme-variables.$fill-panel
-   width: 220px
-   display: block
- 
- .compacted
-  .k-toolbar
-   width: 100vw
-   height: 40px
-   margin-top: 0px
-   box-shadow: 5px 2px 10px dark-theme-variables.$kytos-black
-   overflow: hidden
-   padding: 0px
- 
-   .no-compact
-    display: none
- 
- </style>
- 
+  width: 100vw
+  height: 40px
+  margin-top: 0px
+  box-shadow: 5px 2px 10px dark-theme-variables.$kytos-black
+  overflow: hidden
+  padding: 0px
+
+  .no-compact
+   display: none
+
+</style>
